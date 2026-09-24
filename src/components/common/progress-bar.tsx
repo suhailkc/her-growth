@@ -19,7 +19,7 @@ export function ProgressBar({
   return (
     <div className={cn('space-y-2', className)}>
       <div className="flex items-center justify-between gap-2 text-sm">
-        <span className="text-muted-foreground">{label}</span>
+        <span className="min-w-0 truncate text-muted-foreground">{label}</span>
         {showValue ? (
           <span className="font-medium tabular-nums text-foreground">{clamped}%</span>
         ) : null}

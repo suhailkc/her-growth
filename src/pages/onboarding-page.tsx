@@ -35,8 +35,10 @@ export function OnboardingPage() {
 
   return (
     <PageContainer width="narrow">
-      <div className="mx-auto max-w-lg py-8">
-        <h1 className="font-serif text-3xl font-semibold">Welcome to {appBrand.name}</h1>
+      <div className="mx-auto max-w-lg py-4 sm:py-8">
+        <h1 className="text-balance font-serif text-2xl font-semibold sm:text-3xl">
+          Welcome to {appBrand.name}
+        </h1>
         <p className="mt-2 text-muted-foreground">{appBrand.tagline}</p>
 
         <Card variant="warm" className="mt-8">
@@ -57,11 +59,11 @@ export function OnboardingPage() {
               >
                 <Input
                   {...form.register('displayName')}
-                  className="min-h-11 text-base"
+                  fieldSize="comfortable"
                   autoComplete="name"
                 />
               </FormField>
-              <Button type="submit" size="lg">
+              <Button type="submit" size="lg" className="w-full sm:w-auto">
                 Start my journey
               </Button>
             </form>

@@ -79,7 +79,7 @@ function JourneyStageCard({
   return (
     <article
       className={cn(
-        'relative rounded-2xl border border-border/80 bg-card p-5 shadow-[var(--shadow-soft)]',
+        'relative rounded-2xl border border-border/80 bg-card p-4 shadow-[var(--shadow-soft)] sm:p-5',
         isCurrent && 'ring-2 ring-primary/35',
         locked && 'border-dashed bg-muted/20',
       )}
@@ -98,10 +98,10 @@ function JourneyStageCard({
           <p className="text-xs font-medium text-muted-foreground">
             Stage {stage.order}
           </p>
-          <h3 className="font-serif text-xl font-semibold leading-snug">
+          <h3 className="font-serif text-lg font-semibold leading-snug sm:text-xl">
             {stage.title}
           </h3>
-          <p className="mt-1 text-sm text-muted-foreground">{stage.subtitle}</p>
+          <p className="mt-1 text-sm text-pretty text-muted-foreground">{stage.subtitle}</p>
         </div>
       </div>
 
@@ -139,7 +139,7 @@ function JourneyStageCard({
             className={buttonVariants({
               variant: locked ? 'secondary' : 'outline',
               size: 'lg',
-              className: 'rounded-xl',
+              className: 'w-full rounded-xl sm:w-auto',
             })}
           >
             {locked ? 'Peek inside' : 'Open checklist'}
@@ -162,7 +162,7 @@ export function DigitalSkillsJourneyRoadmap() {
           const isLast = index === stages.length - 1
           const status = getTopicStageStatus(stage, completedTopicIds, currentStage)
           return (
-            <li key={stage.id} className="relative flex gap-4 pb-10">
+            <li key={stage.id} className="relative flex gap-3 pb-8 sm:gap-4 sm:pb-10">
               {!isLast ? (
                 <span
                   className="absolute left-[1.375rem] top-12 bottom-0 w-0.5 -translate-x-1/2 bg-border"

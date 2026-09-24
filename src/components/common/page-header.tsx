@@ -17,17 +17,21 @@ export function PageHeader({ title, description, action, className }: PageHeader
         className,
       )}
     >
-      <div className="space-y-2">
-        <h1 className="text-3xl font-serif font-semibold tracking-tight sm:text-4xl">
+      <div className="min-w-0 space-y-2">
+        <h1 className="text-balance break-words font-serif text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">
           {title}
         </h1>
         {description ? (
-          <p className="max-w-2xl text-base text-muted-foreground sm:text-lg">
+          <p className="max-w-2xl text-base text-pretty text-muted-foreground sm:text-lg">
             {description}
           </p>
         ) : null}
       </div>
-      {action ? <div className="shrink-0">{action}</div> : null}
+      {action ? (
+        <div className="w-full shrink-0 sm:w-auto [&_[data-slot=button]]:w-full [&_a]:flex [&_a]:w-full sm:[&_[data-slot=button]]:w-auto sm:[&_a]:w-auto">
+          {action}
+        </div>
+      ) : null}
     </header>
   )
 }

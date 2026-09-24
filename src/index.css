@@ -85,10 +85,12 @@
 
   html {
     @apply scroll-smooth font-sans;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    @apply min-h-dvh font-sans text-base leading-relaxed antialiased bg-background text-foreground;
+    @apply min-h-dvh overflow-x-hidden font-sans text-base leading-relaxed antialiased bg-background text-foreground;
+    min-height: -webkit-fill-available;
   }
 
   h1,
@@ -128,6 +130,19 @@
 
   .page-grid {
     @apply grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8;
+  }
+
+  .safe-page-x {
+    padding-left: max(var(--space-page-x), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--space-page-x), env(safe-area-inset-right, 0px));
+  }
+
+  .safe-page-bottom {
+    padding-bottom: max(var(--space-page-y), env(safe-area-inset-bottom, 0px));
+  }
+
+  .touch-target {
+    @apply min-h-11 min-w-11;
   }
 }
 
