@@ -6,6 +6,7 @@ import { StatusBadge } from '@/components/common/status-badge'
 import { Badge } from '@/components/ui/badge'
 import { buttonVariants } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { difficultyLabel } from '@/features/mission/mission-labels'
 import { cn } from '@/lib/utils'
 import type { DailyMission } from '@/types/user'
 
@@ -14,19 +15,14 @@ type TodayGrowthHeroProps = {
   className?: string
 }
 
-function difficultyLabel(difficulty: DailyMission['difficulty']): string {
-  switch (difficulty) {
-    case 'moderate':
-      return 'Moderate pace'
-    case 'stretch':
-      return 'A little stretch'
-    default:
-      return 'Gentle pace'
-  }
-}
-
 export function TodayGrowthHero({ mission, className }: TodayGrowthHeroProps) {
   const inProgress = mission.status === 'in_progress'
+  const completed = mission.status === 'completed'
+  const primaryCta = completed
+    ? 'View completion'
+    : inProgress
+      ? 'Continue mission'
+      : 'Start mission'
 
   return (
     <Card variant="warm" className={cn('overflow-hidden', className)}>
@@ -43,7 +39,9 @@ export function TodayGrowthHero({ mission, className }: TodayGrowthHeroProps) {
               {mission.title}
             </CardTitle>
           </div>
-          {inProgress ? (
+          {completed ? (
+            <StatusBadge label="Done for today" tone="success" />
+          ) : inProgress ? (
             <StatusBadge label="In progress" tone="active" />
           ) : (
             <StatusBadge label="Ready when you are" tone="neutral" />
@@ -56,7 +54,7 @@ export function TodayGrowthHero({ mission, className }: TodayGrowthHeroProps) {
             {mission.skillCategory}
           </Badge>
           <Badge variant="outline" className="font-normal">
-            {difficultyLabel(mission.difficulty)}
+            {difficultyLabel(mission.difficulty)} pace
           </Badge>
           <span className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-background/70 px-3 py-1 text-sm text-muted-foreground">
             <Clock className="size-4" aria-hidden />
@@ -77,7 +75,7 @@ export function TodayGrowthHero({ mission, className }: TodayGrowthHeroProps) {
               className: 'w-full rounded-xl sm:w-auto',
             })}
           >
-            Start Mission
+            {primaryCta}
           </Link>
           <Link
             to="/journey"

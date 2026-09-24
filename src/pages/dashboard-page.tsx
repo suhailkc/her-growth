@@ -11,7 +11,7 @@ import {
   mockJourneyAreaProgress,
   mockRecentAchievements,
 } from '@/data/mock-dashboard'
-import { mockTodayMission } from '@/data/mock-mission'
+import { useTodayMissionSummary } from '@/features/mission/use-today-mission'
 import { mockUserProfile } from '@/data/mock-profile'
 import { ContinueLearningSection } from '@/features/dashboard/continue-learning-section'
 import { FamilyFocusSection } from '@/features/dashboard/family-focus-section'
@@ -32,6 +32,7 @@ function formatLearningTime(totalMinutes: number): string {
 }
 
 export function DashboardPage() {
+  const todayMission = useTodayMissionSummary()
   const stats = mockDashboardActivityStats
 
   return (
@@ -41,7 +42,7 @@ export function DashboardPage() {
         description={homeGreeting.subtitle}
       />
 
-      <TodayGrowthHero mission={mockTodayMission} />
+      <TodayGrowthHero mission={todayMission} />
 
       <div className="grid gap-4 sm:grid-cols-3">
         <StatCard

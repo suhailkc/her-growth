@@ -2,7 +2,10 @@ import { Clock, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import { StatusBadge } from '@/components/common/status-badge'
-import { Button, buttonVariants } from '@/components/ui/button'
+import { ProgressBar } from '@/components/common/progress-bar'
+import { Badge } from '@/components/ui/badge'
+import { buttonVariants } from '@/components/ui/button'
+import { difficultyLabel } from '@/features/mission/mission-labels'
 import {
   Card,
   CardContent,
@@ -65,24 +68,37 @@ export function MissionCard({ mission, className, compact = false }: MissionCard
       </CardHeader>
       <CardContent className="space-y-4 pt-6">
         {compact ? <p className="text-muted-foreground">{mission.summary}</p> : null}
-        <p className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-          <Clock className="size-4" aria-hidden />
-          About {mission.estimatedMinutes} minutes · at your pace
-        </p>
+        <div className="flex flex-wrap gap-2">
+          <Badge variant="outline" className="font-normal">
+            {difficultyLabel(mission.difficulty)}
+          </Badge>
+          <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+            <Clock className="size-4" aria-hidden />
+            About {mission.estimatedMinutes} minutes
+          </span>
+        </div>
+        {mission.status === 'in_progress' ? (
+          <ProgressBar
+            value={mission.progressPercent}
+            label="Progress"
+            className="max-w-md"
+          />
+        ) : null}
       </CardContent>
-      <CardFooter className="justify-between gap-3 border-t border-border/60 bg-muted/30">
-        <Button variant="secondary" size="lg" className="rounded-xl" disabled>
-          Mark done
-        </Button>
+      <CardFooter className="justify-end gap-3 border-t border-border/60 bg-muted/30">
         <Link
           to="/today"
           className={buttonVariants({
-            variant: 'ghost',
+            variant: mission.status === 'completed' ? 'secondary' : 'default',
             size: 'lg',
-            className: 'rounded-xl',
+            className: 'w-full rounded-xl sm:w-auto',
           })}
         >
-          View steps
+          {mission.status === 'completed'
+            ? 'View mission'
+            : mission.status === 'in_progress'
+              ? 'Continue mission'
+              : 'Start mission'}
         </Link>
       </CardFooter>
     </Card>

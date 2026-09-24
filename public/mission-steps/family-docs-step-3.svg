@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-hidden="true">
+  <rect width="640" height="360" fill="#f7f3ef"/>
+  <rect x="380" y="60" width="200" height="240" rx="8" fill="#fff" stroke="#c9b8a8"/>
+  <rect x="400" y="130" width="120" height="24" rx="4" fill="#f0e8e0"/>
+  <rect x="400" y="162" width="100" height="24" rx="4" fill="#8b7355" opacity="0.85"/>
+  <text x="450" y="179" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="13">Folder</text>
+  <path d="M200 200h80v56h120v-56h80" fill="#d4a574" stroke="#8b7355" stroke-width="2"/>
+  <text x="320" y="320" text-anchor="middle" fill="#6b5b4f" font-family="system-ui,sans-serif" font-size="18">Select Folder</text>
+</svg>

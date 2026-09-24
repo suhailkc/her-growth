@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-hidden="true">
+  <rect width="640" height="360" fill="#f7f3ef"/>
+  <path d="M220 200h80v56h120v-56h80" fill="#d4a574" stroke="#8b7355" stroke-width="2"/>
+  <text x="336" y="232" text-anchor="middle" fill="#4a3f38" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Family Documents</text>
+  <rect x="400" y="210" width="72" height="36" rx="8" fill="#8b7355"/>
+  <text x="436" y="233" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="14">Enter µ</text>
+  <text x="320" y="320" text-anchor="middle" fill="#6b5b4f" font-family="system-ui,sans-serif" font-size="18">Press Enter to save the name</text>
+</svg>
