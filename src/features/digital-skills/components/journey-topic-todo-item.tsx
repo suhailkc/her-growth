@@ -23,9 +23,9 @@ export function JourneyTopicTodoItem({
   return (
     <div
       className={cn(
-        'flex min-h-11 items-start gap-3 rounded-xl border border-border/70 bg-background px-4 py-3',
-        complete && 'border-success/30 bg-success/5',
-        disabled && 'opacity-60',
+        'flex min-h-12 items-start gap-3 rounded-xl border border-border/70 bg-background px-4 py-3 transition-colors',
+        complete && 'border-success/35 bg-success/5',
+        disabled && 'pointer-events-none opacity-50',
       )}
     >
       <Checkbox
@@ -33,24 +33,24 @@ export function JourneyTopicTodoItem({
         checked={complete}
         disabled={disabled}
         onCheckedChange={() => toggleTopicComplete(stageId, topic.id)}
-        className="mt-1 size-5"
+        className="mt-0.5 size-5"
         aria-describedby={descriptionId}
       />
-      <div className="min-w-0 flex-1 space-y-1">
+      <div className="min-w-0 flex-1 space-y-0.5">
         <Label
           htmlFor={inputId}
           className={cn(
             'cursor-pointer text-base font-medium leading-snug',
-            complete && 'text-muted-foreground line-through',
+            complete && 'text-muted-foreground',
           )}
         >
-          {topic.label}
+          {complete ? `${topic.label} ✓` : topic.label}
         </Label>
         <p
           id={descriptionId}
           className={cn(
-            'text-sm leading-relaxed text-muted-foreground',
-            complete && 'line-through decoration-muted-foreground/50',
+            'text-sm leading-snug text-muted-foreground',
+            complete && 'text-muted-foreground/80',
           )}
         >
           {topic.description}

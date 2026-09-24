@@ -5,13 +5,12 @@ import { DigitalSkillsJourneySummary } from '@/features/digital-skills/component
 export function DigitalSkillsPage() {
   return (
     <PageContainer>
-      <header className="mx-auto mb-10 max-w-xl text-center">
+      <header className="mx-auto mb-8 max-w-xl text-center">
         <h1 className="font-serif text-3xl font-semibold sm:text-4xl">
-          My Digital Journey
+          Digital Skills Journey
         </h1>
-        <p className="mt-3 text-base text-muted-foreground leading-relaxed">
-          A gentle roadmap of stages and skills — open what you need, practice when you
-          are ready, and celebrate each step.
+        <p className="mt-2 text-base text-muted-foreground">
+          Stages, skills, tick when ready.
         </p>
       </header>
       <DigitalSkillsJourneySummary />

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { ProgressBar } from '@/components/common/progress-bar'
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { StageSkillChecklist } from '@/features/digital-skills/components/stage-skill-checklist'
 import { getStageIcon } from '@/features/digital-skills/data/stage-meta'
 import { getDigitalSkillsStages } from '@/features/digital-skills/data/catalog'
 import { useCompletedTopicSet } from '@/features/digital-skills/digital-skills-store'
@@ -19,13 +20,13 @@ import type { DigitalSkillsStage } from '@/types/digital-skills'
 function statusLabel(status: TopicStageStatus): string {
   switch (status) {
     case 'complete':
-      return 'Completed'
+      return 'Done'
     case 'current':
-      return 'In progress'
+      return 'Now'
     case 'locked':
-      return 'Opens next'
+      return 'Soon'
     default:
-      return 'Available'
+      return 'Open'
   }
 }
 
@@ -85,7 +86,7 @@ function JourneyStageCard({
     >
       {isCurrent ? (
         <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-primary">
-          You&apos;re here
+          You&apos;re here ✨
         </p>
       ) : null}
 
@@ -100,59 +101,51 @@ function JourneyStageCard({
           <h3 className="font-serif text-xl font-semibold leading-snug">
             {stage.title}
           </h3>
-          <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-            {stage.subtitle}
-          </p>
+          <p className="mt-1 text-sm text-muted-foreground">{stage.subtitle}</p>
         </div>
       </div>
 
-      <p className="mt-4 text-sm leading-relaxed text-foreground/90">
-        {stage.whyItMatters}
-      </p>
-
-      <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+      <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
         <span className="rounded-full bg-muted px-2.5 py-1">{statusLabel(status)}</span>
         <span>
-          {completedInStage} of {topicKeys.length} skills learned
+          {completedInStage}/{topicKeys.length} ticked
         </span>
       </div>
 
       {!locked ? (
-        <div className="mt-4">
+        <div className="mt-3">
           <ProgressBar
             value={stagePercent}
-            label={`Progress in ${stage.title}`}
+            label={`${stage.title} progress`}
             showValue
           />
         </div>
       ) : (
-        <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-          Finish the stage before this one — then these skills will open gently, one at
-          a time.
+        <p className="mt-3 text-sm text-muted-foreground">
+          Finish the stage before this one first.
         </p>
       )}
 
-      <div className="mt-5 flex flex-wrap gap-3">
-        {isCurrent ? (
+      {isCurrent && !locked ? (
+        <div className="mt-4">
+          <StageSkillChecklist stage={stage} stageId={stage.id} />
+        </div>
+      ) : null}
+
+      {!isCurrent ? (
+        <div className="mt-4">
           <Link
-            to={`/digital-skills/${stage.id}`}
-            className={buttonVariants({ size: 'lg', className: 'rounded-xl' })}
-          >
-            Continue
-          </Link>
-        ) : (
-          <Link
-            to={`/digital-skills/${stage.id}`}
+            to={`/${stage.id}`}
             className={buttonVariants({
               variant: locked ? 'secondary' : 'outline',
               size: 'lg',
               className: 'rounded-xl',
             })}
           >
-            {locked ? 'Preview stage' : 'View skills'}
+            {locked ? 'Peek inside' : 'Open checklist'}
           </Link>
-        )}
-      </div>
+        </div>
+      ) : null}
     </article>
   )
 }

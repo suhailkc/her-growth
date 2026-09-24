@@ -14,6 +14,9 @@ export const stageIcons: Record<string, string> = {
   'everyday-digital-life': '🌍',
   'digital-safety': '🔐',
   'creative-professional': '🎨',
+  'ai-basics': '🤖',
+  'ai-comfortable': '✨',
+  'ai-confident': '🧠',
 }
 
 export const journeyMilestones: JourneyMilestone[] = [
@@ -52,6 +55,18 @@ export const journeyMilestones: JourneyMilestone[] = [
     emoji: '🎨',
     title: 'Creating With Technology',
     stageId: 'creative-professional',
+  },
+  {
+    id: 'ai-starter',
+    emoji: '🤖',
+    title: 'Started Using AI Safely',
+    stageId: 'ai-basics',
+  },
+  {
+    id: 'ai-thoughtful',
+    emoji: '🧠',
+    title: 'Thoughtful With AI',
+    stageId: 'ai-confident',
   },
 ]
 

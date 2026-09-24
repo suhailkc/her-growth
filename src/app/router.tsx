@@ -5,9 +5,6 @@ import { OnboardingGuard } from '@/components/layout/onboarding-guard'
 import { AppShell } from '@/components/layout/app-shell'
 import { RouteErrorPage } from '@/pages/route-error-page'
 
-const DashboardPage = lazy(() =>
-  import('@/pages/dashboard-page').then((m) => ({ default: m.DashboardPage })),
-)
 const DigitalSkillsPage = lazy(() =>
   import('@/pages/digital-skills-page').then((m) => ({ default: m.DigitalSkillsPage })),
 )
@@ -16,21 +13,13 @@ const DigitalSkillsTrackPage = lazy(() =>
     default: m.DigitalSkillsTrackPage,
   })),
 )
-const DigitalSkillsSkillPage = lazy(() =>
-  import('@/pages/digital-skills-skill-page').then((m) => ({
-    default: m.DigitalSkillsSkillPage,
-  })),
-)
-const DigitalSkillsLessonPage = lazy(() =>
-  import('@/pages/digital-skills-lesson-page').then((m) => ({
-    default: m.DigitalSkillsLessonPage,
-  })),
-)
-const AboutPage = lazy(() =>
-  import('@/pages/about-page').then((m) => ({ default: m.AboutPage })),
-)
 const OnboardingPage = lazy(() =>
   import('@/pages/onboarding-page').then((m) => ({ default: m.OnboardingPage })),
+)
+const DigitalSkillsLegacyRedirect = lazy(() =>
+  import('@/pages/digital-skills-legacy-redirect').then((m) => ({
+    default: m.DigitalSkillsLegacyRedirect,
+  })),
 )
 
 export const appRouter = createBrowserRouter([
@@ -47,28 +36,22 @@ export const appRouter = createBrowserRouter([
     ),
     errorElement: <RouteErrorPage />,
     children: [
-      { index: true, element: <DashboardPage /> },
-      { path: 'about', element: <AboutPage /> },
+      { index: true, element: <DigitalSkillsPage /> },
       {
         path: 'digital-skills',
         children: [
-          { index: true, element: <DigitalSkillsPage /> },
-          { path: ':stageId/skill/:topicId', element: <DigitalSkillsSkillPage /> },
-          { path: ':stageId/:lessonId', element: <DigitalSkillsLessonPage /> },
-          { path: ':stageId', element: <DigitalSkillsTrackPage /> },
+          { index: true, element: <Navigate to="/" replace /> },
+          {
+            path: ':stageId/skill/:topicId',
+            element: <DigitalSkillsLegacyRedirect />,
+          },
+          { path: ':stageId/:lessonId', element: <DigitalSkillsLegacyRedirect /> },
+          { path: ':stageId', element: <DigitalSkillsLegacyRedirect /> },
         ],
       },
-      { path: 'today', element: <Navigate to="/" replace /> },
-      { path: 'journey', element: <Navigate to="/digital-skills" replace /> },
-      { path: 'family', element: <Navigate to="/" replace /> },
-      { path: 'finance/*', element: <Navigate to="/" replace /> },
-      { path: 'parenting/*', element: <Navigate to="/" replace /> },
-      { path: 'bed-career/*', element: <Navigate to="/" replace /> },
-      { path: 'knowledge/*', element: <Navigate to="/" replace /> },
-      { path: 'general-knowledge/*', element: <Navigate to="/" replace /> },
-      { path: 'tools/*', element: <Navigate to="/" replace /> },
-      { path: 'family-goals/*', element: <Navigate to="/" replace /> },
-      { path: 'profile/*', element: <Navigate to="/about" replace /> },
+      { path: ':stageId/skill/:topicId', element: <DigitalSkillsLegacyRedirect /> },
+      { path: ':stageId/:lessonId', element: <DigitalSkillsLegacyRedirect /> },
+      { path: ':stageId', element: <DigitalSkillsTrackPage /> },
     ],
   },
 ])

@@ -5,53 +5,45 @@ export const digitalSkillsStages: DigitalSkillsStage[] = [
     id: 'computer-confidence',
     order: 1,
     title: 'Computer Confidence',
-    subtitle: 'Beginner foundation',
+    subtitle: 'Meet your computer',
     whyItMatters:
-      'When the machine feels familiar, everything else — internet, email, documents — becomes less scary.',
+      'When the computer feels familiar, the internet, email, and documents feel easier too.',
     outcomeVision:
-      'You can turn the computer on and off, move the mouse and keyboard comfortably, and find your way around the screen.',
+      'Turn the PC on and off, use mouse and keyboard, and find your way around the screen.',
     topics: [
       {
         id: 'turn-on-off',
         label: 'Turn the computer on/off',
         description:
-          'Find the power button, wait for the login screen, and shut down from the Start menu so open work is not lost.',
-        lessonId: 'turn-on-off',
+          'Power on, wait for login, shut down from Start when you are done.',
       },
       {
         id: 'mouse',
         label: 'Mouse basics',
         description:
-          'Practice click, double-click, right-click, and scrolling — try opening one icon on the desktop.',
-        lessonId: 'mouse',
+          'Click, double-click, right-click, scroll — open one desktop icon.',
       },
       {
         id: 'keyboard',
         label: 'Keyboard basics',
-        description:
-          'Learn Enter, Backspace, Space, and Shift. Try typing a short sentence in Notepad.',
-        lessonId: 'keyboard',
+        description: 'Try Enter, Backspace, Space, Shift in Notepad.',
       },
       {
         id: 'typing',
         label: 'Typing',
         description:
-          'Sit comfortably, look at the screen, and type slowly for a few minutes each day to build muscle memory.',
-        lessonId: 'typing',
+          'Type slowly for a few minutes — look at the screen, not the keys.',
       },
       {
         id: 'desktop',
         label: 'Desktop basics',
         description:
-          'Know the wallpaper, taskbar, and Start button — like the “front table” of your computer.',
-        lessonId: 'desktop',
+          'Spot wallpaper, taskbar, and Start — your computer’s front table.',
       },
       {
         id: 'windows',
         label: 'Basic Windows controls',
-        description:
-          'Open, minimize, and close a window; use the menu at the top of an app when you need options.',
-        lessonId: 'windows-basics',
+        description: 'Open, minimize, and close a window; peek at the top menu bar.',
       },
     ],
   },
@@ -59,67 +51,50 @@ export const digitalSkillsStages: DigitalSkillsStage[] = [
     id: 'files-organization',
     order: 2,
     title: 'Files & Organization',
-    subtitle: 'Keep family papers tidy on the computer',
-    whyItMatters:
-      'Organized files save time when you need school forms, bills, or photos — and reduce the stress of “where did I save that?”',
+    subtitle: 'Tidy digital folders',
+    whyItMatters: 'Neat files mean less “where did I save that?” stress.',
     outcomeVision:
-      'You can create folders, move and copy files, find downloads, and keep family documents in sensible places.',
+      'Make folders, move and copy files, and keep family papers easy to find.',
     topics: [
       {
         id: 'folders',
         label: 'Create folders',
-        description:
-          'In File Explorer, make a new folder on Desktop or Documents — e.g. “School” or “Bills 2026”.',
-        lessonId: 'files-folders',
+        description: 'New folder in Documents — try “School” or “Bills”.',
       },
       {
         id: 'rename',
         label: 'Rename files',
-        description:
-          'Right-click a file, choose Rename, and use clear names like “Electricity-March.pdf”.',
-        lessonId: 'files-folders',
+        description: 'Right-click → Rename — use clear names like Electricity-March.',
       },
       {
         id: 'move',
         label: 'Move files',
-        description:
-          'Drag a file into a folder, or use Cut and Paste to put it in the right place.',
-        lessonId: 'files-folders',
+        description: 'Drag into a folder, or Cut and Paste to the right place.',
       },
       {
         id: 'copy-paste',
         label: 'Copy/paste',
-        description:
-          'Copy a file (Ctrl+C) and paste a duplicate (Ctrl+V) — useful for backups in another folder.',
-        lessonId: 'files-folders',
+        description: 'Ctrl+C then Ctrl+V to copy a file into another folder.',
       },
       {
         id: 'delete-restore',
         label: 'Delete/restore',
-        description:
-          'Send unneeded items to Recycle Bin; open Recycle Bin to restore if you deleted by mistake.',
-        lessonId: 'files-folders',
+        description: 'Delete to Recycle Bin; open Recycle Bin to bring something back.',
       },
       {
         id: 'find',
         label: 'Find files',
-        description:
-          'Use the search box in File Explorer or the Start menu search to locate a file by name.',
-        lessonId: 'file-organization',
+        description: 'Search by name in File Explorer or the Start menu.',
       },
       {
         id: 'family-docs',
         label: 'Organize family documents',
-        description:
-          'Group photos, IDs, and school papers into folders by year or topic so everyone can find them.',
-        lessonId: 'file-organization',
+        description: 'Group photos and papers by year or topic in folders.',
       },
       {
         id: 'downloads',
         label: 'Downloads folder',
-        description:
-          'Open Downloads, move important files to a permanent folder, and delete old installers you do not need.',
-        lessonId: 'file-organization',
+        description: 'Move keepers to a real folder; delete old installers.',
       },
     ],
   },
@@ -127,67 +102,49 @@ export const digitalSkillsStages: DigitalSkillsStage[] = [
     id: 'internet-basics',
     order: 3,
     title: 'Internet Basics',
-    subtitle: 'Browse and search with calm',
-    whyItMatters:
-      'The internet opens help, information, and services — knowing the basics keeps you in control instead of feeling lost.',
-    outcomeVision:
-      'You can open a browser, search clearly, use tabs, download and upload files, and fix simple connection hiccups.',
+    subtitle: 'Browse with confidence',
+    whyItMatters: 'The web has answers and services — basics keep you in control.',
+    outcomeVision: 'Open sites, search, use tabs, and move files up and down safely.',
     topics: [
       {
         id: 'browser',
         label: 'Open a browser',
-        description:
-          'Start Chrome or Edge from the taskbar; notice the address bar where you type website names.',
-        lessonId: 'browser',
+        description: 'Start Chrome or Edge; find the address bar at the top.',
       },
       {
         id: 'search',
         label: 'Search Google',
-        description:
-          'Type a clear question in Google — e.g. “how to attach file in Gmail” — and open one trusted result.',
-        lessonId: 'search',
+        description: 'Type a plain question — open one result you trust.',
       },
       {
         id: 'tabs',
-        label: 'Open/use tabs',
-        description:
-          'Use the + button for a new tab, switch between tabs, and close tabs you no longer need.',
-        lessonId: 'tabs',
+        label: 'Use browser tabs',
+        description: 'Keep Google, Gmail, and school sites open — switch with tabs.',
       },
       {
         id: 'navigate',
         label: 'Navigate websites',
-        description:
-          'Use Back, menus, and the home page; scroll to read and look for Contact or Help when stuck.',
-        lessonId: 'browser',
+        description: 'Back button, scroll, menus — look for Help if you are stuck.',
       },
       {
         id: 'download',
         label: 'Download files',
-        description:
-          'When a site offers Download, save the file, then find it in Downloads and scan it if it is from an unknown site.',
-        lessonId: 'downloads',
+        description: 'Save downloads, then check the Downloads folder.',
       },
       {
         id: 'upload',
         label: 'Upload files',
-        description:
-          'On forms or Drive, click Upload or Choose file and pick a document from your computer.',
-        lessonId: 'uploads',
+        description: 'Choose file on a form or Drive — pick from your computer.',
       },
       {
         id: 'links',
         label: 'Understand links',
-        description:
-          'Blue or underlined text often opens another page — hover to see the address before you click.',
-        lessonId: 'search',
+        description: 'Blue text opens pages — hover to preview the address.',
       },
       {
         id: 'troubleshoot',
         label: 'Basic troubleshooting',
-        description:
-          'If the internet stops, check Wi‑Fi, restart the router once, or try again later — no need to panic.',
-        lessonId: 'basic-troubleshooting',
+        description: 'Wi‑Fi off? Toggle it, restart router once, try again calmly.',
       },
     ],
   },
@@ -197,58 +154,44 @@ export const digitalSkillsStages: DigitalSkillsStage[] = [
     title: 'Email & Communication',
     subtitle: 'Stay in touch online',
     whyItMatters:
-      'Email and messaging connect you to school, family, and services — small skills here prevent big misunderstandings.',
+      'Email and chat reach school, family, and offices — small skills help a lot.',
     outcomeVision:
-      'You can use Gmail, send and reply to messages, handle attachments, and join WhatsApp Web or video calls when you choose.',
+      'Use Gmail, attachments, WhatsApp Web, and video calls when you want.',
     topics: [
       {
         id: 'gmail',
         label: 'Gmail basics',
-        description:
-          'Sign in at gmail.com, read Inbox vs Sent, and find the Compose button for a new message.',
-        lessonId: 'gmail-basics',
+        description: 'Inbox, Sent, and Compose — sign in at gmail.com.',
       },
       {
         id: 'send',
         label: 'Send an email',
-        description:
-          'Add To, subject line, short body, and Send — start with a test email to yourself.',
-        lessonId: 'send-email',
+        description: 'To, subject, message, Send — try emailing yourself first.',
       },
       {
         id: 'reply',
         label: 'Reply/forward',
-        description:
-          'Use Reply to answer one person; Forward to send the same message to someone else with a note.',
-        lessonId: 'send-email',
+        description: 'Reply to one person; Forward to share with someone else.',
       },
       {
         id: 'attach',
         label: 'Attach files',
-        description:
-          'Click the paperclip in Gmail, choose a PDF or photo, wait for it to upload, then send.',
-        lessonId: 'attach-files',
+        description: 'Paperclip → pick PDF or photo → wait → Send.',
       },
       {
         id: 'download-att',
         label: 'Download attachments',
-        description:
-          'Open an email with an attachment, download it, and save to a folder you will remember.',
-        lessonId: 'download-attachments',
+        description: 'Save attachments to a folder you will remember.',
       },
       {
         id: 'whatsapp',
         label: 'WhatsApp Web',
-        description:
-          'On web.whatsapp.com, scan the QR code with your phone to chat from the computer keyboard.',
-        lessonId: 'whatsapp-web',
+        description: 'Scan QR at web.whatsapp.com — chat with your keyboard.',
       },
       {
         id: 'video',
         label: 'Video calls',
-        description:
-          'Join a Google Meet or Zoom link, test camera and mic, and practice mute before speaking.',
-        lessonId: 'video-calls',
+        description: 'Join Meet or Zoom; test mic/camera; mute until you speak.',
       },
     ],
   },
@@ -256,60 +199,45 @@ export const digitalSkillsStages: DigitalSkillsStage[] = [
     id: 'documents-pdfs',
     order: 5,
     title: 'Documents & PDFs',
-    subtitle: 'Write, save, and share',
+    subtitle: 'Write and share',
     whyItMatters:
-      'Letters, school notes, and official PDFs show up often — knowing Docs and PDFs helps you participate fully.',
-    outcomeVision:
-      'You can write a simple document, format it lightly, save and share it, open PDFs, and print when needed.',
+      'Letters and PDFs show up at school and home — Docs makes them simple.',
+    outcomeVision: 'Write a note, share a link, open PDFs, print when needed.',
     topics: [
       {
         id: 'docs',
         label: 'Google Docs',
-        description:
-          'Open docs.google.com, start a blank document — it saves automatically to your Google account.',
-        lessonId: 'google-docs',
+        description: 'Blank doc at docs.google.com — saves automatically.',
       },
       {
         id: 'format',
         label: 'Basic formatting',
-        description:
-          'Try bold, bullet lists, and slightly larger headings so notes are easy to read.',
-        lessonId: 'google-docs',
+        description: 'Bold, bullets, bigger headings — keep it easy to read.',
       },
       {
         id: 'create',
         label: 'Create a simple document',
-        description:
-          'Write a half-page letter or shopping list with a title and date — good practice for school forms.',
-        lessonId: 'google-docs',
+        description: 'Short letter or list with title and date.',
       },
       {
         id: 'share',
         label: 'Save/share documents',
-        description:
-          'Use Share in Docs to email a link or set “anyone with link can view” when a teacher asks.',
-        lessonId: 'google-docs',
+        description: 'Share link from Docs when school asks for a file.',
       },
       {
         id: 'open-pdf',
         label: 'Open PDFs',
-        description:
-          'Double-click a PDF to read bills or forms; zoom in if the text is small.',
-        lessonId: 'pdf-files',
+        description: 'Double-click to read; zoom if text is tiny.',
       },
       {
         id: 'download-pdf',
         label: 'Download PDFs',
-        description:
-          'From email or a website, download a PDF and file it in the folder where you keep official papers.',
-        lessonId: 'pdf-files',
+        description: 'Save PDFs into your “Important papers” folder.',
       },
       {
         id: 'print',
         label: 'Print documents',
-        description:
-          'Use Ctrl+P, check Print preview, choose your printer or “Save as PDF” if you have no printer.',
-        lessonId: 'printing',
+        description: 'Ctrl+P → preview → print or Save as PDF.',
       },
     ],
   },
@@ -317,53 +245,44 @@ export const digitalSkillsStages: DigitalSkillsStage[] = [
     id: 'everyday-digital-life',
     order: 6,
     title: 'Everyday Digital Life',
-    subtitle: 'Tools for daily tasks',
-    whyItMatters:
-      'Drive, calendar, forms, and payments are part of modern life — learning them step by step builds real independence.',
-    outcomeVision:
-      'You can store files in Drive, use a simple sheet, manage calendar events, fill forms, book services, and pay safely online.',
+    subtitle: 'Daily online tools',
+    whyItMatters: 'Drive, calendar, and payments are part of normal life now.',
+    outcomeVision: 'Store files online, plan dates, fill forms, shop and pay safely.',
     topics: [
       {
         id: 'drive',
         label: 'Google Drive',
-        description:
-          'Store photos and documents online at drive.google.com — frees space on your computer and backs up files.',
+        description: 'Keep photos and docs at drive.google.com — backed up online.',
       },
       {
         id: 'sheets',
         label: 'Google Sheets basics',
-        description:
-          'A simple online table for lists or budgets — search “Google Sheets beginner” and try a small expense list.',
+        description: 'Simple table for lists or a small budget.',
       },
       {
         id: 'calendar',
         label: 'Google Calendar',
-        description:
-          'Add appointments and reminders on your phone or computer so family events are in one place.',
+        description: 'Add family appointments with reminders.',
       },
       {
         id: 'forms',
         label: 'Online forms',
-        description:
-          'Fill school or government forms in the browser — read each field slowly and save before submitting.',
+        description: 'Read each box slowly; save before you submit.',
       },
       {
         id: 'bookings',
         label: 'Online bookings',
-        description:
-          'Book doctor visits or tickets on official sites; double-check date, time, and confirmation SMS or email.',
+        description: 'Book on official sites — check date and confirmation SMS.',
       },
       {
         id: 'shopping',
         label: 'Online shopping',
-        description:
-          'Compare prices on trusted apps, read return policy, and avoid paying until you are sure of the seller.',
+        description: 'Trusted apps only; read returns before you pay.',
       },
       {
         id: 'payments',
         label: 'Digital payments',
-        description:
-          'Use UPI or bank apps only on your own phone; never share PIN or OTP with anyone who calls you.',
+        description: 'UPI on your phone only — never share PIN or OTP.',
       },
     ],
   },
@@ -371,67 +290,49 @@ export const digitalSkillsStages: DigitalSkillsStage[] = [
     id: 'digital-safety',
     order: 7,
     title: 'Digital Safety',
-    subtitle: 'Protect yourself and your family',
-    whyItMatters:
-      'Scams and tricks target everyone — a few calm habits protect your money, privacy, and peace of mind.',
-    outcomeVision:
-      'You can choose strong passwords, handle OTPs safely, spot phishing, and download and share with confidence.',
+    subtitle: 'Protect yourself online',
+    whyItMatters: 'Calm habits protect your money, privacy, and peace of mind.',
+    outcomeVision: 'Strong passwords, spot scams, and download from safe places.',
     topics: [
       {
         id: 'passwords',
         label: 'Strong passwords',
-        description:
-          'Use a long phrase you can remember, different for email and bank — or a family password manager.',
-        lessonId: 'passwords',
+        description: 'Long memorable phrase — different for email and bank.',
       },
       {
         id: 'otp',
         label: 'OTP safety',
-        description:
-          'OTP codes are secret like ATM PINs — never share them on phone, chat, or with “bank officials”.',
-        lessonId: 'otp-safety',
+        description: 'OTP is secret like ATM PIN — never tell anyone.',
       },
       {
         id: 'phishing',
         label: 'Phishing',
-        description:
-          'Fake emails or texts urge urgency — check the sender address and do not click odd links.',
-        lessonId: 'phishing',
+        description: 'Urgent fake emails? Check sender — skip odd links.',
       },
       {
         id: 'scams',
         label: 'Scam awareness',
-        description:
-          'If someone promises quick money or asks for fees upfront online, pause and ask a trusted person.',
-        lessonId: 'scam-awareness',
+        description: 'Too-good offers online? Pause and ask someone you trust.',
       },
       {
         id: 'links',
         label: 'Suspicious links',
-        description:
-          'Short or strange links in WhatsApp may be traps — open the real website by typing it yourself.',
-        lessonId: 'phishing',
+        description: 'Weird WhatsApp links? Type the real website yourself.',
       },
       {
         id: 'privacy',
         label: 'Privacy',
-        description:
-          'Review who can see your photos and profile; avoid posting full phone numbers or children’s school details publicly.',
-        lessonId: 'privacy',
+        description: 'Limit who sees photos — avoid posting full phone numbers.',
       },
       {
         id: 'downloads',
         label: 'Safe downloads',
-        description:
-          'Download apps only from official stores or company sites — free “cracked” software often hides viruses.',
-        lessonId: 'scam-awareness',
+        description: 'Apps from Play Store or official sites only.',
       },
       {
         id: 'accounts',
         label: 'Account security',
-        description:
-          'Turn on two-step verification for Gmail and bank apps; log out on shared computers when finished.',
-        lessonId: 'passwords',
+        description: 'Two-step verification on Gmail and bank; log out on shared PCs.',
       },
     ],
   },
@@ -439,47 +340,200 @@ export const digitalSkillsStages: DigitalSkillsStage[] = [
     id: 'creative-professional',
     order: 8,
     title: 'Creative & Professional Skills',
-    subtitle: 'Teaching, creativity, and growth',
+    subtitle: 'Make and teach with tech',
     whyItMatters:
-      'Whether for B.Ed., family projects, or curiosity — creative tools help you express ideas and teach others.',
-    outcomeVision:
-      'You can make simple designs, slides, worksheets, and use online tools that support learning and teaching.',
+      'Simple design and slides help family projects and teaching practice.',
+    outcomeVision: 'Posters, slides, worksheets, and learning sites at your pace.',
     topics: [
       {
         id: 'canva',
         label: 'Canva',
-        description:
-          'Free templates for posters and invitations — search “Canva for beginners” and export as PDF or image.',
+        description: 'Pick a template — export poster or invite as PDF.',
       },
       {
         id: 'presentations',
         label: 'Presentations',
-        description:
-          'Google Slides or PowerPoint: one idea per slide, large text, and a few pictures — practice a 3-slide talk.',
+        description: 'Three slides, big text, one idea each — practice out loud.',
       },
       {
         id: 'worksheets',
         label: 'Educational worksheets',
-        description:
-          'Create or find printable activities for children — mix text and simple shapes; save as PDF to print.',
+        description: 'Simple activity sheet — save as PDF to print.',
       },
       {
         id: 'spreadsheets',
         label: 'Basic spreadsheets',
-        description:
-          'Track marks or household expenses in rows and columns; learn sum and simple formulas when ready.',
+        description: 'Rows for expenses or marks; try SUM when ready.',
       },
       {
         id: 'teaching',
         label: 'Digital teaching tools',
-        description:
-          'Explore whiteboard apps or Google Classroom ideas for B.Ed. practice — start with one tool you enjoy.',
+        description: 'Try one whiteboard or classroom app you like.',
       },
       {
         id: 'learning',
         label: 'Online learning tools',
-        description:
-          'Bookmark free courses or YouTube channels you trust; set small weekly goals instead of long binge sessions.',
+        description: 'Bookmark one trusted channel — small weekly goals.',
+      },
+    ],
+  },
+  {
+    id: 'ai-basics',
+    order: 9,
+    title: 'AI Basics',
+    subtitle: 'Helpful chat, used safely',
+    whyItMatters:
+      'AI can explain things and draft text — when you know the basics and stay private.',
+    outcomeVision:
+      'Open a trusted AI site, ask clear questions, check answers, and keep secrets out of chat.',
+    topics: [
+      {
+        id: 'what-is-ai',
+        label: 'What AI assistants are',
+        description: 'Plain-language helpers (Gemini, ChatGPT) — not people; they can slip up.',
+      },
+      {
+        id: 'open-safely',
+        label: 'Use official AI sites',
+        description: 'Type the real address — skip random “free AI” links from ads or WhatsApp.',
+      },
+      {
+        id: 'clear-questions',
+        label: 'Ask a clear question',
+        description: 'One or two sentences: what you need and if it is for home or school.',
+      },
+      {
+        id: 'check-answers',
+        label: 'Check the answer',
+        description: 'For money, health, or big decisions — confirm with a trusted person too.',
+      },
+      {
+        id: 'ai-privacy',
+        label: 'Keep private things private',
+        description: 'No passwords, OTPs, or ID numbers in AI chat — ever.',
+      },
+      {
+        id: 'everyday-uses',
+        label: 'Everyday uses at home',
+        description: 'Try a polite email draft, simple recipe, or study note — low-stakes first.',
+      },
+      {
+        id: 'copy-to-docs',
+        label: 'Save useful replies',
+        description: 'Copy into Google Docs; edit in your own words before you send.',
+      },
+      {
+        id: 'when-not-ai',
+        label: 'When to ask a person',
+        description: 'Doctor, bank, or serious fights — talk to a real expert, not only AI.',
+      },
+    ],
+  },
+  {
+    id: 'ai-comfortable',
+    order: 10,
+    title: 'AI — Daily Use',
+    subtitle: 'Save time with follow-ups',
+    whyItMatters: 'Better prompts and follow-ups make AI useful for real home and study tasks.',
+    outcomeVision:
+      'Refine answers, use AI inside Google, summarize text, and shape drafts you trust.',
+    topics: [
+      {
+        id: 'follow-up',
+        label: 'Follow-up questions',
+        description: 'Same chat: “shorter please”, “step by step”, or “one example”.',
+      },
+      {
+        id: 'role-audience',
+        label: 'Say who it is for',
+        description: '“Explain for a parent meeting” — so tone and depth fit.',
+      },
+      {
+        id: 'summarize',
+        label: 'Summarize long text',
+        description: 'Paste a notice (no personal IDs) — ask for bullet points, then skim original.',
+      },
+      {
+        id: 'rewrite-tone',
+        label: 'Rewrite tone',
+        description: 'Rough note → polite email or WhatsApp — fix names and facts yourself.',
+      },
+      {
+        id: 'gemini-in-google',
+        label: 'AI inside Google',
+        description: 'Try Help me write in Gmail or Docs — read before you send.',
+      },
+      {
+        id: 'safe-uploads',
+        label: 'Upload only safe files',
+        description: 'Generic worksheets OK — never bank statements or full ID scans.',
+      },
+      {
+        id: 'lesson-outline',
+        label: 'Lesson outline',
+        description: 'Ask for a short class outline — adapt to your syllabus and kids.',
+      },
+      {
+        id: 'compare-draft',
+        label: 'Compare with your draft',
+        description: 'Write yours first, then merge AI ideas that feel right.',
+      },
+    ],
+  },
+  {
+    id: 'ai-confident',
+    order: 11,
+    title: 'AI — Thoughtful Use',
+    subtitle: 'You stay in charge',
+    whyItMatters:
+      'Confident use means planning tasks, teaching well, and spotting weak or wrong answers.',
+    outcomeVision:
+      'Multi-step projects, reusable prompts, fact-checking, and calm family AI habits.',
+    topics: [
+      {
+        id: 'multi-step-project',
+        label: 'Multi-step projects',
+        description: 'Brainstorm → outline in Docs → you write the final — not one paste-and-submit.',
+      },
+      {
+        id: 'saved-prompts',
+        label: 'Prompts that work for you',
+        description: 'Keep a Doc of favorites — copy, fill blanks, edit the result.',
+      },
+      {
+        id: 'fact-check',
+        label: 'Fact-check answers',
+        description: 'Dates, laws, exam facts — verify in a book or official site.',
+      },
+      {
+        id: 'teaching-pack',
+        label: 'Teaching materials',
+        description: 'Worksheet + short quiz from one topic — adjust before class.',
+      },
+      {
+        id: 'image-ai',
+        label: 'AI images responsibly',
+        description: 'Simple poster in Canva or Gemini — no strangers’ faces without OK.',
+      },
+      {
+        id: 'voice-input',
+        label: 'Voice to text',
+        description: 'Speak ideas in Malayalam or English — edit transcript before saving.',
+      },
+      {
+        id: 'sheets-ai',
+        label: 'AI with spreadsheets',
+        description: 'Ask how to SUM a budget column — type the formula yourself in Sheets.',
+      },
+      {
+        id: 'family-ai-rules',
+        label: 'AI rules at home',
+        description: 'Agree: no private info, no copy-paste homework, check answers together.',
+      },
+      {
+        id: 'free-vs-paid',
+        label: 'Free vs paid AI',
+        description: 'Know free limits; pay only on the official site — never odd payment links.',
       },
     ],
   },

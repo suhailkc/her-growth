@@ -1,4 +1,4 @@
-# Her Growth — Design System
+# Digital Skills — Design System
 
 ## Design intent
 
@@ -66,12 +66,9 @@ Semantic tokens live in `src/index.css` (`:root` + `@theme inline`).
 | `PageHeader`                      | `components/common/page-header.tsx`    | Title + description + optional action     |
 | `SectionHeader`                   | `components/common/section-header.tsx` | In-page sections                          |
 | `PageContainer`                   | `components/common/page-container.tsx` | Max width + vertical rhythm               |
-| `PageGrid` / `PageGridItem`       | `components/common/page-grid.tsx`      | 12-column responsive layout               |
-| `ModuleCard`                      | `components/common/module-card.tsx`    | Module discovery grid                     |
-| `ProgressSummary` / `ProgressBar` | `components/common/`                   | Pace + labeled progress                   |
+| `ProgressBar`                     | `components/common/progress-bar.tsx`   | Labeled progress (journey, home)          |
 | `FormField`                       | `components/common/form-field.tsx`     | Large labels, hint, plain-language errors |
 | `EmptyState`                      | `components/common/empty-state.tsx`    | Encouraging placeholders                  |
-| `StatusBadge`                     | `components/common/status-badge.tsx`   | Mission/module status tones               |
 
 ## UI primitives (`components/ui/`)
 
