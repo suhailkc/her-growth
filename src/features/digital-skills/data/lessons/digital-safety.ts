@@ -1,11 +1,11 @@
 import { createDigitalSkillsLesson } from '@/features/digital-skills/data/lesson-factory'
 
-const trackId = 'digital-safety'
+const stageId = 'digital-safety'
 
 export const digitalSafetyLessons = [
   createDigitalSkillsLesson({
     id: 'passwords',
-    trackId,
+    stageId,
     order: 1,
     title: 'Strong passwords you can remember',
     summary: 'Long phrases, unique passwords, and a safe place to store them.',
@@ -36,7 +36,7 @@ export const digitalSafetyLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'otp-safety',
-    trackId,
+    stageId,
     order: 2,
     title: 'OTP safety',
     summary: 'One-time codes are private — never share them.',
@@ -67,7 +67,7 @@ export const digitalSafetyLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'phishing',
-    trackId,
+    stageId,
     order: 3,
     title: 'Spot phishing messages',
     summary: 'Fake links, urgent tone, and odd sender addresses.',
@@ -98,7 +98,7 @@ export const digitalSafetyLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'scam-awareness',
-    trackId,
+    stageId,
     order: 4,
     title: 'Common scams and how to respond',
     summary: 'Prize wins, job offers, and "help desk" calls.',
@@ -129,7 +129,7 @@ export const digitalSafetyLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'privacy',
-    trackId,
+    stageId,
     order: 5,
     title: 'Privacy basics on phone and computer',
     summary: 'App permissions, location, and what you share online.',

@@ -1,11 +1,11 @@
 import { createDigitalSkillsLesson } from '@/features/digital-skills/data/lesson-factory'
 
-const trackId = 'email'
+const stageId = 'email-communication'
 
 export const emailLessons = [
   createDigitalSkillsLesson({
     id: 'gmail-basics',
-    trackId,
+    stageId,
     order: 1,
     title: 'Gmail basics — inbox and compose',
     summary: 'Sign in, read mail, and find the Compose button.',
@@ -36,7 +36,7 @@ export const emailLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'send-email',
-    trackId,
+    stageId,
     order: 2,
     title: 'Send an email',
     summary: 'To, subject, message, and Send.',
@@ -67,7 +67,7 @@ export const emailLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'attach-files',
-    trackId,
+    stageId,
     order: 3,
     title: 'Attach files to email',
     summary: 'Paperclip icon, choose file, check size.',
@@ -98,7 +98,7 @@ export const emailLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'download-attachments',
-    trackId,
+    stageId,
     order: 4,
     title: 'Download email attachments',
     summary: 'Open safely and save to a folder you choose.',

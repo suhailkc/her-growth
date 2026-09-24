@@ -1,11 +1,12 @@
 import { createDigitalSkillsLesson } from '@/features/digital-skills/data/lesson-factory'
 
-const trackId = 'documents'
+const documentsStageId = 'documents-pdfs'
+const filesStageId = 'files-organization'
 
 export const documentsLessons = [
   createDigitalSkillsLesson({
     id: 'google-docs',
-    trackId,
+    stageId: documentsStageId,
     order: 1,
     title: 'Google Docs — write and save',
     summary: 'Create a document online that saves automatically.',
@@ -36,7 +37,7 @@ export const documentsLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'pdf-files',
-    trackId,
+    stageId: documentsStageId,
     order: 2,
     title: 'Open and read PDF files',
     summary: 'View forms and books without editing them.',
@@ -67,7 +68,7 @@ export const documentsLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'printing',
-    trackId,
+    stageId: documentsStageId,
     order: 3,
     title: 'Print a document',
     summary: 'Print preview, copies, and paper settings.',
@@ -98,8 +99,8 @@ export const documentsLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'file-organization',
-    trackId,
-    order: 4,
+    stageId: filesStageId,
+    order: 2,
     title: 'Organize files on your computer',
     summary: 'Folders by topic and clear file names.',
     whyItMatters: 'Good names and folders mean you spend minutes, not hours, finding school and family documents.',

@@ -1,11 +1,11 @@
 import { createDigitalSkillsLesson } from '@/features/digital-skills/data/lesson-factory'
 
-const trackId = 'internet'
+const stageId = 'internet-basics'
 
 export const internetLessons = [
   createDigitalSkillsLesson({
     id: 'browser',
-    trackId,
+    stageId,
     order: 1,
     title: 'Open and use a web browser',
     summary: 'Chrome, Edge, or Firefox — open a browser and find the address bar.',
@@ -36,7 +36,7 @@ export const internetLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'search',
-    trackId,
+    stageId,
     order: 2,
     title: 'Search the web clearly',
     summary: 'Use Google or Bing with simple words.',
@@ -67,7 +67,7 @@ export const internetLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'tabs',
-    trackId,
+    stageId,
     order: 3,
     title: 'Manage browser tabs',
     summary: 'Open, switch, and close tabs without losing your place.',
@@ -98,7 +98,7 @@ export const internetLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'downloads',
-    trackId,
+    stageId,
     order: 4,
     title: 'Download files safely',
     summary: 'Save a file from the web and find it on your computer.',
@@ -129,7 +129,7 @@ export const internetLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'uploads',
-    trackId,
+    stageId,
     order: 5,
     title: 'Upload files to a website',
     summary: 'Attach or upload a photo or document when a form asks.',
@@ -160,7 +160,7 @@ export const internetLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'basic-troubleshooting',
-    trackId,
+    stageId,
     order: 6,
     title: 'Basic internet troubleshooting',
     summary: 'When Wi‑Fi or a page fails — simple checks first.',

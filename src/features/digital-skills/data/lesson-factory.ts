@@ -13,7 +13,7 @@ type StepInput = {
 
 type LessonInput = {
   id: string
-  trackId: string
+  stageId: string
   order: number
   title: string
   summary: string
@@ -39,7 +39,7 @@ function buildSteps(lessonId: string, steps: StepInput[]): DigitalSkillsLessonSt
 export function createDigitalSkillsLesson(input: LessonInput): DigitalSkillsLesson {
   return {
     id: input.id,
-    trackId: input.trackId,
+    stageId: input.stageId,
     order: input.order,
     title: input.title,
     summary: input.summary,

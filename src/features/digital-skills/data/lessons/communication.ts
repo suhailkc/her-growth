@@ -1,12 +1,12 @@
 import { createDigitalSkillsLesson } from '@/features/digital-skills/data/lesson-factory'
 
-const trackId = 'communication'
+const stageId = 'email-communication'
 
 export const communicationLessons = [
   createDigitalSkillsLesson({
     id: 'whatsapp-web',
-    trackId,
-    order: 1,
+    stageId,
+    order: 5,
     title: 'WhatsApp Web on your computer',
     summary: 'Link your phone and chat from the big screen.',
     whyItMatters: 'Typing on a keyboard is easier for long messages and sharing files while you study or work at home.',
@@ -36,8 +36,8 @@ export const communicationLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'video-calls',
-    trackId,
-    order: 2,
+    stageId,
+    order: 6,
     title: 'Join a video call calmly',
     summary: 'Camera, microphone, and joining a Meet or Zoom link.',
     whyItMatters: 'Video calls connect you to class, family abroad, and doctors — knowing the buttons reduces stress.',
@@ -67,8 +67,8 @@ export const communicationLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'sharing-files',
-    trackId,
-    order: 3,
+    stageId,
+    order: 7,
     title: 'Share files in chats and email',
     summary: 'Photos, PDFs, and links — the right size and place.',
     whyItMatters: 'Sharing homework photos and documents is daily life — doing it safely avoids leaks and confusion.',

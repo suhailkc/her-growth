@@ -1,28 +1,34 @@
 import { digitalSkillsLessons } from '@/features/digital-skills/data/lessons'
-import { digitalSkillsTracks } from '@/features/digital-skills/data/tracks'
-import type { DigitalSkillsLesson, DigitalSkillsTrack } from '@/types/digital-skills'
+import { digitalSkillsStages } from '@/features/digital-skills/data/stages'
+import type { DigitalSkillsLesson, DigitalSkillsStage } from '@/types/digital-skills'
 
-export function getDigitalSkillsTracks(): DigitalSkillsTrack[] {
-  return [...digitalSkillsTracks].sort((a, b) => a.order - b.order)
+export function getDigitalSkillsStages(): DigitalSkillsStage[] {
+  return [...digitalSkillsStages].sort((a, b) => a.order - b.order)
 }
 
-export function getDigitalSkillsTrackById(trackId: string): DigitalSkillsTrack | undefined {
-  return digitalSkillsTracks.find((track) => track.id === trackId)
+export function getDigitalSkillsStageById(stageId: string): DigitalSkillsStage | undefined {
+  return digitalSkillsStages.find((stage) => stage.id === stageId)
 }
 
-export function getDigitalSkillsLessonsForTrack(trackId: string): DigitalSkillsLesson[] {
+export function getDigitalSkillsLessonsForStage(stageId: string): DigitalSkillsLesson[] {
   return digitalSkillsLessons
-    .filter((lesson) => lesson.trackId === trackId)
+    .filter((lesson) => lesson.stageId === stageId)
     .sort((a, b) => a.order - b.order)
 }
 
 export function getDigitalSkillsLessonById(
-  trackId: string,
+  stageId: string,
   lessonId: string,
 ): DigitalSkillsLesson | undefined {
-  return digitalSkillsLessons.find(
-    (lesson) => lesson.trackId === trackId && lesson.id === lessonId,
-  )
+  const lesson = digitalSkillsLessons.find((item) => item.id === lessonId)
+  if (!lesson || lesson.stageId !== stageId) {
+    return undefined
+  }
+  return lesson
+}
+
+export function getDigitalSkillsLessonByIdGlobal(lessonId: string): DigitalSkillsLesson | undefined {
+  return digitalSkillsLessons.find((lesson) => lesson.id === lessonId)
 }
 
 export function getAllDigitalSkillsLessons(): DigitalSkillsLesson[] {
@@ -31,4 +37,18 @@ export function getAllDigitalSkillsLessons(): DigitalSkillsLesson[] {
 
 export function getDigitalSkillsLessonCount(): number {
   return digitalSkillsLessons.length
+}
+
+/** @deprecated Use stage routes — maps old category slugs to journey stages */
+export const legacyTrackToStageId: Record<string, string> = {
+  'computer-basics': 'computer-confidence',
+  internet: 'internet-basics',
+  email: 'email-communication',
+  documents: 'documents-pdfs',
+  communication: 'email-communication',
+  'digital-safety': 'digital-safety',
+}
+
+export function resolveStageIdFromRouteParam(param: string): string {
+  return legacyTrackToStageId[param] ?? param
 }

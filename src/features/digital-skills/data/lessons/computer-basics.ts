@@ -1,11 +1,12 @@
 import { createDigitalSkillsLesson } from '@/features/digital-skills/data/lesson-factory'
 
-const trackId = 'computer-basics'
+const stageId = 'computer-confidence'
+const filesStageId = 'files-organization'
 
 export const computerBasicsLessons = [
   createDigitalSkillsLesson({
     id: 'turn-on-off',
-    trackId,
+    stageId,
     order: 1,
     title: 'Turn the computer on and off safely',
     summary: 'Find the power button and shut down without losing your work.',
@@ -44,7 +45,7 @@ export const computerBasicsLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'mouse',
-    trackId,
+    stageId,
     order: 2,
     title: 'Use the mouse with confidence',
     summary: 'Move, click, and scroll without rushing.',
@@ -78,7 +79,7 @@ export const computerBasicsLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'keyboard',
-    trackId,
+    stageId,
     order: 3,
     title: 'Keyboard essentials',
     summary: 'Letters, numbers, Enter, Backspace, and Space.',
@@ -111,7 +112,7 @@ export const computerBasicsLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'typing',
-    trackId,
+    stageId,
     order: 4,
     title: 'Comfortable typing practice',
     summary: 'Short practice without pressure to be fast.',
@@ -143,7 +144,7 @@ export const computerBasicsLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'desktop',
-    trackId,
+    stageId,
     order: 5,
     title: 'Understand the desktop',
     summary: 'Icons, wallpaper, and the taskbar at the bottom.',
@@ -175,7 +176,7 @@ export const computerBasicsLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'windows-basics',
-    trackId,
+    stageId,
     order: 6,
     title: 'Windows basics — windows and menus',
     summary: 'Resize, minimize, and close app windows.',
@@ -207,8 +208,8 @@ export const computerBasicsLessons = [
   }),
   createDigitalSkillsLesson({
     id: 'files-folders',
-    trackId,
-    order: 7,
+    stageId: filesStageId,
+    order: 1,
     title: 'Files and folders',
     summary: 'Create a folder and save a file inside it.',
     whyItMatters:

@@ -12,20 +12,19 @@ import {
 import type { DigitalSkillsLesson, DigitalSkillsLessonProgress } from '@/types/digital-skills'
 
 type LessonListItemProps = {
-  trackId: string
+  stageId: string
   lesson: DigitalSkillsLesson
   progress: DigitalSkillsLessonProgress
+  disabled?: boolean
 }
 
-export function LessonListItem({ trackId, lesson, progress }: LessonListItemProps) {
+export function LessonListItem({ stageId, lesson, progress, disabled }: LessonListItemProps) {
   const complete = progress.phase === 'complete'
   const percent = lessonProgressPercent(lesson, progress)
   const inProgress = !complete && (progress.phase === 'active' || percent > 0)
 
-  return (
-    <li>
-      <Link to={`/digital-skills/${trackId}/${lesson.id}`} className="group block">
-        <Card variant="interactive" className="overflow-hidden">
+  const card = (
+        <Card variant={disabled ? 'default' : 'interactive'} className="overflow-hidden">
           <CardHeader className="flex flex-row items-start gap-3 space-y-0 pb-2">
             <div className="flex min-w-0 flex-1 flex-col gap-2">
               <div className="flex flex-wrap items-center gap-2">
@@ -58,7 +57,17 @@ export function LessonListItem({ trackId, lesson, progress }: LessonListItemProp
             <ProgressBar value={percent} label={`Progress on ${lesson.title}`} />
           </CardContent>
         </Card>
-      </Link>
+  )
+
+  return (
+    <li>
+      {disabled ? (
+        <div className="opacity-60">{card}</div>
+      ) : (
+        <Link to={`/digital-skills/${stageId}/${lesson.id}`} className="group block">
+          {card}
+        </Link>
+      )}
     </li>
   )
 }

@@ -1,41 +1,41 @@
-import { mockTodayMission, mockTodayMissionDetail } from '@/data/mock-mission'
-import { mergeMissionProgress, useMissionStore } from '@/features/mission/mission-store'
-import type { TodayMissionDetail } from '@/types/mission'
+import { useMemo } from 'react'
+
+import { useCompletedTopicSet } from '@/features/digital-skills/digital-skills-store'
+import {
+  allJourneyTopicsComplete,
+  getTodaySkillFocus,
+  todayFocusAsDailyMission,
+  type TodaySkillFocus,
+} from '@/features/mission/today-skill-focus'
 import type { DailyMission } from '@/types/user'
 
-export function useTodayMissionDetail(): TodayMissionDetail {
-  const phase = useMissionStore((s) => s.phase)
-  const completedStepIds = useMissionStore((s) => s.completedStepIds)
+const ALL_COMPLETE_MISSION: DailyMission = {
+  id: 'digital-skills-journey-complete',
+  title: 'Your roadmap is complete',
+  summary: 'You marked every skill on the Digital Skills journey. Revisit any stage whenever you want a refresher.',
+  estimatedMinutes: 0,
+  status: 'completed',
+  moduleId: 'digital-skills',
+  skillCategory: 'Digital Skills',
+  difficulty: 'gentle',
+  progressPercent: 100,
+}
 
-  const progressPercent = mergeMissionProgress(
-    mockTodayMission,
-    completedStepIds,
-    mockTodayMissionDetail.steps.length,
-    phase,
-  ).progressPercent
-
-  let status = mockTodayMissionDetail.status
-  if (phase === 'complete') {
-    status = 'completed'
-  } else if (phase === 'active' || completedStepIds.length > 0) {
-    status = 'in_progress'
-  }
-
-  return {
-    ...mockTodayMissionDetail,
-    status,
-    progressPercent,
-  }
+export function useTodaySkillFocus(): TodaySkillFocus | null {
+  const completedTopicIds = useCompletedTopicSet()
+  return useMemo(() => getTodaySkillFocus(completedTopicIds), [completedTopicIds])
 }
 
 export function useTodayMissionSummary(): DailyMission {
-  const phase = useMissionStore((s) => s.phase)
-  const completedStepIds = useMissionStore((s) => s.completedStepIds)
-
-  return mergeMissionProgress(
-    mockTodayMission,
-    completedStepIds,
-    mockTodayMissionDetail.steps.length,
-    phase,
-  )
+  const completedTopicIds = useCompletedTopicSet()
+  return useMemo(() => {
+    if (allJourneyTopicsComplete(completedTopicIds)) {
+      return ALL_COMPLETE_MISSION
+    }
+    const focus = getTodaySkillFocus(completedTopicIds)
+    if (!focus) {
+      return ALL_COMPLETE_MISSION
+    }
+    return todayFocusAsDailyMission(focus, completedTopicIds)
+  }, [completedTopicIds])
 }

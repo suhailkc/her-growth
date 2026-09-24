@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 
 import {
   getAllDigitalSkillsLessons,
-  getDigitalSkillsLessonsForTrack,
+  getDigitalSkillsLessonsForStage,
 } from '@/features/digital-skills/data/catalog'
 import { useDigitalSkillsStore } from '@/features/digital-skills/digital-skills-store'
 import {
@@ -10,14 +10,19 @@ import {
   trackProgressPercent,
 } from '@/features/digital-skills/progress-utils'
 
-export function useTrackProgress(trackId: string): number {
-  const lessons = useMemo(() => getDigitalSkillsLessonsForTrack(trackId), [trackId])
+export function useStageProgress(stageId: string): number {
+  const lessons = useMemo(() => getDigitalSkillsLessonsForStage(stageId), [stageId])
   const lessonProgress = useDigitalSkillsStore((s) => s.lessons)
 
   return useMemo(
     () => trackProgressPercent(lessons.map((l) => l.id), lessonProgress),
     [lessons, lessonProgress],
   )
+}
+
+/** @deprecated Use useStageProgress */
+export function useTrackProgress(stageId: string): number {
+  return useStageProgress(stageId)
 }
 
 export function useModuleProgress(): number {

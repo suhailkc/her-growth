@@ -1,11 +1,15 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
+import { topicKey } from '@/features/digital-skills/lib/topic-progress'
 import { EMPTY_LESSON_PROGRESS } from '@/features/digital-skills/progress-utils'
 import type { DigitalSkillsLessonPhase, DigitalSkillsLessonProgress } from '@/types/digital-skills'
 
 type DigitalSkillsStoreState = {
   lessons: Record<string, DigitalSkillsLessonProgress>
+  completedTopicIds: string[]
+  isTopicComplete: (stageId: string, topicId: string) => boolean
+  toggleTopicComplete: (stageId: string, topicId: string) => void
   getLessonProgress: (lessonId: string) => DigitalSkillsLessonProgress
   startLesson: (lessonId: string) => void
   setLessonPhase: (lessonId: string, phase: DigitalSkillsLessonPhase) => void
@@ -31,6 +35,18 @@ export const useDigitalSkillsStore = create<DigitalSkillsStoreState>()(
   persist(
     (set, get) => ({
       lessons: {},
+      completedTopicIds: [],
+      isTopicComplete: (stageId, topicId) => {
+        return get().completedTopicIds.includes(topicKey(stageId, topicId))
+      },
+      toggleTopicComplete: (stageId, topicId) => {
+        const key = topicKey(stageId, topicId)
+        const current = get().completedTopicIds
+        const next = current.includes(key)
+          ? current.filter((id) => id !== key)
+          : [...current, key]
+        set({ completedTopicIds: next })
+      },
       getLessonProgress: (lessonId) => {
         return get().lessons[lessonId] ?? EMPTY_LESSON_PROGRESS
       },
@@ -123,7 +139,15 @@ export const useDigitalSkillsStore = create<DigitalSkillsStoreState>()(
     }),
     {
       name: 'her-growth-digital-skills-progress',
-      partialize: (state) => ({ lessons: state.lessons }),
+      partialize: (state) => ({
+        lessons: state.lessons,
+        completedTopicIds: state.completedTopicIds,
+      }),
     },
   ),
 )
+
+export function useCompletedTopicSet(): Set<string> {
+  const completedTopicIds = useDigitalSkillsStore((s) => s.completedTopicIds)
+  return new Set(completedTopicIds)
+}

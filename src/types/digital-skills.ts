@@ -14,7 +14,7 @@ export type DigitalSkillsLessonStep = {
 
 export type DigitalSkillsLesson = {
   id: string
-  trackId: string
+  stageId: string
   order: number
   title: string
   summary: string
@@ -27,12 +27,25 @@ export type DigitalSkillsLesson = {
   completionAction: string
 }
 
-export type DigitalSkillsTrack = {
+export type DigitalSkillsStageTopic = {
   id: string
-  title: string
+  label: string
+  /** Plain-language hint for self-study and what to search for */
   description: string
-  order: number
+  lessonId?: string
 }
+
+export type DigitalSkillsStage = {
+  id: string
+  order: number
+  title: string
+  subtitle: string
+  whyItMatters: string
+  outcomeVision: string
+  topics: DigitalSkillsStageTopic[]
+}
+
+export type DigitalSkillsStageStatus = 'complete' | 'current' | 'available' | 'locked' | 'coming-soon'
 
 export type DigitalSkillsLessonProgress = {
   phase: DigitalSkillsLessonPhase

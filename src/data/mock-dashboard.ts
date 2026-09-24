@@ -25,10 +25,10 @@ export const mockContinueLearning: ContinueLearningModule[] = [
   {
     id: 'cl-computer-basics',
     moduleId: 'digital-skills',
-    title: 'Computer Basics',
-    subtitle: 'Lesson 1 · Turn the computer on and off safely',
+    title: 'Computer Confidence',
+    subtitle: 'Your roadmap · start with Computer Confidence',
     progressPercent: 0,
-    href: '/digital-skills/computer-basics/turn-on-off',
+    href: '/digital-skills',
   },
   {
     id: 'cl-budget',

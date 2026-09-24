@@ -14,16 +14,6 @@ const TodayPage = lazy(() =>
 const DigitalSkillsPage = lazy(() =>
   import('@/pages/digital-skills-page').then((m) => ({ default: m.DigitalSkillsPage })),
 )
-const DigitalSkillsTrackPage = lazy(() =>
-  import('@/pages/digital-skills-track-page').then((m) => ({
-    default: m.DigitalSkillsTrackPage,
-  })),
-)
-const DigitalSkillsLessonPage = lazy(() =>
-  import('@/pages/digital-skills-lesson-page').then((m) => ({
-    default: m.DigitalSkillsLessonPage,
-  })),
-)
 const KnowledgePage = lazy(() =>
   import('@/pages/knowledge-page').then((m) => ({ default: m.KnowledgePage })),
 )
@@ -171,8 +161,7 @@ export const appRouter = createBrowserRouter([
         path: 'digital-skills',
         children: [
           { index: true, element: <DigitalSkillsPage /> },
-          { path: ':trackId', element: <DigitalSkillsTrackPage /> },
-          { path: ':trackId/:lessonId', element: <DigitalSkillsLessonPage /> },
+          { path: '*', element: <Navigate to="/digital-skills" replace /> },
         ],
       },
       { path: 'family', element: <FamilyPage /> },

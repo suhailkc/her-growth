@@ -14,7 +14,7 @@ import type { DigitalSkillsLesson } from '@/types/digital-skills'
 
 type LessonCompletionViewProps = {
   lesson: DigitalSkillsLesson
-  trackId: string
+  stageId: string
   nextLessonHref: string | null
   nextLessonTitle: string | null
   onPracticeAgain: () => void
@@ -22,7 +22,7 @@ type LessonCompletionViewProps = {
 
 export function LessonCompletionView({
   lesson,
-  trackId,
+  stageId,
   nextLessonHref,
   nextLessonTitle,
   onPracticeAgain,
@@ -71,13 +71,13 @@ export function LessonCompletionView({
       </CardContent>
       <CardFooter className="flex flex-col gap-3 border-t border-border/60 sm:flex-row sm:justify-center">
         <Link
-          to={`/digital-skills/${trackId}`}
+          to={`/digital-skills/${stageId}`}
           className={buttonVariants({
             size: 'lg',
             className: 'w-full rounded-xl sm:w-auto',
           })}
         >
-          Back to lesson list
+          Back to stage
         </Link>
         <Button
           type="button"

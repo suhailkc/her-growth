@@ -4,14 +4,14 @@ export const mockNotifications: AppNotification[] = [
   {
     id: 'n1',
     title: 'A gentle reminder',
-    body: 'When you have a quiet moment, your today mission is ready.',
+    body: 'Your next Digital Skills focus is ready — learn your way, then tick it off.',
     createdAt: '2026-09-24T09:00:00.000Z',
     read: false,
   },
   {
     id: 'n2',
     title: 'Digital Skills',
-    body: 'Computer Basics has a gentle first lesson when you are ready.',
+    body: 'Your Digital Skills checklist is ready — tick skills as you practice them on your own.',
     createdAt: '2026-09-23T14:30:00.000Z',
     read: true,
   },

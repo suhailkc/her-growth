@@ -10,15 +10,17 @@ import { LessonDetailOverview } from '@/features/digital-skills/components/lesso
 import { LessonStepPlayer } from '@/features/digital-skills/components/lesson-step-player'
 import {
   getDigitalSkillsLessonById,
-  getDigitalSkillsLessonsForTrack,
-  getDigitalSkillsTrackById,
+  getDigitalSkillsLessonsForStage,
+  getDigitalSkillsStageById,
+  resolveStageIdFromRouteParam,
 } from '@/features/digital-skills/data/catalog'
 import { useDigitalSkillsStore } from '@/features/digital-skills/digital-skills-store'
 
 export function DigitalSkillsLessonPage() {
-  const { trackId = '', lessonId = '' } = useParams()
-  const track = getDigitalSkillsTrackById(trackId)
-  const lesson = getDigitalSkillsLessonById(trackId, lessonId)
+  const { stageId: stageParam = '', lessonId = '' } = useParams()
+  const stageId = resolveStageIdFromRouteParam(stageParam)
+  const stage = getDigitalSkillsStageById(stageId)
+  const lesson = getDigitalSkillsLessonById(stageId, lessonId)
   const progress = useDigitalSkillsStore((s) => s.getLessonProgress(lessonId))
   const startLesson = useDigitalSkillsStore((s) => s.startLesson)
   const completeLesson = useDigitalSkillsStore((s) => s.completeLesson)
@@ -26,19 +28,19 @@ export function DigitalSkillsLessonPage() {
   const setLessonPhase = useDigitalSkillsStore((s) => s.setLessonPhase)
   const setCurrentStepIndex = useDigitalSkillsStore((s) => s.setCurrentStepIndex)
 
-  if (!track || !lesson) {
+  if (!stage || !lesson) {
     return (
       <PageContainer width="narrow">
         <EmptyState
           icon={GraduationCap}
           title="Lesson not found"
-          description="This lesson is not ready yet. You can choose another lesson from the category."
+          description="This lesson is not ready yet. Choose another skill from your journey."
           action={
             <Link
-              to={trackId ? `/digital-skills/${trackId}` : '/digital-skills'}
+              to={stageId ? `/digital-skills/${stageId}` : '/digital-skills'}
               className={buttonVariants({ size: 'lg', className: 'rounded-xl' })}
             >
-              Back to lessons
+              Back to stage
             </Link>
           }
         />
@@ -46,9 +48,9 @@ export function DigitalSkillsLessonPage() {
     )
   }
 
-  const trackLessons = getDigitalSkillsLessonsForTrack(trackId)
-  const currentIndex = trackLessons.findIndex((l) => l.id === lessonId)
-  const nextLesson = currentIndex >= 0 ? trackLessons[currentIndex + 1] : undefined
+  const stageLessons = getDigitalSkillsLessonsForStage(stageId)
+  const currentIndex = stageLessons.findIndex((l) => l.id === lessonId)
+  const nextLesson = currentIndex >= 0 ? stageLessons[currentIndex + 1] : undefined
 
   const handleStart = () => {
     startLesson(lesson.id)
@@ -74,18 +76,18 @@ export function DigitalSkillsLessonPage() {
     <PageContainer width="narrow">
       {phase !== 'active' ? (
         <PageHeader
-          title={track.title}
+          title={`Stage ${stage.order}: ${stage.title}`}
           description={lesson.title}
           action={
             <Link
-              to={`/digital-skills/${trackId}`}
+              to={`/digital-skills/${stageId}`}
               className={buttonVariants({
                 variant: 'secondary',
                 size: 'lg',
                 className: 'rounded-xl',
               })}
             >
-              Lesson list
+              Back to stage
             </Link>
           }
         />
@@ -94,9 +96,9 @@ export function DigitalSkillsLessonPage() {
       {phase === 'complete' ? (
         <LessonCompletionView
           lesson={lesson}
-          trackId={trackId}
+          stageId={stageId}
           nextLessonHref={
-            nextLesson ? `/digital-skills/${trackId}/${nextLesson.id}` : null
+            nextLesson ? `/digital-skills/${stageId}/${nextLesson.id}` : null
           }
           nextLessonTitle={nextLesson?.title ?? null}
           onPracticeAgain={handlePracticeAgain}
@@ -110,7 +112,7 @@ export function DigitalSkillsLessonPage() {
       ) : (
         <LessonDetailOverview
           lesson={lesson}
-          trackTitle={track.title}
+          trackTitle={stage.title}
           progress={progress}
           onStart={handleStart}
         />

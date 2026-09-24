@@ -4,10 +4,10 @@ import { digitalSafetyLessons } from '@/features/digital-skills/data/lessons/dig
 import { documentsLessons } from '@/features/digital-skills/data/lessons/documents'
 import { emailLessons } from '@/features/digital-skills/data/lessons/email'
 import { internetLessons } from '@/features/digital-skills/data/lessons/internet'
-import { digitalSkillsTracks } from '@/features/digital-skills/data/tracks'
+import { digitalSkillsStages } from '@/features/digital-skills/data/stages'
 import type { DigitalSkillsLesson } from '@/types/digital-skills'
 
-const trackOrder = new Map(digitalSkillsTracks.map((track) => [track.id, track.order]))
+const stageOrder = new Map(digitalSkillsStages.map((stage) => [stage.id, stage.order]))
 
 export const digitalSkillsLessons: DigitalSkillsLesson[] = [
   ...computerBasicsLessons,
@@ -17,9 +17,9 @@ export const digitalSkillsLessons: DigitalSkillsLesson[] = [
   ...communicationLessons,
   ...digitalSafetyLessons,
 ].sort((a, b) => {
-  const trackDiff = (trackOrder.get(a.trackId) ?? 0) - (trackOrder.get(b.trackId) ?? 0)
-  if (trackDiff !== 0) {
-    return trackDiff
+  const stageDiff = (stageOrder.get(a.stageId) ?? 0) - (stageOrder.get(b.stageId) ?? 0)
+  if (stageDiff !== 0) {
+    return stageDiff
   }
   return a.order - b.order
 })
