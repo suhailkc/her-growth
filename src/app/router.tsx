@@ -82,6 +82,24 @@ const ParentingArticlePage = lazy(() =>
     default: m.ParentingArticlePage,
   })),
 )
+const BedCareerPage = lazy(() =>
+  import('@/pages/bed-career-page').then((m) => ({ default: m.BedCareerPage })),
+)
+const BedCareerLessonPage = lazy(() =>
+  import('@/pages/bed-career-lesson-page').then((m) => ({
+    default: m.BedCareerLessonPage,
+  })),
+)
+const BedCareerOptionPage = lazy(() =>
+  import('@/pages/bed-career-option-page').then((m) => ({
+    default: m.BedCareerOptionPage,
+  })),
+)
+const BedCareerProjectPage = lazy(() =>
+  import('@/pages/bed-career-project-page').then((m) => ({
+    default: m.BedCareerProjectPage,
+  })),
+)
 
 export const appRouter = createBrowserRouter([
   {
@@ -117,7 +135,15 @@ export const appRouter = createBrowserRouter([
           { path: 'articles/:articleId', element: <ParentingArticlePage /> },
         ],
       },
-      { path: 'bed-career', element: <ModulePlaceholderPage moduleId="bed-career" /> },
+      {
+        path: 'bed-career',
+        children: [
+          { index: true, element: <BedCareerPage /> },
+          { path: 'lessons/:lessonId', element: <BedCareerLessonPage /> },
+          { path: 'careers/:careerId', element: <BedCareerOptionPage /> },
+          { path: 'projects/:projectId', element: <BedCareerProjectPage /> },
+        ],
+      },
       {
         path: 'knowledge',
         children: [
