@@ -7,16 +7,19 @@ export type JourneyMilestone = {
 
 export const stageIcons: Record<string, string> = {
   'computer-confidence': '💻',
+  'smartphone-essentials': '📱',
   'files-organization': '📁',
   'internet-basics': '🌐',
   'email-communication': '📧',
   'documents-pdfs': '📄',
+  'school-family-online': '🏫',
   'everyday-digital-life': '🌍',
   'digital-safety': '🔐',
   'creative-professional': '🎨',
   'ai-basics': '🤖',
   'ai-comfortable': '✨',
   'ai-confident': '🧠',
+  'staying-current': '🔄',
 }
 
 export const journeyMilestones: JourneyMilestone[] = [
@@ -33,6 +36,12 @@ export const journeyMilestones: JourneyMilestone[] = [
     stageId: 'computer-confidence',
   },
   {
+    id: 'phone-comfort',
+    emoji: '📱',
+    title: 'Comfortable With My Phone',
+    stageId: 'smartphone-essentials',
+  },
+  {
     id: 'confident-online',
     emoji: '🌐',
     title: 'Confident Online',
@@ -43,6 +52,12 @@ export const journeyMilestones: JourneyMilestone[] = [
     emoji: '📁',
     title: 'Digital Organizer',
     stageId: 'files-organization',
+  },
+  {
+    id: 'school-online',
+    emoji: '🏫',
+    title: 'School & Family Online',
+    stageId: 'school-family-online',
   },
   {
     id: 'digitally-safe',
@@ -67,6 +82,12 @@ export const journeyMilestones: JourneyMilestone[] = [
     emoji: '🧠',
     title: 'Thoughtful With AI',
     stageId: 'ai-confident',
+  },
+  {
+    id: 'habits',
+    emoji: '🔄',
+    title: 'Keeping Devices Healthy',
+    stageId: 'staying-current',
   },
 ]
 
