@@ -1,6 +1,4 @@
-import type { DailyMission } from '@/types/user'
-
-export type DigitalSkillsDifficulty = DailyMission['difficulty']
+export type DigitalSkillsDifficulty = 'gentle' | 'moderate' | 'stretch'
 
 export type DigitalSkillsLessonPhase = 'overview' | 'active' | 'complete'
 
@@ -27,11 +25,16 @@ export type DigitalSkillsLesson = {
   completionAction: string
 }
 
+export type DigitalSkillStatus = 'not-started' | 'practicing' | 'learned'
+
 export type DigitalSkillsStageTopic = {
   id: string
   label: string
   /** Plain-language hint for self-study and what to search for */
   description: string
+  whyItMatters?: string
+  realLifeExample?: string
+  estimatedMinutes?: number
   lessonId?: string
 }
 
@@ -42,10 +45,12 @@ export type DigitalSkillsStage = {
   subtitle: string
   whyItMatters: string
   outcomeVision: string
+  estimatedMinutes?: number
   topics: DigitalSkillsStageTopic[]
 }
 
-export type DigitalSkillsStageStatus = 'complete' | 'current' | 'available' | 'locked' | 'coming-soon'
+export type DigitalSkillsStageStatus =
+  'complete' | 'current' | 'available' | 'locked' | 'coming-soon'
 
 export type DigitalSkillsLessonProgress = {
   phase: DigitalSkillsLessonPhase

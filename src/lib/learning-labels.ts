@@ -1,6 +1,6 @@
-import type { DailyMission } from '@/types/user'
+import type { DigitalSkillsDifficulty } from '@/types/digital-skills'
 
-export function difficultyLabel(difficulty: DailyMission['difficulty']): string {
+export function difficultyLabel(difficulty: DigitalSkillsDifficulty): string {
   switch (difficulty) {
     case 'moderate':
       return 'Moderate'
@@ -11,7 +11,7 @@ export function difficultyLabel(difficulty: DailyMission['difficulty']): string 
   }
 }
 
-export function difficultyDescription(difficulty: DailyMission['difficulty']): string {
+export function difficultyDescription(difficulty: DigitalSkillsDifficulty): string {
   switch (difficulty) {
     case 'moderate':
       return 'A steady pace with a few new ideas.'

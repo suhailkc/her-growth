@@ -1,4 +1,7 @@
-import type { DigitalSkillsLesson, DigitalSkillsLessonProgress } from '@/types/digital-skills'
+import type {
+  DigitalSkillsLesson,
+  DigitalSkillsLessonProgress,
+} from '@/types/digital-skills'
 
 export const EMPTY_LESSON_PROGRESS: DigitalSkillsLessonProgress = {
   phase: 'overview',

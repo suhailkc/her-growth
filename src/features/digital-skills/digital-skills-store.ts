@@ -3,7 +3,10 @@ import { persist } from 'zustand/middleware'
 
 import { topicKey } from '@/features/digital-skills/lib/topic-progress'
 import { EMPTY_LESSON_PROGRESS } from '@/features/digital-skills/progress-utils'
-import type { DigitalSkillsLessonPhase, DigitalSkillsLessonProgress } from '@/types/digital-skills'
+import type {
+  DigitalSkillsLessonPhase,
+  DigitalSkillsLessonProgress,
+} from '@/types/digital-skills'
 
 type DigitalSkillsStoreState = {
   lessons: Record<string, DigitalSkillsLessonProgress>

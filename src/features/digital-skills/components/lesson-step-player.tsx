@@ -39,7 +39,9 @@ export function LessonStepPlayer({
   const step = lesson.steps[stepIndex]
   const totalSteps = lesson.steps.length
   const isStepComplete = step ? progress.completedStepIds.includes(step.id) : false
-  const allStepsComplete = lesson.steps.every((s) => progress.completedStepIds.includes(s.id))
+  const allStepsComplete = lesson.steps.every((s) =>
+    progress.completedStepIds.includes(s.id),
+  )
   const isFirst = stepIndex === 0
   const isLast = stepIndex === totalSteps - 1
   const progressPercent = lessonProgressPercent(lesson, progress)
@@ -66,11 +68,17 @@ export function LessonStepPlayer({
         </p>
       </div>
 
-      <ProgressBar value={progressPercent} label="Steps completed" className="max-w-xl" />
+      <ProgressBar
+        value={progressPercent}
+        label="Steps completed"
+        className="max-w-xl"
+      />
 
       <Card variant="warm" className="overflow-hidden">
         <CardHeader className="border-b border-border/60 bg-background/40">
-          <CardTitle className="font-serif text-xl sm:text-2xl">{step.instruction}</CardTitle>
+          <CardTitle className="font-serif text-xl sm:text-2xl">
+            {step.instruction}
+          </CardTitle>
         </CardHeader>
         <CardContent className="space-y-5 pt-6">
           <VisualPlaceholder label={step.visualLabel} />
@@ -99,7 +107,10 @@ export function LessonStepPlayer({
               I completed this step
             </Label>
             {isStepComplete ? (
-              <CheckCircle2 className="ml-auto size-5 shrink-0 text-primary" aria-hidden />
+              <CheckCircle2
+                className="ml-auto size-5 shrink-0 text-primary"
+                aria-hidden
+              />
             ) : null}
           </div>
         </CardContent>

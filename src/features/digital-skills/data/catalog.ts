@@ -6,11 +6,15 @@ export function getDigitalSkillsStages(): DigitalSkillsStage[] {
   return [...digitalSkillsStages].sort((a, b) => a.order - b.order)
 }
 
-export function getDigitalSkillsStageById(stageId: string): DigitalSkillsStage | undefined {
+export function getDigitalSkillsStageById(
+  stageId: string,
+): DigitalSkillsStage | undefined {
   return digitalSkillsStages.find((stage) => stage.id === stageId)
 }
 
-export function getDigitalSkillsLessonsForStage(stageId: string): DigitalSkillsLesson[] {
+export function getDigitalSkillsLessonsForStage(
+  stageId: string,
+): DigitalSkillsLesson[] {
   return digitalSkillsLessons
     .filter((lesson) => lesson.stageId === stageId)
     .sort((a, b) => a.order - b.order)
@@ -27,7 +31,9 @@ export function getDigitalSkillsLessonById(
   return lesson
 }
 
-export function getDigitalSkillsLessonByIdGlobal(lessonId: string): DigitalSkillsLesson | undefined {
+export function getDigitalSkillsLessonByIdGlobal(
+  lessonId: string,
+): DigitalSkillsLesson | undefined {
   return digitalSkillsLessons.find((lesson) => lesson.id === lessonId)
 }
 
@@ -51,4 +57,21 @@ export const legacyTrackToStageId: Record<string, string> = {
 
 export function resolveStageIdFromRouteParam(param: string): string {
   return legacyTrackToStageId[param] ?? param
+}
+
+export function getStageTopic(
+  stageId: string,
+  topicId: string,
+):
+  | { stage: DigitalSkillsStage; topic: DigitalSkillsStage['topics'][number] }
+  | undefined {
+  const stage = getDigitalSkillsStageById(stageId)
+  if (!stage) {
+    return undefined
+  }
+  const topic = stage.topics.find((item) => item.id === topicId)
+  if (!topic) {
+    return undefined
+  }
+  return { stage, topic }
 }

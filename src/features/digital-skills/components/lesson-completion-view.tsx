@@ -42,7 +42,9 @@ export function LessonCompletionView({
       </CardHeader>
       <CardContent className="space-y-4 pt-6 text-left">
         <div className="rounded-xl border border-border/70 bg-background/60 p-4">
-          <p className="text-sm font-medium text-muted-foreground">What you practiced</p>
+          <p className="text-sm font-medium text-muted-foreground">
+            What you practiced
+          </p>
           <p className="mt-1 text-base">{lesson.practicalTask}</p>
         </div>
         {progress.completedAt ? (
@@ -55,7 +57,9 @@ export function LessonCompletionView({
         ) : null}
         {nextLessonTitle && nextLessonHref ? (
           <div className="rounded-xl border border-border/70 bg-background/60 p-4">
-            <p className="text-sm font-medium text-muted-foreground">Up next (when you are ready)</p>
+            <p className="text-sm font-medium text-muted-foreground">
+              Up next (when you are ready)
+            </p>
             <p className="mt-1 text-base font-medium">{nextLessonTitle}</p>
             <Link
               to={nextLessonHref}

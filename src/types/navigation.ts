@@ -1,18 +1,6 @@
 import type { LucideIcon } from 'lucide-react'
 
-export type AppModuleId =
-  | 'dashboard'
-  | 'today'
-  | 'journey'
-  | 'digital-skills'
-  | 'family'
-  | 'finance'
-  | 'parenting'
-  | 'bed-career'
-  | 'knowledge'
-  | 'tools'
-  | 'family-goals'
-  | 'profile'
+export type AppModuleId = 'dashboard' | 'digital-skills' | 'about'
 
 export type NavItem = {
   id: AppModuleId

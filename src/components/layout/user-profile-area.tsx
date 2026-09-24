@@ -16,7 +16,7 @@ export function UserProfileArea({ compact = false, className }: UserProfileAreaP
 
   return (
     <Link
-      to="/profile"
+      to="/about"
       className={cn(
         'flex min-w-0 items-center gap-3 rounded-xl border border-transparent px-2 py-1.5 transition-colors hover:border-border/80 hover:bg-accent/50',
         className,
@@ -29,7 +29,7 @@ export function UserProfileArea({ compact = false, className }: UserProfileAreaP
             {profile.displayName}
           </span>
           <span className="block truncate text-xs text-muted-foreground">
-            Profile & settings
+            A personal note
           </span>
         </span>
       ) : null}

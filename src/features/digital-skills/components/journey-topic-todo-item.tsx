@@ -10,7 +10,11 @@ type JourneyTopicTodoItemProps = {
   disabled?: boolean
 }
 
-export function JourneyTopicTodoItem({ stageId, topic, disabled }: JourneyTopicTodoItemProps) {
+export function JourneyTopicTodoItem({
+  stageId,
+  topic,
+  disabled,
+}: JourneyTopicTodoItemProps) {
   const inputId = `ds-topic-${stageId}-${topic.id}`
   const descriptionId = `${inputId}-description`
   const complete = useDigitalSkillsStore((s) => s.isTopicComplete(stageId, topic.id))

@@ -24,7 +24,9 @@ function stageLessonProgress(
   if (total === 0) {
     return { percent: 0, completed: 0, total: 0 }
   }
-  const completed = lessons.filter((l) => progressByLessonId[l.id]?.phase === 'complete').length
+  const completed = lessons.filter(
+    (l) => progressByLessonId[l.id]?.phase === 'complete',
+  ).length
   return {
     percent: Math.round((completed / total) * 100),
     completed,
@@ -32,7 +34,10 @@ function stageLessonProgress(
   }
 }
 
-function isStageComplete(stageId: string, progressByLessonId: Record<string, DigitalSkillsLessonProgress | undefined>): boolean {
+function isStageComplete(
+  stageId: string,
+  progressByLessonId: Record<string, DigitalSkillsLessonProgress | undefined>,
+): boolean {
   const { total, completed } = stageLessonProgress(stageId, progressByLessonId)
   return total > 0 && completed === total
 }
@@ -45,7 +50,9 @@ function isPreviousStageComplete(
     return true
   }
   const stages = getDigitalSkillsStages()
-  const previous = stages.filter((s) => s.order < stage.order).sort((a, b) => b.order - a.order)[0]
+  const previous = stages
+    .filter((s) => s.order < stage.order)
+    .sort((a, b) => b.order - a.order)[0]
   if (!previous) {
     return true
   }
@@ -106,7 +113,10 @@ export function getStagesWithStatus(
 ): StageWithStatus[] {
   const currentStageId = getCurrentStageId(progressByLessonId)
   return getDigitalSkillsStages().map((stage) => {
-    const { percent, completed, total } = stageLessonProgress(stage.id, progressByLessonId)
+    const { percent, completed, total } = stageLessonProgress(
+      stage.id,
+      progressByLessonId,
+    )
     return {
       ...stage,
       status: getStageStatus(stage, progressByLessonId, currentStageId),
@@ -119,7 +129,12 @@ export function getStagesWithStatus(
 
 export function getNextLessonInJourney(
   progressByLessonId: Record<string, DigitalSkillsLessonProgress | undefined>,
-): { stageId: string; lessonId: string; lessonTitle: string; stageTitle: string } | null {
+): {
+  stageId: string
+  lessonId: string
+  lessonTitle: string
+  stageTitle: string
+} | null {
   const stages = getDigitalSkillsStages()
   for (const stage of stages) {
     if (!isPreviousStageComplete(stage, progressByLessonId)) {

@@ -8,7 +8,9 @@ export function ModuleProgressSummary() {
   const modulePercent = useModuleProgress()
   const lessonProgress = useDigitalSkillsStore((s) => s.lessons)
   const totalLessons = getAllDigitalSkillsLessons().length
-  const completedCount = Object.values(lessonProgress).filter((p) => p.phase === 'complete').length
+  const completedCount = Object.values(lessonProgress).filter(
+    (p) => p.phase === 'complete',
+  ).length
 
   return (
     <Card variant="warm">
@@ -19,7 +21,11 @@ export function ModuleProgressSummary() {
         </p>
       </CardHeader>
       <CardContent>
-        <ProgressBar value={modulePercent} label="Overall Digital Skills progress" showValue />
+        <ProgressBar
+          value={modulePercent}
+          label="Overall Digital Skills progress"
+          showValue
+        />
       </CardContent>
     </Card>
   )

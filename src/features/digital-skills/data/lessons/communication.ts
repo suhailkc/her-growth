@@ -9,17 +9,20 @@ export const communicationLessons = [
     order: 5,
     title: 'WhatsApp Web on your computer',
     summary: 'Link your phone and chat from the big screen.',
-    whyItMatters: 'Typing on a keyboard is easier for long messages and sharing files while you study or work at home.',
+    whyItMatters:
+      'Typing on a keyboard is easier for long messages and sharing files while you study or work at home.',
     difficulty: 'moderate',
     estimatedMinutes: 10,
-    learningObjective: 'You will open web.whatsapp.com and scan the QR code with your phone.',
+    learningObjective:
+      'You will open web.whatsapp.com and scan the QR code with your phone.',
     steps: [
       {
         instruction: 'On your computer, go to web.whatsapp.com.',
         detail: 'Use Chrome or Edge for best results.',
       },
       {
-        instruction: 'On your phone, open WhatsApp → Settings or menu → Linked devices.',
+        instruction:
+          'On your phone, open WhatsApp → Settings or menu → Linked devices.',
         detail: 'Tap Link a device.',
       },
       {
@@ -31,7 +34,8 @@ export const communicationLessons = [
         detail: 'Menu → Log out on the web version.',
       },
     ],
-    practicalTask: 'Link WhatsApp Web once and send yourself a test message from the computer.',
+    practicalTask:
+      'Link WhatsApp Web once and send yourself a test message from the computer.',
     completionAction: 'I linked WhatsApp Web and sent one message.',
   }),
   createDigitalSkillsLesson({
@@ -40,14 +44,17 @@ export const communicationLessons = [
     order: 6,
     title: 'Join a video call calmly',
     summary: 'Camera, microphone, and joining a Meet or Zoom link.',
-    whyItMatters: 'Video calls connect you to class, family abroad, and doctors — knowing the buttons reduces stress.',
+    whyItMatters:
+      'Video calls connect you to class, family abroad, and doctors — knowing the buttons reduces stress.',
     difficulty: 'moderate',
     estimatedMinutes: 12,
-    learningObjective: 'You will join a test call or preview your camera and mute/unmute.',
+    learningObjective:
+      'You will join a test call or preview your camera and mute/unmute.',
     steps: [
       {
         instruction: 'Click the meeting link from email or WhatsApp.',
-        detail: 'Allow camera and microphone when the browser asks — you can turn them off inside the call.',
+        detail:
+          'Allow camera and microphone when the browser asks — you can turn them off inside the call.',
       },
       {
         instruction: 'Find Mute and Stop video before joining if you prefer.',
@@ -62,7 +69,8 @@ export const communicationLessons = [
         detail: 'Closing the browser tab also ends your connection.',
       },
     ],
-    practicalTask: 'Join a practice meeting (Google Meet has a "Check your audio and video" flow) or a family call.',
+    practicalTask:
+      'Join a practice meeting (Google Meet has a "Check your audio and video" flow) or a family call.',
     completionAction: 'I joined a call and used mute or camera controls.',
   }),
   createDigitalSkillsLesson({
@@ -71,10 +79,12 @@ export const communicationLessons = [
     order: 7,
     title: 'Share files in chats and email',
     summary: 'Photos, PDFs, and links — the right size and place.',
-    whyItMatters: 'Sharing homework photos and documents is daily life — doing it safely avoids leaks and confusion.',
+    whyItMatters:
+      'Sharing homework photos and documents is daily life — doing it safely avoids leaks and confusion.',
     difficulty: 'moderate',
     estimatedMinutes: 9,
-    learningObjective: 'You will share one file in WhatsApp and know when email is better.',
+    learningObjective:
+      'You will share one file in WhatsApp and know when email is better.',
     steps: [
       {
         instruction: 'In WhatsApp, open a chat and click the paperclip or +.',

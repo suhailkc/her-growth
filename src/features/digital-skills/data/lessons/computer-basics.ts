@@ -40,7 +40,8 @@ export const computerBasicsLessons = [
           'Open the Start menu (Windows icon), choose Power, then Shut down. Wait until the screen turns off before closing the laptop lid.',
       },
     ],
-    practicalTask: 'Turn the computer on, wait until the desktop appears, then shut down properly once.',
+    practicalTask:
+      'Turn the computer on, wait until the desktop appears, then shut down properly once.',
     completionAction: 'I turned the computer on and off using Shut down.',
   }),
   createDigitalSkillsLesson({
@@ -57,7 +58,8 @@ export const computerBasicsLessons = [
     steps: [
       {
         instruction: 'Rest your hand lightly on the mouse.',
-        detail: 'Keep your wrist relaxed. Move the mouse slowly on the desk and watch the arrow on the screen.',
+        detail:
+          'Keep your wrist relaxed. Move the mouse slowly on the desk and watch the arrow on the screen.',
       },
       {
         instruction: 'Practice a single click on an empty part of the desktop.',
@@ -66,7 +68,8 @@ export const computerBasicsLessons = [
       },
       {
         instruction: 'Open the Start menu with one click.',
-        detail: 'Move the pointer to the Windows icon at the bottom of the screen and click once.',
+        detail:
+          'Move the pointer to the Windows icon at the bottom of the screen and click once.',
       },
       {
         instruction: 'Try the scroll wheel or touchpad scroll.',
@@ -87,7 +90,8 @@ export const computerBasicsLessons = [
       'You use the keyboard whenever you search, write email, or fill forms. A few keys do most of the work.',
     difficulty: 'gentle',
     estimatedMinutes: 8,
-    learningObjective: 'You will type a short sentence and fix a mistake with Backspace.',
+    learningObjective:
+      'You will type a short sentence and fix a mistake with Backspace.',
     steps: [
       {
         instruction: 'Open Notepad or any place you can type.',
@@ -96,7 +100,8 @@ export const computerBasicsLessons = [
       },
       {
         instruction: 'Type your first name using both hands if comfortable.',
-        detail: 'Look at the screen, not your fingers. Go slowly — speed comes with practice.',
+        detail:
+          'Look at the screen, not your fingers. Go slowly — speed comes with practice.',
       },
       {
         instruction: 'Press Space, then type one word you use every day.',
@@ -104,7 +109,8 @@ export const computerBasicsLessons = [
       },
       {
         instruction: 'Use Backspace to remove one wrong letter.',
-        detail: 'Click where you want to fix, press Backspace once for each letter to remove, then type the correct letter.',
+        detail:
+          'Click where you want to fix, press Backspace once for each letter to remove, then type the correct letter.',
       },
     ],
     practicalTask: 'Type one line: your name, a space, and the word "learning".',
@@ -120,7 +126,8 @@ export const computerBasicsLessons = [
       'Regular short practice builds muscle memory. You do not need perfect spelling on the first try.',
     difficulty: 'gentle',
     estimatedMinutes: 10,
-    learningObjective: 'You will type three short lines with pauses to rest your hands.',
+    learningObjective:
+      'You will type three short lines with pauses to rest your hands.',
     steps: [
       {
         instruction: 'Sit with your back supported and screen at eye level.',
@@ -132,7 +139,8 @@ export const computerBasicsLessons = [
       },
       {
         instruction: 'Take a 10-second break. Shake your hands gently.',
-        detail: 'Breaks prevent tired wrists. There is no timer — pause whenever you need.',
+        detail:
+          'Breaks prevent tired wrists. There is no timer — pause whenever you need.',
       },
       {
         instruction: 'Type two more lines about something you did today.',
@@ -152,7 +160,8 @@ export const computerBasicsLessons = [
       'The desktop is your home screen on a computer. Knowing what you see helps you open apps without feeling lost.',
     difficulty: 'gentle',
     estimatedMinutes: 7,
-    learningObjective: 'You will name parts of the desktop and open one app from an icon.',
+    learningObjective:
+      'You will name parts of the desktop and open one app from an icon.',
     steps: [
       {
         instruction: 'Look at the background picture — this is your wallpaper.',
@@ -160,18 +169,22 @@ export const computerBasicsLessons = [
       },
       {
         instruction: 'Find small pictures called icons.',
-        detail: 'Each icon opens a program or folder. Hover the mouse over one to see its name.',
+        detail:
+          'Each icon opens a program or folder. Hover the mouse over one to see its name.',
       },
       {
         instruction: 'Find the taskbar — the strip at the bottom.',
-        detail: 'It shows open apps and the clock. The Windows icon is usually on the left.',
+        detail:
+          'It shows open apps and the clock. The Windows icon is usually on the left.',
       },
       {
         instruction: 'Double-click one desktop icon to open it.',
-        detail: 'If nothing opens, try a single click and press Enter, or ask which icons are safe to use on your computer.',
+        detail:
+          'If nothing opens, try a single click and press Enter, or ask which icons are safe to use on your computer.',
       },
     ],
-    practicalTask: 'Point to the taskbar, the clock, and one icon, then open that app once.',
+    practicalTask:
+      'Point to the taskbar, the clock, and one icon, then open that app once.',
     completionAction: 'I can find the taskbar and opened one app from the desktop.',
   }),
   createDigitalSkillsLesson({
@@ -184,7 +197,8 @@ export const computerBasicsLessons = [
       'Programs open in "windows" on the screen. Learning to close and switch between them keeps your workspace calm.',
     difficulty: 'moderate',
     estimatedMinutes: 10,
-    learningObjective: 'You will open two apps, switch between them, and close one window.',
+    learningObjective:
+      'You will open two apps, switch between them, and close one window.',
     steps: [
       {
         instruction: 'Open two simple apps (for example, Notepad and Calculator).',
@@ -192,18 +206,22 @@ export const computerBasicsLessons = [
       },
       {
         instruction: 'Practice the minimize button (a dash line).',
-        detail: 'The window hides to the taskbar but keeps running. Click its icon on the taskbar to bring it back.',
+        detail:
+          'The window hides to the taskbar but keeps running. Click its icon on the taskbar to bring it back.',
       },
       {
         instruction: 'Use the X to close a window you no longer need.',
-        detail: 'Closing is different from minimizing. If asked to save, choose Save if you wrote something important.',
+        detail:
+          'Closing is different from minimizing. If asked to save, choose Save if you wrote something important.',
       },
       {
         instruction: 'Switch apps with Alt + Tab (optional).',
-        detail: 'Hold Alt, tap Tab once, release Alt. This jumps between open windows quickly.',
+        detail:
+          'Hold Alt, tap Tab once, release Alt. This jumps between open windows quickly.',
       },
     ],
-    practicalTask: 'Open Notepad and Calculator, switch between them, then close Calculator.',
+    practicalTask:
+      'Open Notepad and Calculator, switch between them, then close Calculator.',
     completionAction: 'I minimized a window and closed one app I did not need.',
   }),
   createDigitalSkillsLesson({
@@ -216,7 +234,8 @@ export const computerBasicsLessons = [
       'Folders keep documents and photos easy to find later — like drawers in a cupboard.',
     difficulty: 'moderate',
     estimatedMinutes: 12,
-    learningObjective: 'You will create a folder on the desktop and save a Notepad file into it.',
+    learningObjective:
+      'You will create a folder on the desktop and save a Notepad file into it.',
     steps: [
       {
         instruction: 'Open File Explorer (folder icon on the taskbar).',
@@ -224,7 +243,8 @@ export const computerBasicsLessons = [
       },
       {
         instruction: 'Click Desktop, then New folder.',
-        detail: 'Right-click empty space, choose New → Folder, or use the New folder button at the top.',
+        detail:
+          'Right-click empty space, choose New → Folder, or use the New folder button at the top.',
       },
       {
         instruction: 'Name the folder something you will remember.',
@@ -232,10 +252,12 @@ export const computerBasicsLessons = [
       },
       {
         instruction: 'Save a Notepad file into that folder.',
-        detail: 'In Notepad: File → Save As → pick Desktop → open your new folder → type a file name → Save.',
+        detail:
+          'In Notepad: File → Save As → pick Desktop → open your new folder → type a file name → Save.',
       },
     ],
-    practicalTask: 'Create a folder called "Her Growth practice" and save one text file inside.',
+    practicalTask:
+      'Create a folder called "Her Growth practice" and save one text file inside.',
     completionAction: 'I created a folder and saved a file in it.',
   }),
 ]

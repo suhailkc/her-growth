@@ -10,10 +10,12 @@ export const documentsLessons = [
     order: 1,
     title: 'Google Docs — write and save',
     summary: 'Create a document online that saves automatically.',
-    whyItMatters: 'Docs lets you write from any computer without losing work when the power goes out.',
+    whyItMatters:
+      'Docs lets you write from any computer without losing work when the power goes out.',
     difficulty: 'gentle',
     estimatedMinutes: 12,
-    learningObjective: 'You will create a Doc, type a paragraph, and find it again in Google Drive.',
+    learningObjective:
+      'You will create a Doc, type a paragraph, and find it again in Google Drive.',
     steps: [
       {
         instruction: 'Go to docs.google.com while signed in to Google.',
@@ -32,7 +34,8 @@ export const documentsLessons = [
         detail: 'Recent documents appear on the home screen.',
       },
     ],
-    practicalTask: 'Create a Doc with three lines about your week and find it again in Recent.',
+    practicalTask:
+      'Create a Doc with three lines about your week and find it again in Recent.',
     completionAction: 'I created a Google Doc and found it after closing the browser.',
   }),
   createDigitalSkillsLesson({
@@ -41,7 +44,8 @@ export const documentsLessons = [
     order: 2,
     title: 'Open and read PDF files',
     summary: 'View forms and books without editing them.',
-    whyItMatters: 'PDFs keep layout fixed — perfect for applications, bills, and study material.',
+    whyItMatters:
+      'PDFs keep layout fixed — perfect for applications, bills, and study material.',
     difficulty: 'gentle',
     estimatedMinutes: 8,
     learningObjective: 'You will open a PDF and zoom in for comfortable reading.',
@@ -59,7 +63,8 @@ export const documentsLessons = [
         detail: 'Use the thumbnail sidebar if pages are many.',
       },
       {
-        instruction: 'Close when done — you usually do not need to save unless you edited.',
+        instruction:
+          'Close when done — you usually do not need to save unless you edited.',
         detail: 'Read-only viewing does not change the file.',
       },
     ],
@@ -72,10 +77,12 @@ export const documentsLessons = [
     order: 3,
     title: 'Print a document',
     summary: 'Print preview, copies, and paper settings.',
-    whyItMatters: 'Printing lets you keep paper copies of forms and study sheets when required.',
+    whyItMatters:
+      'Printing lets you keep paper copies of forms and study sheets when required.',
     difficulty: 'moderate',
     estimatedMinutes: 10,
-    learningObjective: 'You will open Print preview and print one page (or save as PDF if no printer).',
+    learningObjective:
+      'You will open Print preview and print one page (or save as PDF if no printer).',
     steps: [
       {
         instruction: 'Open the document or PDF you want to print.',
@@ -91,7 +98,8 @@ export const documentsLessons = [
       },
       {
         instruction: 'Click Print and wait for the printer or saved PDF.',
-        detail: 'If the printer jams, cancel the job from the printer icon in the taskbar.',
+        detail:
+          'If the printer jams, cancel the job from the printer icon in the taskbar.',
       },
     ],
     practicalTask: 'Print one page or use Print to PDF and open the saved file.',
@@ -103,10 +111,12 @@ export const documentsLessons = [
     order: 2,
     title: 'Organize files on your computer',
     summary: 'Folders by topic and clear file names.',
-    whyItMatters: 'Good names and folders mean you spend minutes, not hours, finding school and family documents.',
+    whyItMatters:
+      'Good names and folders mean you spend minutes, not hours, finding school and family documents.',
     difficulty: 'moderate',
     estimatedMinutes: 12,
-    learningObjective: 'You will create three folders and move two files into the right places.',
+    learningObjective:
+      'You will create three folders and move two files into the right places.',
     steps: [
       {
         instruction: 'Open Documents in File Explorer.',

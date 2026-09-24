@@ -15,7 +15,11 @@ export function useStageProgress(stageId: string): number {
   const lessonProgress = useDigitalSkillsStore((s) => s.lessons)
 
   return useMemo(
-    () => trackProgressPercent(lessons.map((l) => l.id), lessonProgress),
+    () =>
+      trackProgressPercent(
+        lessons.map((l) => l.id),
+        lessonProgress,
+      ),
     [lessons, lessonProgress],
   )
 }
@@ -30,7 +34,11 @@ export function useModuleProgress(): number {
   const lessonProgress = useDigitalSkillsStore((s) => s.lessons)
 
   return useMemo(
-    () => moduleProgressPercent(allLessons.map((l) => l.id), lessonProgress),
+    () =>
+      moduleProgressPercent(
+        allLessons.map((l) => l.id),
+        lessonProgress,
+      ),
     [allLessons, lessonProgress],
   )
 }

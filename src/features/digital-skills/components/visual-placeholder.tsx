@@ -16,11 +16,11 @@ export function VisualPlaceholder({ label, title }: VisualPlaceholderProps) {
         <div className="flex size-12 items-center justify-center rounded-xl bg-background/80 text-muted-foreground">
           <ImageIcon className="size-6" aria-hidden />
         </div>
-        {title ? (
-          <p className="font-serif text-base text-foreground">{title}</p>
-        ) : null}
+        {title ? <p className="font-serif text-base text-foreground">{title}</p> : null}
         <p className="text-sm text-muted-foreground">{label}</p>
-        <p className="text-xs text-muted-foreground">Picture guide — coming in a future update</p>
+        <p className="text-xs text-muted-foreground">
+          Picture guide — coming in a future update
+        </p>
       </div>
     </figure>
   )

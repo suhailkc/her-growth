@@ -25,15 +25,15 @@ type ProfileStoreState = {
 
 const defaultProfile: UserProfile = {
   id: 'user-local-1',
-  displayName: 'Priya',
+  displayName: 'Nasreena',
   preferredLocale: 'en',
-  studyFocus: 'B.Ed.',
-  onboardingComplete: false,
-  avatarInitials: 'PR',
-  learningGoal: 'Feel more confident with everyday computer tasks',
+  studyFocus: undefined,
+  onboardingComplete: true,
+  avatarInitials: 'NA',
+  learningGoal: 'Feel calm and confident with everyday computer tasks',
   dailyLearningMinutes: 15,
-  childProfile: { name: 'Anu', ageRange: '6–7 years' },
-  interests: ['Parenting', 'Digital skills', 'B.Ed. study'],
+  childProfile: undefined,
+  interests: ['Digital skills'],
 }
 
 function deriveInitials(name: string): string {

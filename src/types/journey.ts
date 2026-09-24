@@ -15,14 +15,7 @@ export type JourneySkillArea = {
 }
 
 export type JourneyAchievementIcon =
-  | 'sparkles'
-  | 'heart'
-  | 'book'
-  | 'target'
-  | 'flame'
-  | 'laptop'
-  | 'compass'
-  | 'users'
+  'sparkles' | 'heart' | 'book' | 'target' | 'flame' | 'laptop' | 'compass' | 'users'
 
 export type JourneyAchievement = {
   id: string

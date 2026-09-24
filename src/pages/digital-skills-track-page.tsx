@@ -5,31 +5,30 @@ import { EmptyState } from '@/components/common/empty-state'
 import { PageContainer } from '@/components/common/page-container'
 import { PageHeader } from '@/components/common/page-header'
 import { ProgressBar } from '@/components/common/progress-bar'
-import { SectionHeader } from '@/components/common/section-header'
 import { buttonVariants } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { LessonListItem } from '@/features/digital-skills/components/lesson-list-item'
+import { getStageIcon } from '@/features/digital-skills/data/stage-meta'
 import { StageSkillTopics } from '@/features/digital-skills/components/stage-skill-topics'
 import {
-  getDigitalSkillsLessonsForStage,
   getDigitalSkillsStageById,
   resolveStageIdFromRouteParam,
 } from '@/features/digital-skills/data/catalog'
-import { useDigitalSkillsStore } from '@/features/digital-skills/digital-skills-store'
-import { useStageProgress } from '@/features/digital-skills/hooks/use-track-progress'
-import { getStageStatus, getCurrentStageId } from '@/features/digital-skills/lib/stage-status'
+import { useCompletedTopicSet } from '@/features/digital-skills/digital-skills-store'
+import {
+  getCurrentStageByTopics,
+  getStageTopicKeys,
+  getTopicStageStatus,
+  topicProgressPercent,
+} from '@/features/digital-skills/lib/topic-progress'
 
 export function DigitalSkillsTrackPage() {
   const { stageId: stageParam = '' } = useParams()
   const stageId = resolveStageIdFromRouteParam(stageParam)
   const stage = getDigitalSkillsStageById(stageId)
-  const lessons = getDigitalSkillsLessonsForStage(stageId)
-  const stageProgress = useStageProgress(stageId)
-  const lessonProgress = useDigitalSkillsStore((s) => s.lessons)
-  const getLessonProgress = useDigitalSkillsStore((s) => s.getLessonProgress)
-  const currentStageId = getCurrentStageId(lessonProgress)
+  const completedTopicIds = useCompletedTopicSet()
+  const currentStage = getCurrentStageByTopics(completedTopicIds)
   const status = stage
-    ? getStageStatus(stage, lessonProgress, currentStageId)
+    ? getTopicStageStatus(stage, completedTopicIds, currentStage)
     : 'locked'
   const locked = status === 'locked'
 
@@ -53,10 +52,13 @@ export function DigitalSkillsTrackPage() {
     )
   }
 
+  const topicKeys = getStageTopicKeys(stage)
+  const stagePercent = topicProgressPercent(topicKeys, completedTopicIds)
+
   return (
     <PageContainer>
       <PageHeader
-        title={`Stage ${stage.order}: ${stage.title}`}
+        title={`${getStageIcon(stage.id)} Stage ${stage.order}: ${stage.title}`}
         description={stage.subtitle}
         action={
           <Link
@@ -67,7 +69,7 @@ export function DigitalSkillsTrackPage() {
               className: 'rounded-xl',
             })}
           >
-            Full journey
+            Full roadmap
           </Link>
         }
       />
@@ -75,8 +77,8 @@ export function DigitalSkillsTrackPage() {
       {locked ? (
         <Card variant="warm" className="mb-8 border-dashed">
           <CardContent className="py-5 text-sm text-muted-foreground leading-relaxed">
-            Finish the previous stage to unlock these lessons. You can still read why this stage
-            matters and preview the skills below.
+            You can read ahead here — when the previous stage feels comfortable, these
+            skills will be ready for you to practice.
           </CardContent>
         </Card>
       ) : null}
@@ -87,53 +89,43 @@ export function DigitalSkillsTrackPage() {
             <CardTitle className="font-serif text-lg">Why this matters</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-base leading-relaxed text-muted-foreground">{stage.whyItMatters}</p>
+            <p className="text-base leading-relaxed text-muted-foreground">
+              {stage.whyItMatters}
+            </p>
           </CardContent>
         </Card>
         <Card variant="sage">
           <CardHeader className="flex flex-row items-start gap-3 space-y-0">
             <Target className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
-            <CardTitle className="font-serif text-lg">What you will be able to do</CardTitle>
+            <CardTitle className="font-serif text-lg">
+              What you will be able to do
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-base leading-relaxed text-muted-foreground">{stage.outcomeVision}</p>
+            <p className="text-base leading-relaxed text-muted-foreground">
+              {stage.outcomeVision}
+            </p>
           </CardContent>
         </Card>
       </div>
 
-      {lessons.length > 0 ? (
-        <div className="mb-8 max-w-xl">
-          <ProgressBar value={stageProgress} label={`Progress in ${stage.title}`} showValue />
-        </div>
-      ) : null}
-
-      <SectionHeader
-        title="Skills in this stage"
-        description="Each item is a real-life ability. Tap a skill when a lesson is ready for you."
-      />
-      <div className="mb-10 max-w-2xl">
-        <StageSkillTopics stage={stage} stageId={stageId} locked={locked} />
+      <div className="mb-8 max-w-xl">
+        <ProgressBar
+          value={stagePercent}
+          label={`Progress in ${stage.title}`}
+          showValue
+        />
       </div>
 
-      {lessons.length > 0 ? (
-        <>
-          <SectionHeader
-            title="Guided practice"
-            description="Short, step-by-step lessons you can finish in one sitting — review anytime."
-          />
-          <ul className="space-y-3">
-            {lessons.map((lesson) => (
-              <LessonListItem
-                key={lesson.id}
-                stageId={stageId}
-                lesson={lesson}
-                progress={getLessonProgress(lesson.id)}
-                disabled={locked}
-              />
-            ))}
-          </ul>
-        </>
-      ) : null}
+      <div className="mb-4">
+        <h2 className="font-serif text-xl font-semibold">Skills in this stage</h2>
+        <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
+          Tap a skill to see why it helps in real life and what to practice.
+        </p>
+      </div>
+      <div className="max-w-2xl">
+        <StageSkillTopics stage={stage} stageId={stageId} locked={false} />
+      </div>
     </PageContainer>
   )
 }
