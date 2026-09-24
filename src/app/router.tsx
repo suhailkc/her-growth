@@ -31,9 +31,14 @@ const DigitalSkillsLessonPage = lazy(() =>
 const KnowledgePage = lazy(() =>
   import('@/pages/knowledge-page').then((m) => ({ default: m.KnowledgePage })),
 )
-const KnowledgeTopicPage = lazy(() =>
-  import('@/pages/knowledge-topic-page').then((m) => ({
-    default: m.KnowledgeTopicPage,
+const KnowledgeCategoryPage = lazy(() =>
+  import('@/pages/knowledge-category-page').then((m) => ({
+    default: m.KnowledgeCategoryPage,
+  })),
+)
+const KnowledgeLessonPage = lazy(() =>
+  import('@/pages/knowledge-lesson-page').then((m) => ({
+    default: m.KnowledgeLessonPage,
   })),
 )
 const FamilyGoalsPage = lazy(() =>
@@ -148,7 +153,8 @@ export const appRouter = createBrowserRouter([
         path: 'knowledge',
         children: [
           { index: true, element: <KnowledgePage /> },
-          { path: ':topicId', element: <KnowledgeTopicPage /> },
+          { path: 'categories/:categoryId', element: <KnowledgeCategoryPage /> },
+          { path: 'lessons/:lessonId', element: <KnowledgeLessonPage /> },
         ],
       },
       {
