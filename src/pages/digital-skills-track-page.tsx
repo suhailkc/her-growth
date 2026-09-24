@@ -74,7 +74,12 @@ export function DigitalSkillsTrackPage() {
       />
 
       <div className="mb-6 max-w-xl">
-        <ProgressBar value={stagePercent} label={`${stage.title} progress`} showValue />
+        <ProgressBar
+          value={stagePercent}
+          label={`${stage.title} progress`}
+          showValue
+          animateValue
+        />
       </div>
 
       <p className="mb-3 text-sm text-muted-foreground">

@@ -32,3 +32,38 @@ export function fireTaskCompleteConfetti(): void {
     scalar: 0.75,
   })
 }
+
+/** Bigger burst when an entire stage checklist is finished. */
+export function fireStageCompleteConfetti(): void {
+  if (prefersReducedMotion()) return
+
+  const duration = 1200
+  const end = Date.now() + duration
+  const defaults = {
+    startVelocity: 32,
+    spread: 360,
+    ticks: 48,
+    zIndex: 40,
+    disableForReducedMotion: true,
+  }
+
+  const frame = (): void => {
+    void confetti({
+      ...defaults,
+      particleCount: 2,
+      origin: { x: Math.random(), y: Math.random() * 0.35 + 0.1 },
+    })
+    if (Date.now() < end) {
+      requestAnimationFrame(frame)
+    }
+  }
+
+  frame()
+  void confetti({
+    particleCount: 120,
+    spread: 86,
+    origin: { y: 0.55 },
+    zIndex: 40,
+    disableForReducedMotion: true,
+  })
+}

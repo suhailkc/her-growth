@@ -17,17 +17,36 @@ import {
 } from '@/features/digital-skills/lib/topic-progress'
 import type { DigitalSkillsStage } from '@/types/digital-skills'
 
-function statusLabel(status: TopicStageStatus): string {
+function lockedStageLabel(isUpNext: boolean): string {
+  return isUpNext ? 'Up next' : 'Later'
+}
+
+function statusLabel(
+  status: TopicStageStatus,
+  lockedOptions?: { isUpNext: boolean },
+): string {
   switch (status) {
     case 'complete':
       return 'Done'
     case 'current':
       return 'Now'
     case 'locked':
-      return 'Soon'
+      return lockedStageLabel(lockedOptions?.isUpNext ?? false)
     default:
       return 'Open'
   }
+}
+
+function stageAriaLabel(
+  stage: DigitalSkillsStage,
+  status: TopicStageStatus,
+  isUpNextLocked: boolean,
+): string {
+  const statusText = statusLabel(status, { isUpNext: isUpNextLocked })
+  if (status === 'locked') {
+    return `Stage ${stage.order}: ${stage.title}. ${statusText}. Finish the previous stage first.`
+  }
+  return `Stage ${stage.order}: ${stage.title}. ${statusText}.`
 }
 
 function StageNodeIcon({ status }: { status: TopicStageStatus }) {
@@ -40,14 +59,14 @@ function StageNodeIcon({ status }: { status: TopicStageStatus }) {
   }
   if (status === 'locked') {
     return (
-      <span className="flex size-11 items-center justify-center rounded-full bg-muted text-muted-foreground">
+      <span className="flex size-11 items-center justify-center rounded-full border border-border bg-muted text-muted-foreground">
         <Lock className="size-4" aria-hidden />
       </span>
     )
   }
   if (status === 'current') {
     return (
-      <span className="flex size-11 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[var(--shadow-soft)]">
+      <span className="stage-node-pulse flex size-11 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[var(--shadow-soft)]">
         <Circle className="size-4 fill-current" aria-hidden />
       </span>
     )
@@ -59,29 +78,91 @@ function StageNodeIcon({ status }: { status: TopicStageStatus }) {
   )
 }
 
+function LaterLockedStageCard({ stage }: { stage: DigitalSkillsStage }) {
+  const topicCount = stage.topics.length
+  const icon = getStageIcon(stage.id)
+  const previewLabel = `Preview ${stage.title} (locked)`
+
+  return (
+    <article
+      aria-label={stageAriaLabel(stage, 'locked', false)}
+      className="rounded-2xl border border-dashed border-muted-foreground/30 bg-secondary/60 p-3 shadow-none sm:p-4"
+    >
+      <div className="flex items-center gap-3">
+        <span className="text-2xl leading-none" aria-hidden>
+          {icon}
+        </span>
+        <div className="min-w-0 flex-1">
+          <p className="text-xs font-medium text-muted-foreground">
+            Stage {stage.order}
+          </p>
+          <h3 className="font-serif text-base font-semibold leading-snug">
+            {stage.title}
+          </h3>
+        </div>
+        <span className="shrink-0 rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
+          Later
+        </span>
+      </div>
+      <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
+        <p className="text-xs text-muted-foreground">
+          {topicCount} {topicCount === 1 ? 'skill' : 'skills'} · unlocks after earlier stages
+        </p>
+        <Link
+          to={`/${stage.id}`}
+          className={buttonVariants({
+            variant: 'link',
+            size: 'sm',
+            className: 'h-auto min-h-0 px-0 text-muted-foreground',
+          })}
+          aria-label={previewLabel}
+        >
+          Preview
+        </Link>
+      </div>
+    </article>
+  )
+}
+
 function JourneyStageCard({
   stage,
   status,
   completedTopicIds,
   isCurrent,
+  currentStage,
 }: {
   stage: DigitalSkillsStage
   status: TopicStageStatus
   completedTopicIds: Set<string>
   isCurrent: boolean
+  currentStage: DigitalSkillsStage | null
 }) {
   const topicKeys = getStageTopicKeys(stage)
   const stagePercent = topicProgressPercent(topicKeys, completedTopicIds)
   const completedInStage = topicKeys.filter((key) => completedTopicIds.has(key)).length
   const icon = getStageIcon(stage.id)
   const locked = status === 'locked'
+  const isUpNextLocked =
+    locked && currentStage != null && stage.order === currentStage.order + 1
+  const isLaterLocked =
+    locked && currentStage != null && stage.order > currentStage.order + 1
+
+  if (isLaterLocked) {
+    return <LaterLockedStageCard stage={stage} />
+  }
+
+  const skillCountLabel = `${topicKeys.length} ${topicKeys.length === 1 ? 'skill' : 'skills'}`
+  const previewLabel = `Preview ${stage.title} (locked)`
 
   return (
     <article
+      aria-label={stageAriaLabel(stage, status, isUpNextLocked)}
       className={cn(
-        'relative rounded-2xl border border-border/80 bg-card p-4 shadow-[var(--shadow-soft)] transition-shadow duration-300 sm:p-5',
-        isCurrent && 'ring-2 ring-primary/35',
-        locked && 'border-dashed bg-muted/20',
+        'relative rounded-2xl border bg-card p-4 transition-shadow duration-300 sm:p-5',
+        locked
+          ? 'border-dashed border-muted-foreground/35 bg-secondary/50 shadow-none'
+          : 'border-border/80 shadow-[var(--shadow-soft)]',
+        isCurrent && 'current-stage-glow ring-2 ring-primary/35',
       )}
     >
       {isCurrent ? (
@@ -106,10 +187,16 @@ function JourneyStageCard({
       </div>
 
       <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-        <span className="rounded-full bg-muted px-2.5 py-1">{statusLabel(status)}</span>
-        <span>
-          {completedInStage}/{topicKeys.length} ticked
+        <span className="rounded-full bg-muted px-2.5 py-1">
+          {statusLabel(status, { isUpNext: isUpNextLocked })}
         </span>
+        {locked ? (
+          <span>{skillCountLabel}</span>
+        ) : (
+          <span>
+            {completedInStage}/{topicKeys.length} ticked
+          </span>
+        )}
       </div>
 
       {!locked ? (
@@ -118,6 +205,7 @@ function JourneyStageCard({
             value={stagePercent}
             label={`${stage.title} progress`}
             showValue
+            animateValue
           />
         </div>
       ) : (
@@ -133,16 +221,22 @@ function JourneyStageCard({
       ) : null}
 
       {!isCurrent ? (
-        <div className="mt-4">
+        <div className={cn('mt-4', locked && 'mt-3')}>
           <Link
             to={`/${stage.id}`}
             className={buttonVariants({
-              variant: locked ? 'secondary' : 'outline',
-              size: 'lg',
-              className: 'w-full rounded-xl sm:w-auto',
+              variant: locked ? 'link' : 'outline',
+              size: locked ? 'default' : 'lg',
+              className: cn(
+                'rounded-xl',
+                locked
+                  ? 'h-auto min-h-0 justify-start px-0 text-muted-foreground'
+                  : 'w-full sm:w-auto',
+              ),
             })}
+            aria-label={locked ? previewLabel : undefined}
           >
-            {locked ? 'Peek inside' : 'Open checklist'}
+            {locked ? 'Preview stage' : 'Open checklist'}
           </Link>
         </div>
       ) : null}
@@ -169,7 +263,7 @@ export function DigitalSkillsJourneyRoadmap() {
                   aria-hidden
                 />
               ) : null}
-              <div className="relative z-10 shrink-0 pt-1">
+              <div className="relative z-10 shrink-0 pt-4 sm:pt-5">
                 <StageNodeIcon status={status} />
               </div>
               <div className="min-w-0 flex-1">
@@ -178,6 +272,7 @@ export function DigitalSkillsJourneyRoadmap() {
                   status={status}
                   completedTopicIds={completedTopicIds}
                   isCurrent={currentStage?.id === stage.id}
+                  currentStage={currentStage}
                 />
               </div>
             </li>

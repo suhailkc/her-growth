@@ -8,6 +8,8 @@ export type ThemePreference = 'light' | 'dark' | 'system'
 
 type ProfileSettings = {
   theme: ThemePreference
+  /** Short vibration when ticking a skill (mobile); off by default. */
+  completionHaptics: boolean
 }
 
 type ProfileStoreState = {
@@ -39,6 +41,7 @@ export const useProfileStore = create<ProfileStoreState>()(
       profile: defaultProfile,
       settings: {
         theme: 'light',
+        completionHaptics: false,
       },
       updateProfile: (patch) => {
         set((state) => ({
@@ -62,7 +65,17 @@ export const useProfileStore = create<ProfileStoreState>()(
     }),
     {
       name: 'digital-skills-profile',
-      version: 1,
+      version: 2,
+      migrate: (persisted) => {
+        const slice = persisted as PersistedProfileSlice | undefined
+        return {
+          ...slice,
+          settings: {
+            theme: slice?.settings?.theme ?? 'light',
+            completionHaptics: slice?.settings?.completionHaptics ?? false,
+          },
+        }
+      },
       partialize: (state) => ({
         profile: state.profile,
         settings: state.settings,

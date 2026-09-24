@@ -160,6 +160,83 @@
   .enter-fade-up {
     animation: enter-fade-up 0.45s ease-out both;
   }
+
+  @keyframes task-complete-pop {
+    0% {
+      transform: scale(1);
+    }
+
+    45% {
+      transform: scale(1.015);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes task-check-pop {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.12);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes current-stage-glow {
+    0%,
+    100% {
+      box-shadow: var(--shadow-soft);
+    }
+
+    50% {
+      box-shadow:
+        var(--shadow-soft),
+        0 0 0 3px color-mix(in oklch, var(--primary) 18%, transparent);
+    }
+  }
+
+  @keyframes stage-node-pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 color-mix(in oklch, var(--primary) 35%, transparent);
+    }
+
+    50% {
+      box-shadow: 0 0 0 6px color-mix(in oklch, var(--primary) 0%, transparent);
+    }
+  }
+
+  .task-complete-pop {
+    animation: task-complete-pop 0.55s ease-out;
+  }
+
+  .task-check-pop {
+    animation: task-check-pop 0.45s ease-out;
+  }
+
+  .current-stage-glow {
+    animation: current-stage-glow 2.8s ease-in-out infinite;
+  }
+
+  .stage-node-pulse {
+    animation: stage-node-pulse 2.8s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .task-complete-pop,
+    .task-check-pop,
+    .current-stage-glow,
+    .stage-node-pulse {
+      animation: none;
+    }
+  }
 }
 
 :root {

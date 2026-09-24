@@ -1,14 +1,13 @@
-import { MapPin } from 'lucide-react'
-
 import { ProgressBar } from '@/components/common/progress-bar'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { CompletionHapticsToggle } from '@/features/digital-skills/components/completion-haptics-toggle'
+import { JourneyAchievementBadges } from '@/features/digital-skills/components/journey-achievement-badges'
 import { journeyMilestones } from '@/features/digital-skills/data/stage-meta'
 import { getDigitalSkillsStageById } from '@/features/digital-skills/data/catalog'
 import { useCompletedTopicSet } from '@/features/digital-skills/digital-skills-store'
 import {
   countCompletedTopics,
   getAllJourneyTopicKeys,
-  getCurrentStageByTopics,
   isStageTopicsComplete,
   topicProgressPercent,
 } from '@/features/digital-skills/lib/topic-progress'
@@ -20,8 +19,6 @@ export function DigitalSkillsJourneySummary() {
   const allKeys = getAllJourneyTopicKeys()
   const overallPercent = topicProgressPercent(allKeys, completedTopicIds)
   const completedCount = countCompletedTopics(completedTopicIds)
-  const currentStage = getCurrentStageByTopics(completedTopicIds)
-
   const earnedMilestones = journeyMilestones.filter((milestone) => {
     const stage = getDigitalSkillsStageById(milestone.stageId)
     return stage ? isStageTopicsComplete(stage, completedTopicIds) : false
@@ -38,16 +35,8 @@ export function DigitalSkillsJourneySummary() {
         </p>
       </CardHeader>
       <CardContent className="space-y-4">
-        <ProgressBar value={overallPercent} label="Overall" showValue />
-        {currentStage ? (
-          <div className="flex gap-3 rounded-xl border border-border/70 bg-background/80 p-3">
-            <MapPin className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
-            <div className="min-w-0">
-              <p className="text-xs font-medium text-muted-foreground">Current stage</p>
-              <p className="font-serif text-lg leading-snug">{currentStage.title}</p>
-            </div>
-          </div>
-        ) : null}
+        <ProgressBar value={overallPercent} label="Overall" showValue animateValue />
+        <JourneyAchievementBadges />
         {earnedMilestones.length > 0 ? (
           <ul className="space-y-1.5 text-sm text-muted-foreground">
             {earnedMilestones.map((milestone) => (
@@ -57,6 +46,7 @@ export function DigitalSkillsJourneySummary() {
             ))}
           </ul>
         ) : null}
+        <CompletionHapticsToggle />
       </CardContent>
     </Card>
   )
