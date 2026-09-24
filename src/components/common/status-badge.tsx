@@ -22,7 +22,7 @@ type StatusBadgeProps = {
 export function StatusBadge({ label, tone = 'neutral', className }: StatusBadgeProps) {
   return (
     <Badge
-      variant={tone === 'optional' ? 'secondary' : 'outline'}
+      variant={tone === 'optional' ? 'optional' : 'outline'}
       className={cn('font-normal', toneClass[tone], className)}
     >
       {label}

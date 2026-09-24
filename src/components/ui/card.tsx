@@ -13,6 +13,12 @@ const cardVariants = cva(
         warm: 'border border-border/80 bg-gradient-to-br from-surface-warm to-card shadow-[var(--shadow-soft)]',
         interactive:
           'border border-border/80 shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-card)]',
+        learning:
+          'border border-border/80 bg-gradient-to-br from-surface-learning to-card shadow-[var(--shadow-soft)]',
+        family:
+          'border border-border/80 bg-gradient-to-br from-surface-family to-card shadow-[var(--shadow-soft)]',
+        info: 'border border-border/80 bg-gradient-to-br from-surface-info to-card shadow-[var(--shadow-soft)]',
+        sage: 'border border-border/80 bg-gradient-to-br from-surface-sage to-card shadow-[var(--shadow-soft)]',
       },
     },
     defaultVariants: {
@@ -55,7 +61,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="card-title"
       className={cn(
-        'font-heading text-base leading-snug font-medium group-data-[size=sm]/card:text-sm',
+        'font-serif text-base leading-snug font-medium group-data-[size=sm]/card:text-sm',
         className,
       )}
       {...props}

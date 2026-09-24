@@ -15,7 +15,10 @@ const avatarVariants = cva(
       tone: {
         default: 'bg-primary text-primary-foreground',
         muted: 'bg-muted text-muted-foreground',
-        warm: 'bg-surface-blush text-primary',
+        warm: 'bg-surface-warm text-primary',
+        learning: 'bg-surface-learning text-learning',
+        family: 'bg-surface-family text-family',
+        info: 'bg-surface-info text-info',
       },
     },
     defaultVariants: {

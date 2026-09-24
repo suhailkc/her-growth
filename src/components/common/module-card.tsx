@@ -25,7 +25,7 @@ export function ModuleCard({ item, className }: ModuleCardProps) {
       <Card variant="interactive" className="h-full bg-card">
         <CardHeader className="space-y-4">
           <div className="flex items-start justify-between gap-3">
-            <div className="flex size-11 items-center justify-center rounded-xl bg-surface-blush text-primary">
+            <div className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <Icon className="size-5" aria-hidden />
             </div>
             <ArrowUpRight
@@ -36,11 +36,7 @@ export function ModuleCard({ item, className }: ModuleCardProps) {
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
               <CardTitle className="font-serif text-lg">{item.label}</CardTitle>
-              {item.optional ? (
-                <Badge variant="secondary" className="font-normal">
-                  Optional
-                </Badge>
-              ) : null}
+              {item.optional ? <Badge variant="optional">Optional</Badge> : null}
             </div>
             <CardDescription className="text-sm leading-relaxed">
               {item.description}

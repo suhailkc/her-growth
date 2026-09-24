@@ -26,7 +26,8 @@ export function ProgressBar({
       </div>
       <Progress
         value={clamped}
-        className="h-2.5"
+        size="lg"
+        tone="success"
         aria-label={`${label}: ${clamped}%`}
       />
     </div>
