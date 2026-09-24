@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { Avatar } from '@/components/ui/avatar'
-import { mockUserProfile } from '@/data/mock-profile'
+import { useProfileStore } from '@/features/profile/profile-store'
 import { cn } from '@/lib/utils'
 
 type UserProfileAreaProps = {
@@ -10,9 +10,9 @@ type UserProfileAreaProps = {
 }
 
 export function UserProfileArea({ compact = false, className }: UserProfileAreaProps) {
+  const profile = useProfileStore((s) => s.profile)
   const initials =
-    mockUserProfile.avatarInitials ??
-    mockUserProfile.displayName.slice(0, 2).toUpperCase()
+    profile.avatarInitials ?? profile.displayName.slice(0, 2).toUpperCase()
 
   return (
     <Link
@@ -22,15 +22,11 @@ export function UserProfileArea({ compact = false, className }: UserProfileAreaP
         className,
       )}
     >
-      <Avatar
-        initials={initials}
-        label={`${mockUserProfile.displayName} profile`}
-        size="sm"
-      />
+      <Avatar initials={initials} label={`${profile.displayName} profile`} size="sm" />
       {!compact ? (
         <span className="min-w-0 hidden text-left sm:block">
           <span className="block truncate text-sm font-medium">
-            {mockUserProfile.displayName}
+            {profile.displayName}
           </span>
           <span className="block truncate text-xs text-muted-foreground">
             Profile & settings

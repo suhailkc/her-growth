@@ -1,6 +1,7 @@
 import { lazy } from 'react'
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 
+import { OnboardingGuard } from '@/components/layout/onboarding-guard'
 import { AppShell } from '@/components/layout/app-shell'
 import { RouteErrorPage } from '@/pages/route-error-page'
 
@@ -46,11 +47,6 @@ const FamilyGoalsDetailPage = lazy(() =>
 )
 const ProfileLayoutPage = lazy(() =>
   import('@/pages/profile-layout-page').then((m) => ({ default: m.ProfileLayoutPage })),
-)
-const ProfileSectionPage = lazy(() =>
-  import('@/pages/profile-section-page').then((m) => ({
-    default: m.ProfileSectionPage,
-  })),
 )
 const JourneyPage = lazy(() =>
   import('@/pages/journey-page').then((m) => ({ default: m.JourneyPage })),
@@ -117,11 +113,55 @@ const ToolsTodoPage = lazy(() =>
 const ToolsTimerPage = lazy(() =>
   import('@/pages/tools-timer-page').then((m) => ({ default: m.ToolsTimerPage })),
 )
+const OnboardingPage = lazy(() =>
+  import('@/pages/onboarding-page').then((m) => ({ default: m.OnboardingPage })),
+)
+const ProfileOverviewPage = lazy(() =>
+  import('@/pages/profile-overview-page').then((m) => ({
+    default: m.ProfileOverviewPage,
+  })),
+)
+const ProfileNotificationsPage = lazy(() =>
+  import('@/pages/profile-notifications-page').then((m) => ({
+    default: m.ProfileNotificationsPage,
+  })),
+)
+const ProfileLanguagePage = lazy(() =>
+  import('@/pages/profile-language-page').then((m) => ({
+    default: m.ProfileLanguagePage,
+  })),
+)
+const ProfileThemePage = lazy(() =>
+  import('@/pages/profile-theme-page').then((m) => ({ default: m.ProfileThemePage })),
+)
+const ProfilePrivacyPage = lazy(() =>
+  import('@/pages/profile-privacy-page').then((m) => ({
+    default: m.ProfilePrivacyPage,
+  })),
+)
+const ProfilePasswordPage = lazy(() =>
+  import('@/pages/profile-password-page').then((m) => ({
+    default: m.ProfilePasswordPage,
+  })),
+)
+const ProfileAccountPage = lazy(() =>
+  import('@/pages/profile-account-page').then((m) => ({
+    default: m.ProfileAccountPage,
+  })),
+)
 
 export const appRouter = createBrowserRouter([
   {
+    path: '/onboarding',
+    element: <OnboardingPage />,
+  },
+  {
     path: '/',
-    element: <AppShell />,
+    element: (
+      <OnboardingGuard>
+        <AppShell />
+      </OnboardingGuard>
+    ),
     errorElement: <RouteErrorPage />,
     children: [
       { index: true, element: <DashboardPage /> },
@@ -194,42 +234,13 @@ export const appRouter = createBrowserRouter([
         path: 'profile',
         element: <ProfileLayoutPage />,
         children: [
-          {
-            index: true,
-            element: (
-              <ProfileSectionPage
-                title="Your profile overview"
-                description="Name, study focus, and gentle reminders will be editable here soon."
-              />
-            ),
-          },
-          {
-            path: 'language',
-            element: (
-              <ProfileSectionPage
-                title="Language"
-                description="English and Malayalam options will appear here when localization is ready."
-              />
-            ),
-          },
-          {
-            path: 'accessibility',
-            element: (
-              <ProfileSectionPage
-                title="Accessibility"
-                description="Text size, motion, and contrast preferences will live here."
-              />
-            ),
-          },
-          {
-            path: 'privacy',
-            element: (
-              <ProfileSectionPage
-                title="Privacy"
-                description="Your data stays private. Export and account controls will be added here."
-              />
-            ),
-          },
+          { index: true, element: <ProfileOverviewPage /> },
+          { path: 'notifications', element: <ProfileNotificationsPage /> },
+          { path: 'language', element: <ProfileLanguagePage /> },
+          { path: 'theme', element: <ProfileThemePage /> },
+          { path: 'privacy', element: <ProfilePrivacyPage /> },
+          { path: 'password', element: <ProfilePasswordPage /> },
+          { path: 'account', element: <ProfileAccountPage /> },
         ],
       },
     ],

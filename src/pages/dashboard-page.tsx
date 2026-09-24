@@ -12,7 +12,7 @@ import {
   mockRecentAchievements,
 } from '@/data/mock-dashboard'
 import { useTodayMissionSummary } from '@/features/mission/use-today-mission'
-import { mockUserProfile } from '@/data/mock-profile'
+import { useProfileStore } from '@/features/profile/profile-store'
 import { ContinueLearningSection } from '@/features/dashboard/continue-learning-section'
 import { FamilyFocusSection } from '@/features/dashboard/family-focus-section'
 import { JourneyProgressSection } from '@/features/dashboard/journey-progress-section'
@@ -34,11 +34,12 @@ function formatLearningTime(totalMinutes: number): string {
 export function DashboardPage() {
   const todayMission = useTodayMissionSummary()
   const stats = mockDashboardActivityStats
+  const displayName = useProfileStore((s) => s.profile.displayName)
 
   return (
     <PageContainer width="wide">
       <PageHeader
-        title={`${homeGreeting.title}, ${mockUserProfile.displayName} 👋`}
+        title={`${homeGreeting.title}, ${displayName} 👋`}
         description={homeGreeting.subtitle}
       />
 

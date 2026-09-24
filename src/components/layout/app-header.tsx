@@ -5,9 +5,11 @@ import { NotificationArea } from '@/components/layout/notification-area'
 import { UserProfileArea } from '@/components/layout/user-profile-area'
 import { Badge } from '@/components/ui/badge'
 import { buttonVariants } from '@/components/ui/button'
-import { mockUserProfile } from '@/data/mock-profile'
+import { useProfileStore } from '@/features/profile/profile-store'
 
 export function AppHeader() {
+  const profile = useProfileStore((s) => s.profile)
+
   return (
     <header className="sticky top-0 z-30 border-b border-border/80 bg-background/90 backdrop-blur-md">
       <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
@@ -16,18 +18,16 @@ export function AppHeader() {
             Her Growth
           </p>
           <p className="truncate font-serif text-lg font-semibold">
-            Hello, {mockUserProfile.displayName}
+            Hello, {profile.displayName}
           </p>
         </div>
         <div className="hidden min-w-0 flex-1 items-center gap-3 lg:flex">
           <div>
             <p className="text-sm text-muted-foreground">Good to see you</p>
-            <p className="font-serif text-xl font-semibold">
-              {mockUserProfile.displayName}
-            </p>
+            <p className="font-serif text-xl font-semibold">{profile.displayName}</p>
           </div>
-          {mockUserProfile.studyFocus ? (
-            <Badge variant="secondary">{mockUserProfile.studyFocus}</Badge>
+          {profile.studyFocus ? (
+            <Badge variant="secondary">{profile.studyFocus}</Badge>
           ) : null}
         </div>
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">

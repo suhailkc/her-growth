@@ -5,6 +5,13 @@ export type UserProfile = {
   studyFocus?: string
   onboardingComplete: boolean
   avatarInitials?: string
+  learningGoal?: string
+  dailyLearningMinutes?: number
+  childProfile?: {
+    name?: string
+    ageRange?: string
+  }
+  interests?: string[]
 }
 
 export type JourneySnapshot = {

@@ -6,9 +6,12 @@ import { cn } from '@/lib/utils'
 
 const profileSections = [
   { label: 'Overview', href: '/profile' },
+  { label: 'Notifications', href: '/profile/notifications' },
   { label: 'Language', href: '/profile/language' },
-  { label: 'Accessibility', href: '/profile/accessibility' },
+  { label: 'Theme', href: '/profile/theme' },
   { label: 'Privacy', href: '/profile/privacy' },
+  { label: 'Password', href: '/profile/password' },
+  { label: 'Account', href: '/profile/account' },
 ] as const
 
 export function ProfileLayoutPage() {
@@ -16,7 +19,7 @@ export function ProfileLayoutPage() {
     <PageContainer width="default">
       <PageHeader
         title="Profile & Settings"
-        description="Language, accessibility, and privacy — all in your control."
+        description="Language, learning goals, and privacy — all in your control."
       />
       <nav
         aria-label="Profile sections"
