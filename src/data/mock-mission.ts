@@ -2,10 +2,13 @@ import type { DailyMission } from '@/types/user'
 
 export const mockTodayMission: DailyMission = {
   id: 'mission-1',
-  title: 'Save a photo to a folder you choose',
+  title: 'Organize three photos into a new album',
   summary:
-    'Practice finding your gallery and saving one photo to a folder with a name you remember.',
-  estimatedMinutes: 8,
-  status: 'not_started',
+    'Practice finding your gallery, creating an album, and saving photos with names you will remember.',
+  estimatedMinutes: 15,
+  status: 'in_progress',
   moduleId: 'digital-skills',
+  skillCategory: 'Digital Skills',
+  difficulty: 'gentle',
+  progressPercent: 35,
 }

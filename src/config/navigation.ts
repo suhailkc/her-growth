@@ -111,8 +111,8 @@ export const secondaryNavItems: NavItem[] = [
 ]
 
 export const homeGreeting = {
-  title: 'Welcome back',
-  subtitle: 'Small, steady steps build real confidence.',
+  title: 'Good morning',
+  subtitle: 'Small steps every day make a big difference.',
 }
 
 export const missionPlaceholder = {

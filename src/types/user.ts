@@ -29,4 +29,7 @@ export type DailyMission = {
   estimatedMinutes: number
   status: 'not_started' | 'in_progress' | 'completed'
   moduleId: string
+  skillCategory: string
+  difficulty: 'gentle' | 'moderate' | 'stretch'
+  progressPercent: number
 }
