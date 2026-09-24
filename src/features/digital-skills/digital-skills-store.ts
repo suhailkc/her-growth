@@ -1,6 +1,11 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
+import { getActiveUserId } from '@/features/auth/lib/auth-session'
+import {
+  syncJourneyStateRemote,
+  syncTopicCompletionRemote,
+} from '@/features/digital-skills/completions-api'
 import { shouldShowWelcomeBack } from '@/features/digital-skills/lib/journey-insights'
 import { topicKey } from '@/features/digital-skills/lib/topic-progress'
 
@@ -28,17 +33,30 @@ export const useDigitalSkillsStore = create<DigitalSkillsStoreState>()(
       toggleTopicComplete: (stageId, topicId) => {
         const key = topicKey(stageId, topicId)
         const current = get().completedTopicIds
-        const next = current.includes(key)
-          ? current.filter((id) => id !== key)
-          : [...current, key]
+        const completed = !current.includes(key)
+        const next = completed
+          ? [...current, key]
+          : current.filter((id) => id !== key)
         set({ completedTopicIds: next })
+        const userId = getActiveUserId()
+        if (userId) {
+          void syncTopicCompletionRemote(userId, key, completed)
+        }
       },
       markStageCelebrated: (stageId) => {
         const current = get().celebratedStageCompleteIds
         if (current.includes(stageId)) {
           return
         }
-        set({ celebratedStageCompleteIds: [...current, stageId] })
+        const celebratedStageCompleteIds = [...current, stageId]
+        set({ celebratedStageCompleteIds })
+        const userId = getActiveUserId()
+        if (userId) {
+          void syncJourneyStateRemote(userId, {
+            celebratedStageCompleteIds,
+            lastVisitAt: get().lastVisitAt,
+          })
+        }
       },
       hasCelebratedStage: (stageId) => {
         return get().celebratedStageCompleteIds.includes(stageId)
@@ -46,7 +64,15 @@ export const useDigitalSkillsStore = create<DigitalSkillsStoreState>()(
       recordVisit: () => {
         const lastVisitAt = get().lastVisitAt
         const showWelcomeBack = shouldShowWelcomeBack(lastVisitAt)
-        set({ lastVisitAt: new Date().toISOString() })
+        const nextVisitAt = new Date().toISOString()
+        set({ lastVisitAt: nextVisitAt })
+        const userId = getActiveUserId()
+        if (userId) {
+          void syncJourneyStateRemote(userId, {
+            celebratedStageCompleteIds: get().celebratedStageCompleteIds,
+            lastVisitAt: nextVisitAt,
+          })
+        }
         return showWelcomeBack
       },
     }),

@@ -38,7 +38,7 @@ Legacy `/digital-skills/...` URLs redirect to the routes above.
 
 - [x] Journey UI, stages config, local progress store
 - [x] Onboarding (name)
-- [ ] Supabase auth + sync completions
+- [x] Supabase auth (Google) + sync completions (server wins)
 - [ ] Malayalam UI strings
 
 ## Non-goals

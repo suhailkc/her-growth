@@ -2,11 +2,13 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
 import { learner } from '@/config/learner'
+import { getActiveUserId } from '@/features/auth/lib/auth-session'
+import { upsertRemoteProfile } from '@/features/profile/profile-api'
 import type { UserProfile } from '@/types/user'
 
 export type ThemePreference = 'light' | 'dark' | 'system'
 
-type ProfileSettings = {
+export type ProfileSettings = {
   theme: ThemePreference
   /** Short vibration when ticking a skill (mobile); off by default. */
   completionHaptics: boolean
@@ -35,6 +37,14 @@ type PersistedProfileSlice = {
   settings?: ProfileSettings
 }
 
+function persistProfileToServer(state: ProfileStoreState): void {
+  const userId = getActiveUserId()
+  if (!userId) {
+    return
+  }
+  void upsertRemoteProfile(userId, state.profile, state.settings)
+}
+
 export const useProfileStore = create<ProfileStoreState>()(
   persist(
     (set) => ({
@@ -44,23 +54,35 @@ export const useProfileStore = create<ProfileStoreState>()(
         completionHaptics: false,
       },
       updateProfile: (patch) => {
-        set((state) => ({
-          profile: {
-            ...state.profile,
-            ...patch,
-            avatarInitials: nicknameInitials,
-          },
-        }))
+        set((state) => {
+          const next = {
+            profile: {
+              ...state.profile,
+              ...patch,
+              avatarInitials: nicknameInitials,
+            },
+          }
+          persistProfileToServer({ ...state, ...next })
+          return next
+        })
       },
       updateSettings: (patch) => {
-        set((state) => ({
-          settings: { ...state.settings, ...patch },
-        }))
+        set((state) => {
+          const next = {
+            settings: { ...state.settings, ...patch },
+          }
+          persistProfileToServer({ ...state, ...next })
+          return next
+        })
       },
       completeOnboarding: () => {
-        set((state) => ({
-          profile: { ...state.profile, onboardingComplete: true },
-        }))
+        set((state) => {
+          const next = {
+            profile: { ...state.profile, onboardingComplete: true },
+          }
+          persistProfileToServer({ ...state, ...next })
+          return next
+        })
       },
     }),
     {
@@ -88,7 +110,6 @@ export const useProfileStore = create<ProfileStoreState>()(
           profile: {
             ...current.profile,
             ...slice?.profile,
-            displayName: learner.fullName,
             avatarInitials: nicknameInitials,
           },
         }

@@ -1,6 +1,7 @@
 import { lazy } from 'react'
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 
+import { AuthGuard } from '@/components/layout/auth-guard'
 import { OnboardingGuard } from '@/components/layout/onboarding-guard'
 import { AppShell } from '@/components/layout/app-shell'
 import { RouteErrorPage } from '@/pages/route-error-page'
@@ -16,6 +17,9 @@ const DigitalSkillsTrackPage = lazy(() =>
 const OnboardingPage = lazy(() =>
   import('@/pages/onboarding-page').then((m) => ({ default: m.OnboardingPage })),
 )
+const LoginPage = lazy(() =>
+  import('@/pages/login-page').then((m) => ({ default: m.LoginPage })),
+)
 const DigitalSkillsLegacyRedirect = lazy(() =>
   import('@/pages/digital-skills-legacy-redirect').then((m) => ({
     default: m.DigitalSkillsLegacyRedirect,
@@ -24,15 +28,25 @@ const DigitalSkillsLegacyRedirect = lazy(() =>
 
 export const appRouter = createBrowserRouter([
   {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
     path: '/onboarding',
-    element: <OnboardingPage />,
+    element: (
+      <AuthGuard>
+        <OnboardingPage />
+      </AuthGuard>
+    ),
   },
   {
     path: '/',
     element: (
-      <OnboardingGuard>
-        <AppShell />
-      </OnboardingGuard>
+      <AuthGuard>
+        <OnboardingGuard>
+          <AppShell />
+        </OnboardingGuard>
+      </AuthGuard>
     ),
     errorElement: <RouteErrorPage />,
     children: [
