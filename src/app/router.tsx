@@ -58,6 +58,12 @@ const JourneyPage = lazy(() =>
 const FamilyPage = lazy(() =>
   import('@/pages/family-page').then((m) => ({ default: m.FamilyPage })),
 )
+const FinancePage = lazy(() =>
+  import('@/pages/finance-page').then((m) => ({ default: m.FinancePage })),
+)
+const FinanceLessonPage = lazy(() =>
+  import('@/pages/finance-lesson-page').then((m) => ({ default: m.FinanceLessonPage })),
+)
 
 export const appRouter = createBrowserRouter([
   {
@@ -77,7 +83,13 @@ export const appRouter = createBrowserRouter([
         ],
       },
       { path: 'family', element: <FamilyPage /> },
-      { path: 'finance', element: <ModulePlaceholderPage moduleId="finance" /> },
+      {
+        path: 'finance',
+        children: [
+          { index: true, element: <FinancePage /> },
+          { path: 'lessons/:lessonId', element: <FinanceLessonPage /> },
+        ],
+      },
       { path: 'parenting', element: <ModulePlaceholderPage moduleId="parenting" /> },
       { path: 'bed-career', element: <ModulePlaceholderPage moduleId="bed-career" /> },
       {
