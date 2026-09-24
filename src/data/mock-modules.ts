@@ -1,18 +1,3 @@
-export type MockTrack = {
-  id: string
-  title: string
-  description: string
-  lessonCount: number
-  progressPercent: number
-}
-
-export type MockLesson = {
-  id: string
-  trackId: string
-  title: string
-  summary: string
-}
-
 export type MockKnowledgeTopic = {
   id: string
   title: string
@@ -26,38 +11,6 @@ export type MockFamilyGoal = {
   summary: string
   status: 'idea' | 'in_progress' | 'paused'
 }
-
-export const mockDigitalTracks: MockTrack[] = [
-  {
-    id: 'phone-safety',
-    title: 'Using your phone safely',
-    description: 'Privacy, storage, and calm daily habits.',
-    lessonCount: 5,
-    progressPercent: 20,
-  },
-  {
-    id: 'everyday-apps',
-    title: 'Everyday apps with confidence',
-    description: 'Messages, maps, and simple settings.',
-    lessonCount: 4,
-    progressPercent: 0,
-  },
-]
-
-export const mockDigitalLessons: MockLesson[] = [
-  {
-    id: 'save-photos',
-    trackId: 'phone-safety',
-    title: 'Save photos where you can find them',
-    summary: 'Create a folder and move one photo into it.',
-  },
-  {
-    id: 'app-permissions',
-    trackId: 'phone-safety',
-    title: 'Check app permissions',
-    summary: 'See which apps can use your camera and location.',
-  },
-]
 
 export const mockKnowledgeTopics: MockKnowledgeTopic[] = [
   {
@@ -88,19 +41,6 @@ export const mockFamilyGoals: MockFamilyGoal[] = [
     status: 'idea',
   },
 ]
-
-export function getTrackById(trackId: string): MockTrack | undefined {
-  return mockDigitalTracks.find((track) => track.id === trackId)
-}
-
-export function getLessonById(
-  trackId: string,
-  lessonId: string,
-): MockLesson | undefined {
-  return mockDigitalLessons.find(
-    (lesson) => lesson.trackId === trackId && lesson.id === lessonId,
-  )
-}
 
 export function getKnowledgeTopicById(topicId: string): MockKnowledgeTopic | undefined {
   return mockKnowledgeTopics.find((topic) => topic.id === topicId)

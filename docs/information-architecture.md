@@ -8,7 +8,8 @@ Her Growth
 ├── Today's Mission (/today)
 ├── My Journey (/journey)
 ├── Digital Skills (/digital-skills)
-│   └── [future] /digital-skills/:trackId/:lessonId
+│   ├── /digital-skills/:trackId (category lesson list)
+│   └── /digital-skills/:trackId/:lessonId (overview, step player, completion)
 ├── Family Management (/family)
 ├── Finance & Money (/finance)
 ├── Parenting & Child Development (/parenting)

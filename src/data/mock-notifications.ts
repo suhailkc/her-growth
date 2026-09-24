@@ -10,8 +10,8 @@ export const mockNotifications: AppNotification[] = [
   },
   {
     id: 'n2',
-    title: 'Digital Skills track',
-    body: '“Using your phone safely” has a new step you can try.',
+    title: 'Digital Skills',
+    body: 'Computer Basics has a gentle first lesson when you are ready.',
     createdAt: '2026-09-23T14:30:00.000Z',
     read: true,
   },

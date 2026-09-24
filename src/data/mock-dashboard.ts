@@ -23,12 +23,12 @@ export const mockJourneyAreaProgress: JourneyAreaProgress[] = [
 
 export const mockContinueLearning: ContinueLearningModule[] = [
   {
-    id: 'cl-phone-safety',
+    id: 'cl-computer-basics',
     moduleId: 'digital-skills',
-    title: 'Using your phone safely',
-    subtitle: 'Lesson 2 of 5 · Save photos where you can find them',
-    progressPercent: 40,
-    href: '/digital-skills/phone-safety/save-photos',
+    title: 'Computer Basics',
+    subtitle: 'Lesson 1 · Turn the computer on and off safely',
+    progressPercent: 0,
+    href: '/digital-skills/computer-basics/turn-on-off',
   },
   {
     id: 'cl-budget',
