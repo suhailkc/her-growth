@@ -10,11 +10,6 @@ const DashboardPage = lazy(() =>
 const TodayPage = lazy(() =>
   import('@/pages/today-page').then((m) => ({ default: m.TodayPage })),
 )
-const ModulePlaceholderPage = lazy(() =>
-  import('@/pages/module-placeholder-page').then((m) => ({
-    default: m.ModulePlaceholderPage,
-  })),
-)
 const DigitalSkillsPage = lazy(() =>
   import('@/pages/digital-skills-page').then((m) => ({ default: m.DigitalSkillsPage })),
 )
@@ -105,6 +100,23 @@ const BedCareerProjectPage = lazy(() =>
     default: m.BedCareerProjectPage,
   })),
 )
+const ToolsPage = lazy(() =>
+  import('@/pages/tools-page').then((m) => ({ default: m.ToolsPage })),
+)
+const ToolsCalculatorPage = lazy(() =>
+  import('@/pages/tools-calculator-page').then((m) => ({
+    default: m.ToolsCalculatorPage,
+  })),
+)
+const ToolsNotesPage = lazy(() =>
+  import('@/pages/tools-notes-page').then((m) => ({ default: m.ToolsNotesPage })),
+)
+const ToolsTodoPage = lazy(() =>
+  import('@/pages/tools-todo-page').then((m) => ({ default: m.ToolsTodoPage })),
+)
+const ToolsTimerPage = lazy(() =>
+  import('@/pages/tools-timer-page').then((m) => ({ default: m.ToolsTimerPage })),
+)
 
 export const appRouter = createBrowserRouter([
   {
@@ -161,7 +173,16 @@ export const appRouter = createBrowserRouter([
         path: 'general-knowledge',
         element: <Navigate to="/knowledge" replace />,
       },
-      { path: 'tools', element: <ModulePlaceholderPage moduleId="tools" /> },
+      {
+        path: 'tools',
+        children: [
+          { index: true, element: <ToolsPage /> },
+          { path: 'calculator', element: <ToolsCalculatorPage /> },
+          { path: 'notes', element: <ToolsNotesPage /> },
+          { path: 'todo', element: <ToolsTodoPage /> },
+          { path: 'timer', element: <ToolsTimerPage /> },
+        ],
+      },
       {
         path: 'family-goals',
         children: [
