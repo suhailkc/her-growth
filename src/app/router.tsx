@@ -64,6 +64,24 @@ const FinancePage = lazy(() =>
 const FinanceLessonPage = lazy(() =>
   import('@/pages/finance-lesson-page').then((m) => ({ default: m.FinanceLessonPage })),
 )
+const ParentingPage = lazy(() =>
+  import('@/pages/parenting-page').then((m) => ({ default: m.ParentingPage })),
+)
+const ParentingActivityPage = lazy(() =>
+  import('@/pages/parenting-activity-page').then((m) => ({
+    default: m.ParentingActivityPage,
+  })),
+)
+const ParentingStoryPage = lazy(() =>
+  import('@/pages/parenting-story-page').then((m) => ({
+    default: m.ParentingStoryPage,
+  })),
+)
+const ParentingArticlePage = lazy(() =>
+  import('@/pages/parenting-article-page').then((m) => ({
+    default: m.ParentingArticlePage,
+  })),
+)
 
 export const appRouter = createBrowserRouter([
   {
@@ -90,7 +108,15 @@ export const appRouter = createBrowserRouter([
           { path: 'lessons/:lessonId', element: <FinanceLessonPage /> },
         ],
       },
-      { path: 'parenting', element: <ModulePlaceholderPage moduleId="parenting" /> },
+      {
+        path: 'parenting',
+        children: [
+          { index: true, element: <ParentingPage /> },
+          { path: 'activities/:activityId', element: <ParentingActivityPage /> },
+          { path: 'stories/:storyId', element: <ParentingStoryPage /> },
+          { path: 'articles/:articleId', element: <ParentingArticlePage /> },
+        ],
+      },
       { path: 'bed-career', element: <ModulePlaceholderPage moduleId="bed-career" /> },
       {
         path: 'knowledge',
