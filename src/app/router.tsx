@@ -52,6 +52,9 @@ const ProfileSectionPage = lazy(() =>
     default: m.ProfileSectionPage,
   })),
 )
+const JourneyPage = lazy(() =>
+  import('@/pages/journey-page').then((m) => ({ default: m.JourneyPage })),
+)
 
 export const appRouter = createBrowserRouter([
   {
@@ -61,7 +64,7 @@ export const appRouter = createBrowserRouter([
     children: [
       { index: true, element: <DashboardPage /> },
       { path: 'today', element: <TodayPage /> },
-      { path: 'journey', element: <ModulePlaceholderPage moduleId="journey" /> },
+      { path: 'journey', element: <JourneyPage /> },
       {
         path: 'digital-skills',
         children: [
