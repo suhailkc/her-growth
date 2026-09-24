@@ -5,8 +5,8 @@ import {
   Compass,
   GraduationCap,
   HeartHandshake,
+  Home,
   Landmark,
-  LayoutDashboard,
   Settings,
   Sparkles,
   Users,
@@ -18,9 +18,9 @@ import type { NavItem } from '@/types/navigation'
 export const primaryNavItems: NavItem[] = [
   {
     id: 'dashboard',
-    label: 'Dashboard',
+    label: 'Home',
     href: '/',
-    icon: LayoutDashboard,
+    icon: Home,
     description: 'Your calm overview for today',
   },
   {
@@ -53,14 +53,14 @@ export const primaryNavItems: NavItem[] = [
   },
   {
     id: 'finance',
-    label: 'Finance & Money',
+    label: 'Finance',
     href: '/finance',
     icon: Landmark,
     description: 'Understand money with confidence',
   },
   {
     id: 'parenting',
-    label: 'Parenting & Child Development',
+    label: 'Parenting',
     href: '/parenting',
     icon: Baby,
     description: 'Support your child with clarity',
@@ -74,19 +74,23 @@ export const primaryNavItems: NavItem[] = [
     optional: true,
   },
   {
-    id: 'general-knowledge',
+    id: 'knowledge',
     label: 'General Knowledge',
-    href: '/general-knowledge',
+    href: '/knowledge',
     icon: BookOpen,
     description: 'Learn useful ideas at your pace',
   },
   {
     id: 'tools',
-    label: 'Useful Tools',
+    label: 'Tools',
     href: '/tools',
     icon: Wrench,
     description: 'Simple helpers for daily life',
   },
+]
+
+/** Reachable from Home grid; not shown in primary sidebar list. */
+export const supplementalNavItems: NavItem[] = [
   {
     id: 'family-goals',
     label: 'Family Goals',
@@ -116,6 +120,9 @@ export const missionPlaceholder = {
   body: 'We will suggest one practical task when you are ready — never more than you can comfortably handle.',
 }
 
-export const moduleQuickLinks = primaryNavItems.filter(
-  (item) => !['dashboard', 'today', 'journey'].includes(item.id),
-)
+export const moduleQuickLinks = [
+  ...primaryNavItems.filter(
+    (item) => !['dashboard', 'today', 'journey'].includes(item.id),
+  ),
+  ...supplementalNavItems,
+]

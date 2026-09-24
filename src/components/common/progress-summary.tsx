@@ -1,4 +1,4 @@
-import { Progress } from '@/components/ui/progress'
+import { ProgressBar } from '@/components/common/progress-bar'
 import { cn } from '@/lib/utils'
 
 type ProgressStat = {
@@ -42,10 +42,11 @@ export function ProgressSummary({
         </div>
         <p className="text-3xl font-serif font-semibold text-primary">{clamped}%</p>
       </div>
-      <Progress
+      <ProgressBar
         value={clamped}
-        className="mt-5 h-3"
-        aria-label={`${title}: ${clamped}%`}
+        label="Weekly progress"
+        showValue={false}
+        className="mt-5"
       />
       <dl className="mt-6 grid gap-4 sm:grid-cols-3">
         {stats.map((stat) => (

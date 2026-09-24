@@ -13,7 +13,7 @@ Her Growth
 ├── Finance & Money (/finance)
 ├── Parenting & Child Development (/parenting)
 ├── B.Ed. & Career Exploration (/bed-career) [Optional]
-├── General Knowledge (/general-knowledge)
+├── General Knowledge (/knowledge)
 ├── Useful Tools (/tools)
 ├── Family Goals (/family-goals)
 └── Profile & Settings (/profile)

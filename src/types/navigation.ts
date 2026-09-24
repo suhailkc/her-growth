@@ -9,7 +9,7 @@ export type AppModuleId =
   | 'finance'
   | 'parenting'
   | 'bed-career'
-  | 'general-knowledge'
+  | 'knowledge'
   | 'tools'
   | 'family-goals'
   | 'profile'
@@ -22,3 +22,5 @@ export type NavItem = {
   description: string
   optional?: boolean
 }
+
+export type PageContainerWidth = 'narrow' | 'default' | 'wide'

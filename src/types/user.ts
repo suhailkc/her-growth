@@ -1,11 +1,10 @@
-export type LocaleCode = 'en' | 'ml'
-
 export type UserProfile = {
   id: string
   displayName: string
-  preferredLocale: LocaleCode
+  preferredLocale: 'en' | 'ml'
   studyFocus?: string
   onboardingComplete: boolean
+  avatarInitials?: string
 }
 
 export type JourneySnapshot = {
@@ -13,4 +12,21 @@ export type JourneySnapshot = {
   missionsCompleted: number
   skillsInProgress: number
   weeklyGoalPercent: number
+}
+
+export type AppNotification = {
+  id: string
+  title: string
+  body: string
+  createdAt: string
+  read: boolean
+}
+
+export type DailyMission = {
+  id: string
+  title: string
+  summary: string
+  estimatedMinutes: number
+  status: 'not_started' | 'in_progress' | 'completed'
+  moduleId: string
 }

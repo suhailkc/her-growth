@@ -41,6 +41,11 @@
 
   --shadow-soft: 0 4px 24px -4px oklch(0.35 0.02 45 / 0.08);
   --shadow-card: 0 8px 32px -8px oklch(0.35 0.02 45 / 0.1);
+
+  --space-page-x: 1rem;
+  --space-page-y: 1.5rem;
+  --space-section: 2rem;
+  --space-stack: 1rem;
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -81,6 +86,20 @@
 
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-ring;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 

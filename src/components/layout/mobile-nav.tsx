@@ -2,22 +2,39 @@ import { Menu } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
-import { primaryNavItems, secondaryNavItems } from '@/config/navigation'
+import {
+  primaryNavItems,
+  secondaryNavItems,
+  supplementalNavItems,
+} from '@/config/navigation'
 import { cn } from '@/lib/utils'
 
 const mobilePrimary = primaryNavItems.filter((item) =>
   ['dashboard', 'today', 'journey', 'digital-skills'].includes(item.id),
 )
 
+const fullMenuItems = [
+  ...primaryNavItems,
+  ...supplementalNavItems,
+  ...secondaryNavItems,
+]
+
 export function MobileNav() {
   return (
     <>
       <nav
-        className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-4 border-t border-border bg-background/95 px-2 py-2 backdrop-blur lg:hidden"
+        className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-4 border-t border-border bg-background/95 px-2 py-2 backdrop-blur-md lg:hidden"
         aria-label="Quick navigation"
       >
-        {mobilePrimary.slice(0, 4).map((item) => {
+        {mobilePrimary.map((item) => {
           const Icon = item.icon
+          const shortLabel =
+            item.id === 'dashboard'
+              ? 'Home'
+              : item.id === 'digital-skills'
+                ? 'Skills'
+                : item.label.split(' ')[0]
+
           return (
             <NavLink
               key={item.id}
@@ -25,13 +42,13 @@ export function MobileNav() {
               end={item.href === '/'}
               className={({ isActive }) =>
                 cn(
-                  'flex flex-col items-center gap-1 rounded-lg px-1 py-2 text-[11px] font-medium',
+                  'flex min-h-11 flex-col items-center justify-center gap-1 rounded-lg px-1 py-2 text-[11px] font-medium',
                   isActive ? 'text-primary' : 'text-muted-foreground',
                 )
               }
             >
               <Icon className="size-5" aria-hidden />
-              <span className="truncate">{item.label.split(' ')[0]}</span>
+              <span className="truncate">{shortLabel}</span>
             </NavLink>
           )
         })}
@@ -46,11 +63,11 @@ export function MobileNav() {
         </summary>
         <div className="absolute right-0 bottom-14 w-[min(18rem,calc(100vw-2rem))] rounded-2xl border border-border bg-popover p-2 shadow-[var(--shadow-card)]">
           <ul className="max-h-[50vh] space-y-1 overflow-y-auto">
-            {[...primaryNavItems, ...secondaryNavItems].map((item) => (
+            {fullMenuItems.map((item) => (
               <li key={item.id}>
                 <NavLink
                   to={item.href}
-                  className="block rounded-lg px-3 py-2 text-sm hover:bg-accent"
+                  className="block min-h-11 rounded-lg px-3 py-2.5 text-sm hover:bg-accent"
                 >
                   {item.label}
                 </NavLink>

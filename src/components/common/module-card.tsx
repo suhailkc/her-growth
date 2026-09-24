@@ -22,7 +22,7 @@ export function ModuleCard({ item, className }: ModuleCardProps) {
 
   return (
     <Link to={item.href} className={cn('group block h-full', className)}>
-      <Card className="h-full border-border/80 bg-card shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-card)]">
+      <Card variant="interactive" className="h-full bg-card">
         <CardHeader className="space-y-4">
           <div className="flex items-start justify-between gap-3">
             <div className="flex size-11 items-center justify-center rounded-xl bg-surface-blush text-primary">

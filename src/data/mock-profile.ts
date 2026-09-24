@@ -6,6 +6,7 @@ export const mockUserProfile: UserProfile = {
   preferredLocale: 'en',
   studyFocus: 'B.Ed.',
   onboardingComplete: false,
+  avatarInitials: 'PR',
 }
 
 export const mockJourneySnapshot: JourneySnapshot = {

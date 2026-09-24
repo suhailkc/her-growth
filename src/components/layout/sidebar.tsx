@@ -1,7 +1,9 @@
+import type { ComponentType } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
+import { UserProfileArea } from '@/components/layout/user-profile-area'
 import { primaryNavItems, secondaryNavItems } from '@/config/navigation'
 import { cn } from '@/lib/utils'
 
@@ -13,7 +15,7 @@ function SidebarLink({
 }: {
   href: string
   label: string
-  icon: React.ComponentType<{ className?: string }>
+  icon: ComponentType<{ className?: string }>
   optional?: boolean
 }) {
   return (
@@ -22,9 +24,9 @@ function SidebarLink({
       end={href === '/'}
       className={({ isActive }) =>
         cn(
-          'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors',
+          'flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-[color,box-shadow,background]',
           isActive
-            ? 'bg-primary text-primary-foreground shadow-sm'
+            ? 'bg-primary text-primary-foreground shadow-[var(--shadow-soft)]'
             : 'text-foreground/80 hover:bg-accent hover:text-accent-foreground',
         )
       }
@@ -43,9 +45,9 @@ function SidebarLink({
   )
 }
 
-export function AppSidebar() {
+export function Sidebar() {
   return (
-    <aside className="hidden w-72 shrink-0 border-r border-border/80 bg-sidebar lg:flex lg:flex-col">
+    <aside className="hidden w-[17rem] shrink-0 border-r border-border/80 bg-sidebar lg:flex lg:flex-col">
       <div className="border-b border-border/80 px-5 py-6">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
           Her Growth
@@ -74,6 +76,12 @@ export function AppSidebar() {
           />
         ))}
       </nav>
+      <div className="border-t border-border/80 p-4">
+        <UserProfileArea />
+      </div>
     </aside>
   )
 }
+
+/** @deprecated Use `Sidebar` — kept for gradual migration */
+export const AppSidebar = Sidebar

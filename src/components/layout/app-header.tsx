@@ -1,14 +1,16 @@
 import { Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
+import { NotificationArea } from '@/components/layout/notification-area'
+import { UserProfileArea } from '@/components/layout/user-profile-area'
 import { Badge } from '@/components/ui/badge'
 import { buttonVariants } from '@/components/ui/button'
 import { mockUserProfile } from '@/data/mock-profile'
 
 export function AppHeader() {
   return (
-    <header className="sticky top-0 z-30 border-b border-border/80 bg-background/90 backdrop-blur">
-      <div className="flex items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-30 border-b border-border/80 bg-background/90 backdrop-blur-md">
+      <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
         <div className="min-w-0 lg:hidden">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
             Her Growth
@@ -17,7 +19,7 @@ export function AppHeader() {
             Hello, {mockUserProfile.displayName}
           </p>
         </div>
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden min-w-0 flex-1 items-center gap-3 lg:flex">
           <div>
             <p className="text-sm text-muted-foreground">Good to see you</p>
             <p className="font-serif text-xl font-semibold">
@@ -28,13 +30,21 @@ export function AppHeader() {
             <Badge variant="secondary">{mockUserProfile.studyFocus}</Badge>
           ) : null}
         </div>
-        <Link
-          to="/today"
-          className={buttonVariants({ size: 'lg', className: 'rounded-xl shadow-sm' })}
-        >
-          <Sparkles className="size-4" aria-hidden />
-          Today&apos;s mission
-        </Link>
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <NotificationArea />
+          <UserProfileArea compact className="hidden sm:flex" />
+          <Link
+            to="/today"
+            className={buttonVariants({
+              size: 'lg',
+              className: 'rounded-xl shadow-[var(--shadow-soft)]',
+            })}
+          >
+            <Sparkles className="size-4" aria-hidden />
+            <span className="hidden sm:inline">Today&apos;s mission</span>
+            <span className="sm:hidden">Today</span>
+          </Link>
+        </div>
       </div>
     </header>
   )

@@ -1,9 +1,14 @@
 import { EmptyState } from '@/components/common/empty-state'
+import { PageContainer } from '@/components/common/page-container'
 import { PageHeader } from '@/components/common/page-header'
-import { primaryNavItems, secondaryNavItems } from '@/config/navigation'
+import {
+  primaryNavItems,
+  secondaryNavItems,
+  supplementalNavItems,
+} from '@/config/navigation'
 import type { AppModuleId } from '@/types/navigation'
 
-const allModules = [...primaryNavItems, ...secondaryNavItems]
+const allModules = [...primaryNavItems, ...supplementalNavItems, ...secondaryNavItems]
 
 type ModulePlaceholderPageProps = {
   moduleId: AppModuleId
@@ -19,13 +24,13 @@ export function ModulePlaceholderPage({ moduleId }: ModulePlaceholderPageProps) 
   const Icon = moduleMeta.icon
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
+    <PageContainer>
       <PageHeader title={moduleMeta.label} description={moduleMeta.description} />
       <EmptyState
         icon={Icon}
         title="This module is planned"
         description="We are setting up gentle, practical content here. Nothing is required right away — explore when you feel ready."
       />
-    </div>
+    </PageContainer>
   )
 }

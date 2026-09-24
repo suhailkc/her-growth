@@ -1,21 +1,16 @@
-import { Sparkles } from 'lucide-react'
-
-import { EmptyState } from '@/components/common/empty-state'
+import { PageContainer } from '@/components/common/page-container'
 import { PageHeader } from '@/components/common/page-header'
-import { missionPlaceholder } from '@/config/navigation'
+import { MissionCard } from '@/components/common/mission-card'
+import { mockTodayMission } from '@/data/mock-mission'
 
 export function TodayPage() {
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
+    <PageContainer width="narrow">
       <PageHeader
         title="Today's Mission"
         description="One practical step. Take your time — there is no rush."
       />
-      <EmptyState
-        icon={Sparkles}
-        title={missionPlaceholder.title}
-        description={missionPlaceholder.body}
-      />
-    </div>
+      <MissionCard mission={mockTodayMission} />
+    </PageContainer>
   )
 }
