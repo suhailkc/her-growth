@@ -1,7 +1,11 @@
+import { MessageCircle } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import { buttonVariants } from '@/components/ui/button'
+import { shareWithKuttimon } from '@/config/share'
 import { getStageIcon } from '@/features/digital-skills/data/stage-meta'
+import { useProfileStore } from '@/features/profile/profile-store'
+import { buildWhatsAppShareUrl } from '@/lib/whatsapp-share-url'
 import { cn } from '@/lib/utils'
 
 type StageCompleteCelebrationProps = {
@@ -13,11 +17,18 @@ export function StageCompleteCelebration({
   stage,
   onDismiss,
 }: StageCompleteCelebrationProps) {
+  const displayName = useProfileStore((s) => s.profile.displayName)
+
   if (!stage) {
     return null
   }
 
   const icon = getStageIcon(stage.stageId)
+  const shareMessage = `Hi ${shareWithKuttimon.recipientNickname}! It's ${displayName}. I finished "${stage.title}" ${icon} on my Digital Skills journey. 🎉`
+  const whatsAppShareUrl = buildWhatsAppShareUrl(
+    shareMessage,
+    shareWithKuttimon.whatsAppPhoneE164,
+  )
 
   return (
     <div
@@ -42,25 +53,43 @@ export function StageCompleteCelebration({
           Every skill in this stage is ticked. Rest if you like — the next stage
           will be here when you&apos;re ready.
         </p>
-        <div className="mt-5 flex flex-col gap-2 sm:flex-row">
-          <button
-            type="button"
-            className={buttonVariants({ size: 'lg', className: 'rounded-xl sm:flex-1' })}
-            onClick={onDismiss}
-          >
-            Lovely, thanks
-          </button>
-          <Link
-            to="/"
+        <div className="mt-5 flex flex-col gap-2">
+          <a
+            href={whatsAppShareUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className={buttonVariants({
-              variant: 'secondary',
+              variant: 'family',
               size: 'lg',
-              className: 'rounded-xl sm:flex-1',
+              className: 'rounded-xl',
             })}
-            onClick={onDismiss}
           >
-            Back to roadmap
-          </Link>
+            <MessageCircle aria-hidden />
+            Tell {shareWithKuttimon.recipientNickname} on WhatsApp
+          </a>
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <button
+              type="button"
+              className={buttonVariants({
+                size: 'lg',
+                className: 'rounded-xl sm:flex-1',
+              })}
+              onClick={onDismiss}
+            >
+              Lovely, thanks
+            </button>
+            <Link
+              to="/"
+              className={buttonVariants({
+                variant: 'secondary',
+                size: 'lg',
+                className: 'rounded-xl sm:flex-1',
+              })}
+              onClick={onDismiss}
+            >
+              Back to roadmap
+            </Link>
+          </div>
         </div>
       </div>
     </div>
