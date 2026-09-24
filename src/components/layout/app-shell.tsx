@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import { LoadingState } from '@/components/common/loading-state'
+import { AppProfileBar } from '@/features/profile/components/app-profile-bar'
 
 export function AppShell() {
   return (
@@ -10,6 +11,7 @@ export function AppShell() {
         id="main-content"
         className="safe-page-x safe-page-bottom min-h-dvh py-6 sm:px-6 lg:px-8"
       >
+        <AppProfileBar />
         <Suspense fallback={<LoadingState />}>
           <Outlet />
         </Suspense>

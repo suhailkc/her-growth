@@ -12,8 +12,10 @@ import {
   isStageTopicsComplete,
   topicProgressPercent,
 } from '@/features/digital-skills/lib/topic-progress'
+import { getFriendlyName } from '@/features/profile/lib/friendly-name'
 
 export function DigitalSkillsJourneySummary() {
+  const friendlyName = getFriendlyName()
   const completedTopicIds = useCompletedTopicSet()
   const allKeys = getAllJourneyTopicKeys()
   const overallPercent = topicProgressPercent(allKeys, completedTopicIds)
@@ -28,11 +30,11 @@ export function DigitalSkillsJourneySummary() {
   return (
     <Card variant="warm" className="mx-auto mb-8 max-w-xl">
       <CardHeader>
-        <CardTitle className="font-serif text-xl">My progress</CardTitle>
+        <CardTitle className="font-serif text-xl">Your progress</CardTitle>
         <p className="text-sm text-muted-foreground">
           {completedCount > 0
-            ? `${completedCount} skills ticked — nice work!`
-            : 'Tick a skill when it feels easy.'}
+            ? `${friendlyName}, ${completedCount} skills ticked — nice work!`
+            : `${friendlyName}, tick a skill when it feels easy.`}
         </p>
       </CardHeader>
       <CardContent className="space-y-4">
