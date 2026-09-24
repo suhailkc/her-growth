@@ -17,8 +17,8 @@ export function JourneyTopicTodoItem({
   topic,
   disabled,
 }: JourneyTopicTodoItemProps) {
-  const inputId = `ds-topic-${stageId}-${topic.id}`
-  const descriptionId = `${inputId}-description`
+  const titleId = `ds-topic-${stageId}-${topic.id}-title`
+  const descriptionId = `ds-topic-${stageId}-${topic.id}-description`
   const complete = useDigitalSkillsStore((s) => s.isTopicComplete(stageId, topic.id))
   const toggleTopicComplete = useDigitalSkillsStore((s) => s.toggleTopicComplete)
   const { onTopicMarkedComplete } = useCompletionDelight()
@@ -32,9 +32,24 @@ export function JourneyTopicTodoItem({
     return () => window.clearTimeout(timer)
   }, [justCompleted])
 
+  const applyCompletionChange = (checked: boolean) => {
+    if (checked) {
+      setJustCompleted(true)
+      onTopicMarkedComplete(stageId, topic.id)
+      return
+    }
+    toggleTopicComplete(stageId, topic.id)
+  }
+
+  const toggleFromText = () => {
+    if (disabled) {
+      return
+    }
+    applyCompletionChange(!complete)
+  }
+
   return (
-    <label
-      htmlFor={inputId}
+    <div
       className={cn(
         'flex min-h-12 cursor-pointer items-start gap-3 rounded-xl border border-border/70 bg-background px-4 py-3.5 transition-[color,background-color,border-color,box-shadow,transform] duration-200 active:bg-muted/40',
         complete && 'border-success/35 bg-success/5 active:bg-success/10',
@@ -43,25 +58,25 @@ export function JourneyTopicTodoItem({
       )}
     >
       <Checkbox
-        id={inputId}
         checked={complete}
         disabled={disabled}
         onCheckedChange={(checked) => {
-          if (checked === true) {
-            setJustCompleted(true)
-            onTopicMarkedComplete(stageId, topic.id)
-            return
-          }
-          toggleTopicComplete(stageId, topic.id)
+          applyCompletionChange(checked === true)
         }}
         className={cn(
           'mt-0.5 size-6 shrink-0 transition-transform duration-200',
           justCompleted && 'task-check-pop',
         )}
+        aria-labelledby={titleId}
         aria-describedby={descriptionId}
       />
-      <div className="min-w-0 flex-1 space-y-0.5">
+      <div
+        className="min-w-0 flex-1 space-y-0.5"
+        onPointerDown={(event) => event.preventDefault()}
+        onClick={toggleFromText}
+      >
         <span
+          id={titleId}
           className={cn(
             'block text-base font-medium leading-snug',
             complete && 'text-muted-foreground',
@@ -79,6 +94,6 @@ export function JourneyTopicTodoItem({
           {topic.description}
         </p>
       </div>
-    </label>
+    </div>
   )
 }
