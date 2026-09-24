@@ -144,6 +144,22 @@
   .touch-target {
     @apply min-h-11 min-w-11;
   }
+
+  @keyframes enter-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .enter-fade-up {
+    animation: enter-fade-up 0.45s ease-out both;
+  }
 }
 
 :root {

@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import { LoadingState } from '@/components/common/loading-state'
+import { PageEnter } from '@/components/common/page-enter'
 import { AppProfileBar } from '@/features/profile/components/app-profile-bar'
 
 export function AppShell() {
@@ -11,9 +12,11 @@ export function AppShell() {
         id="main-content"
         className="safe-page-x safe-page-bottom min-h-dvh py-6 sm:px-6 lg:px-8"
       >
-        <AppProfileBar />
+        <AppProfileBar className="enter-fade-up" />
         <Suspense fallback={<LoadingState />}>
-          <Outlet />
+          <PageEnter>
+            <Outlet />
+          </PageEnter>
         </Suspense>
       </main>
     </div>

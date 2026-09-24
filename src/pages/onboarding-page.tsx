@@ -25,7 +25,7 @@ export function OnboardingPage() {
 
   return (
     <PageContainer width="narrow">
-      <div className="mx-auto max-w-lg py-4 sm:py-8">
+      <div className="enter-fade-up mx-auto max-w-lg py-4 sm:py-8">
         <p className="text-sm font-medium text-primary">{appBrand.welcomeLead}</p>
         <h1 className="mt-1 text-balance font-serif text-2xl font-semibold sm:text-3xl">
           Welcome to your space

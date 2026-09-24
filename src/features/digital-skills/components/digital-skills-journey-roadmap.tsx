@@ -79,7 +79,7 @@ function JourneyStageCard({
   return (
     <article
       className={cn(
-        'relative rounded-2xl border border-border/80 bg-card p-4 shadow-[var(--shadow-soft)] sm:p-5',
+        'relative rounded-2xl border border-border/80 bg-card p-4 shadow-[var(--shadow-soft)] transition-shadow duration-300 sm:p-5',
         isCurrent && 'ring-2 ring-primary/35',
         locked && 'border-dashed bg-muted/20',
       )}

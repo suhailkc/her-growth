@@ -1,3 +1,4 @@
+import { fireTaskCompleteConfetti } from '@/lib/task-complete-confetti'
 import { cn } from '@/lib/utils'
 import { Checkbox } from '@/components/ui/checkbox'
 import { useDigitalSkillsStore } from '@/features/digital-skills/digital-skills-store'
@@ -23,7 +24,7 @@ export function JourneyTopicTodoItem({
     <label
       htmlFor={inputId}
       className={cn(
-        'flex min-h-12 cursor-pointer items-start gap-3 rounded-xl border border-border/70 bg-background px-4 py-3.5 transition-colors active:bg-muted/40',
+        'flex min-h-12 cursor-pointer items-start gap-3 rounded-xl border border-border/70 bg-background px-4 py-3.5 transition-[color,background-color,border-color,box-shadow] duration-200 active:bg-muted/40',
         complete && 'border-success/35 bg-success/5 active:bg-success/10',
         disabled && 'pointer-events-none opacity-50',
       )}
@@ -32,7 +33,12 @@ export function JourneyTopicTodoItem({
         id={inputId}
         checked={complete}
         disabled={disabled}
-        onCheckedChange={() => toggleTopicComplete(stageId, topic.id)}
+        onCheckedChange={(checked) => {
+          toggleTopicComplete(stageId, topic.id)
+          if (checked === true) {
+            fireTaskCompleteConfetti()
+          }
+        }}
         className="mt-0.5 size-6 shrink-0"
         aria-describedby={descriptionId}
       />
