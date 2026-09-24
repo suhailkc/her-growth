@@ -55,6 +55,9 @@ const ProfileSectionPage = lazy(() =>
 const JourneyPage = lazy(() =>
   import('@/pages/journey-page').then((m) => ({ default: m.JourneyPage })),
 )
+const FamilyPage = lazy(() =>
+  import('@/pages/family-page').then((m) => ({ default: m.FamilyPage })),
+)
 
 export const appRouter = createBrowserRouter([
   {
@@ -73,7 +76,7 @@ export const appRouter = createBrowserRouter([
           { path: ':trackId/:lessonId', element: <DigitalSkillsLessonPage /> },
         ],
       },
-      { path: 'family', element: <ModulePlaceholderPage moduleId="family" /> },
+      { path: 'family', element: <FamilyPage /> },
       { path: 'finance', element: <ModulePlaceholderPage moduleId="finance" /> },
       { path: 'parenting', element: <ModulePlaceholderPage moduleId="parenting" /> },
       { path: 'bed-career', element: <ModulePlaceholderPage moduleId="bed-career" /> },
