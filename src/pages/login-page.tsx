@@ -64,8 +64,9 @@ export function LoginPage() {
             className="absolute inset-0 size-full object-cover object-[center_18%] scale-105 animate-[enter-fade-up_0.7s_ease-out_both]"
             decoding="async"
           />
+          <FloatingHearts variant="photo" className="z-10 [&_svg]:drop-shadow-md" />
           <div
-            className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent lg:hidden"
+            className="absolute inset-x-0 bottom-0 z-10 h-16 bg-gradient-to-t from-background to-transparent lg:hidden"
             aria-hidden
           />
         </div>
