@@ -16,7 +16,11 @@ export function WelcomeDedication({ className }: WelcomeDedicationProps) {
       )}
     >
       <span>{appBrand.welcomeDedication}</span>
-      <Heart className="size-4 fill-red-500 text-red-500" aria-hidden strokeWidth={0} />
+      <Heart
+        className="heart-beat size-4 fill-red-500 text-red-500"
+        aria-hidden
+        strokeWidth={0}
+      />
     </p>
   )
 }

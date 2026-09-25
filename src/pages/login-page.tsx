@@ -4,6 +4,7 @@ import { ErrorState } from '@/components/common/error-state'
 import { GoogleIcon } from '@/components/common/google-icon'
 import { LoadingState } from '@/components/common/loading-state'
 import { PageContainer } from '@/components/common/page-container'
+import { FloatingHearts } from '@/components/common/floating-hearts'
 import { WelcomeDedication } from '@/components/common/welcome-dedication'
 import { PublicPageShell } from '@/components/layout/public-page-shell'
 import { Button } from '@/components/ui/button'
@@ -69,8 +70,9 @@ export function LoginPage() {
           />
         </div>
 
-        <div className="flex items-center justify-center px-6 py-8 sm:px-10 lg:px-16">
-          <div className="enter-fade-up w-full max-w-sm">
+        <div className="relative flex items-center justify-center overflow-hidden px-6 py-8 sm:px-10 lg:px-16">
+          <FloatingHearts />
+          <div className="enter-fade-up relative z-10 w-full max-w-sm">
             <WelcomeDedication className="justify-center lg:justify-start" />
 
             <h1 className="mt-4 text-center font-serif text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-left">
