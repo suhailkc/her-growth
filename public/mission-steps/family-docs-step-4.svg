@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-hidden="true">
-  <rect width="640" height="360" fill="#f7f3ef"/>
-  <path d="M220 200h80v56h120v-56h80" fill="#d4a574" stroke="#8b7355" stroke-width="2"/>
-  <rect x="248" y="168" width="176" height="28" rx="4" fill="#fff" stroke="#8b7355" stroke-width="2"/>
-  <text x="336" y="188" text-anchor="middle" fill="#4a3f38" font-family="system-ui,sans-serif" font-size="14">Family Documents</text>
-  <text x="320" y="320" text-anchor="middle" fill="#6b5b4f" font-family="system-ui,sans-serif" font-size="18">Type the folder name</text>
-</svg>
