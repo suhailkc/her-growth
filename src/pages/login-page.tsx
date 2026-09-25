@@ -1,13 +1,13 @@
 import { Navigate } from 'react-router-dom'
 
-import { PageContainer } from '@/components/common/page-container'
 import { ErrorState } from '@/components/common/error-state'
+import { GoogleIcon } from '@/components/common/google-icon'
 import { LoadingState } from '@/components/common/loading-state'
+import { PageContainer } from '@/components/common/page-container'
+import { WelcomeDedication } from '@/components/common/welcome-dedication'
 import { PublicPageShell } from '@/components/layout/public-page-shell'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { appBrand } from '@/config/app'
-import { learner } from '@/config/learner'
 import { useAuth } from '@/features/auth/auth-provider'
 import { useProfileStore } from '@/features/profile/profile-store'
 
@@ -52,44 +52,54 @@ export function LoginPage() {
   }
 
   return (
-    <PublicPageShell>
-      <PageContainer width="narrow">
-        <div className="enter-fade-up mx-auto w-full min-w-0 max-w-lg py-4 sm:py-8">
-          <p className="text-sm font-medium text-primary">{appBrand.welcomeLead}</p>
-          <h1 className="mt-1 text-balance font-serif text-2xl font-semibold sm:text-3xl">
-            Sign in to continue
-          </h1>
-          <p className="mt-3 text-base leading-relaxed text-pretty text-muted-foreground">
-            {learner.nickname}, use your Google account so your checklist progress stays saved on
-            every device.
-          </p>
+    <PublicPageShell bleed>
+      <div className="grid min-h-dvh lg:grid-cols-2">
+        <div className="relative h-[min(46vh,22rem)] overflow-hidden lg:h-auto lg:min-h-dvh">
+          <img
+            src={appBrand.welcomePhotoSrc}
+            alt={appBrand.welcomePhotoAlt}
+            width={800}
+            height={1000}
+            className="absolute inset-0 size-full object-cover object-[center_18%] scale-105 animate-[enter-fade-up_0.7s_ease-out_both]"
+            decoding="async"
+          />
+          <div
+            className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent lg:hidden"
+            aria-hidden
+          />
+        </div>
 
-          <Card variant="warm" className="mt-8">
-            <CardHeader>
-              <CardTitle className="font-serif text-lg">Continue with Google</CardTitle>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Only invited email addresses can open this space. If sign-in fails, ask Suhail to add
-                your Gmail to the allowlist.
-              </p>
-            </CardHeader>
-            <CardContent className="space-y-4">
+        <div className="flex items-center justify-center px-6 py-8 sm:px-10 lg:px-16">
+          <div className="enter-fade-up w-full max-w-sm">
+            <WelcomeDedication className="justify-center lg:justify-start" />
+
+            <h1 className="mt-4 text-center font-serif text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-left">
+              {appBrand.name}
+            </h1>
+            <p className="mt-2 text-center text-base leading-relaxed text-pretty text-muted-foreground lg:text-left">
+              {appBrand.tagline}
+            </p>
+
+            <div className="mt-8 space-y-3">
               {gateMessage ? (
-                <p className="rounded-xl border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive">
+                <p className="rounded-xl border border-destructive/30 bg-destructive/5 px-3 py-2 text-center text-sm text-destructive lg:text-left">
                   {gateMessage}
                 </p>
               ) : null}
               <Button
                 type="button"
+                variant="outline"
                 size="lg"
-                className="w-full rounded-xl sm:w-auto"
+                className="h-12 w-full gap-3 border-border/80 bg-card text-base font-medium text-foreground shadow-(--shadow-soft) hover:bg-card hover:shadow-(--shadow-card)"
                 onClick={() => void signInWithGoogle()}
               >
+                <GoogleIcon />
                 Continue with Google
               </Button>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
-      </PageContainer>
+      </div>
     </PublicPageShell>
   )
 }

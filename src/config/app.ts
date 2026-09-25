@@ -8,4 +8,7 @@ export const appBrand = {
   metaDescription: `A calm, private digital skills roadmap — just for ${learner.nickname}.`,
   welcomeLead: `Hi, ${learner.nickname}`,
   welcomeBody: `This app is yours alone — a gentle place to build everyday computer confidence, at your pace.`,
+  welcomePhotoSrc: '/images/welcome.jpg',
+  welcomePhotoAlt: `${learner.nickname} and Suhail`,
+  welcomeDedication: `I love you, ${learner.nickname}`,
 } as const

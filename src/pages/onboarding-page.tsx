@@ -1,6 +1,8 @@
 import { Navigate, useNavigate } from 'react-router-dom'
 
 import { PageContainer } from '@/components/common/page-container'
+import { WelcomeDedication } from '@/components/common/welcome-dedication'
+import { WelcomePhoto } from '@/components/common/welcome-photo'
 import { PublicPageShell } from '@/components/layout/public-page-shell'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -28,7 +30,9 @@ export function OnboardingPage() {
     <PublicPageShell>
       <PageContainer width="narrow">
         <div className="enter-fade-up mx-auto w-full min-w-0 max-w-lg py-4 sm:py-8">
-          <p className="text-sm font-medium text-primary">{appBrand.welcomeLead}</p>
+          <WelcomePhoto className="mx-auto max-w-xs sm:max-w-sm" />
+          <WelcomeDedication className="mt-3 justify-center" />
+          <p className="mt-6 text-sm font-medium text-primary">{appBrand.welcomeLead}</p>
           <h1 className="mt-1 text-balance font-serif text-2xl font-semibold sm:text-3xl">
             Welcome to your space
           </h1>
