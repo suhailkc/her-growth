@@ -1,6 +1,5 @@
 export type ProfileSettingsRow = {
   theme: 'light' | 'dark' | 'system'
-  completionHaptics: boolean
 }
 
 export type Database = {

@@ -10,8 +10,6 @@ export type ThemePreference = 'light' | 'dark' | 'system'
 
 export type ProfileSettings = {
   theme: ThemePreference
-  /** Short vibration when ticking a skill (mobile); off by default. */
-  completionHaptics: boolean
 }
 
 type ProfileStoreState = {
@@ -34,7 +32,7 @@ const defaultProfile: UserProfile = {
 
 type PersistedProfileSlice = {
   profile?: UserProfile
-  settings?: ProfileSettings
+  settings?: Partial<ProfileSettings>
 }
 
 function persistProfileToServer(state: ProfileStoreState): void {
@@ -51,7 +49,6 @@ export const useProfileStore = create<ProfileStoreState>()(
       profile: defaultProfile,
       settings: {
         theme: 'light',
-        completionHaptics: false,
       },
       updateProfile: (patch) => {
         set((state) => {
@@ -87,14 +84,13 @@ export const useProfileStore = create<ProfileStoreState>()(
     }),
     {
       name: 'digital-skills-profile',
-      version: 2,
+      version: 4,
       migrate: (persisted) => {
         const slice = persisted as PersistedProfileSlice | undefined
         return {
           ...slice,
           settings: {
             theme: slice?.settings?.theme ?? 'light',
-            completionHaptics: slice?.settings?.completionHaptics ?? false,
           },
         }
       },
@@ -106,7 +102,9 @@ export const useProfileStore = create<ProfileStoreState>()(
         const slice = persisted as PersistedProfileSlice | undefined
         return {
           ...current,
-          settings: { ...current.settings, ...slice?.settings },
+          settings: {
+            theme: slice?.settings?.theme ?? current.settings.theme,
+          },
           profile: {
             ...current.profile,
             ...slice?.profile,

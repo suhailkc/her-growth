@@ -8,14 +8,12 @@ import type { ProfileSettings, ThemePreference } from './profile-store'
 function parseSettings(raw: ProfileSettingsRow | null | undefined): ProfileSettings {
   return {
     theme: raw?.theme ?? 'light',
-    completionHaptics: raw?.completionHaptics ?? false,
   }
 }
 
 function toSettingsRow(settings: ProfileSettings): ProfileSettingsRow {
   return {
     theme: settings.theme,
-    completionHaptics: settings.completionHaptics,
   }
 }
 
@@ -74,7 +72,6 @@ export async function ensureRemoteProfile(
 
   const defaultSettings: ProfileSettingsRow = {
     theme: 'light',
-    completionHaptics: false,
   }
 
   const row = {

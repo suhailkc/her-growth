@@ -46,7 +46,6 @@ export function CompletionDelightProvider({ children }: { children: ReactNode })
   const markStageCelebrated = useDigitalSkillsStore((s) => s.markStageCelebrated)
   const hasCelebratedStage = useDigitalSkillsStore((s) => s.hasCelebratedStage)
   const locale = useProfileStore((s) => s.profile.preferredLocale)
-  const hapticsEnabled = useProfileStore((s) => s.settings.completionHaptics)
 
   const [toastMessage, setToastMessage] = useState<string | null>(null)
   const [toastSubtitle, setToastSubtitle] = useState<string | null>(null)
@@ -74,7 +73,7 @@ export function CompletionDelightProvider({ children }: { children: ReactNode })
       toggleTopicComplete(stageId, topicId)
 
       fireTaskCompleteConfetti()
-      fireCompletionHaptic(hapticsEnabled)
+      fireCompletionHaptic()
 
       const encouragement = pickTaskCompleteEncouragement()
       if (locale === 'ml') {
@@ -100,7 +99,6 @@ export function CompletionDelightProvider({ children }: { children: ReactNode })
     },
     [
       completedTopicIds,
-      hapticsEnabled,
       hasCelebratedStage,
       locale,
       markStageCelebrated,

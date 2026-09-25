@@ -1,6 +1,5 @@
 import { ProgressBar } from '@/components/common/progress-bar'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { CompletionHapticsToggle } from '@/features/digital-skills/components/completion-haptics-toggle'
 import { JourneyAchievementBadges } from '@/features/digital-skills/components/journey-achievement-badges'
 import { journeyMilestones } from '@/features/digital-skills/data/stage-meta'
 import { getDigitalSkillsStageById } from '@/features/digital-skills/data/catalog'
@@ -46,7 +45,6 @@ export function DigitalSkillsJourneySummary() {
             ))}
           </ul>
         ) : null}
-        <CompletionHapticsToggle />
       </CardContent>
     </Card>
   )

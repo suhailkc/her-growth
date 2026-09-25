@@ -1,5 +1,4 @@
-export function fireCompletionHaptic(enabled: boolean): void {
-  if (!enabled) return
+export function fireCompletionHaptic(): void {
   if (typeof navigator === 'undefined' || typeof navigator.vibrate !== 'function') {
     return
   }
