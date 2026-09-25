@@ -1,0 +1,19 @@
+import type { ReactNode } from 'react'
+
+type PublicPageShellProps = {
+  children: ReactNode
+}
+
+/** Shared chrome for routes outside AppShell (login, onboarding). */
+export function PublicPageShell({ children }: PublicPageShellProps) {
+  return (
+    <div className="min-h-dvh bg-[radial-gradient(ellipse_at_top,_var(--color-surface-warm)_0%,_transparent_55%)]">
+      <main
+        id="main-content"
+        className="safe-page-x safe-page-bottom min-h-dvh py-6 sm:px-6 lg:px-8"
+      >
+        {children}
+      </main>
+    </div>
+  )
+}
